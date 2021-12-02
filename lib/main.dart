@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(appBar: AppBar(), body: Container(color: Colors.amber,),)
+      home: Scaffold(appBar: AppBar(title: Text('sample text that is useless', style: GoogleFonts.nunito(),),), body: Container(color: Colors.amber,),)
     );
   }
 }

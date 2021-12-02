@@ -1,0 +1,29 @@
+12022021
+
+Small details
+	Constants.dart file Done
+	Add assets folder to pubspec.yaml
+	Add Font
+		https://pub.dev/packages/google_fonts
+
+Routing/Navigation
+	Add namedRoutes
+
+Login Page
+	Login Part Expanded
+		Forms
+	Carousel Part Expanded
+
+Sign-up Page
+	Picture Expanded
+	Signup Expanded
+		Signup Forms
+		Dialog Email Verification
+
+Profile
+	Profile Area
+	Look for Navigation Bars PubDev
+
+
+Note: After login, navigation.push() to Profile page without Navigation Header
+
