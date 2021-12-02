@@ -2,7 +2,7 @@
 
 Small details
 	Constants.dart file Done
-	Add assets folder to pubspec.yaml
+	Add assets folder to pubspec.yaml In Progress
 	Add Font
 		https://pub.dev/packages/google_fonts
 

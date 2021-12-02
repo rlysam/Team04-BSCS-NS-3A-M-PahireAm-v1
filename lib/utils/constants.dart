@@ -16,3 +16,7 @@ var kFontColorRedWarning = const Color(0xffE70E0E);
 var kFontSizeHeader = pToF(48);
 var kFontSizeSubtitle = pToF(18);
 var kFontSizeSubtitleSmall = pToF(14);
+
+FontWeight bold = FontWeight.bold;
+FontWeight normal = FontWeight.normal;
+FontWeight medium = FontWeight.w600;
