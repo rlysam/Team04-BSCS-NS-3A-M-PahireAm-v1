@@ -9,18 +9,18 @@ Small details
 Routing/Navigation
 	Add namedRoutes
 
-Login Page
+Login Page DONE - Need functionalities
 	Login Part Expanded
 		Forms
 	Carousel Part Expanded
 
-Sign-up Page
+Sign-up Page DONE --- need functionalities
 	Picture Expanded
 	Signup Expanded
 		Signup Forms
 		Dialog Email Verification
 
-Profile
+Profile 
 	Profile Area
 	Look for Navigation Bars PubDev
 
