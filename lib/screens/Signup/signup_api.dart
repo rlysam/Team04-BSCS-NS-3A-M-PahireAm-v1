@@ -18,11 +18,11 @@ Future<User> createUser(
     //LALAGYAN LANG ATA NG HEADER PAG RESPONSE
     body: {
       //TINANGGAL KO YUNG JSON
-      'firstName': firstName,
+      'first_name': firstName,
       'last_name': lastName,
-      'email': tupID,
-      'points': email,
-      'user_password': password,
+      'tup_id': tupID,
+      'email': email,
+      'password': password,
       // 'status': status,
       // 'tup_firstName': tupfirstName,
       // 'image_location': imgloc,
