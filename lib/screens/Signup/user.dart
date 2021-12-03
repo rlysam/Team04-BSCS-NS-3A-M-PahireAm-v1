@@ -1,20 +1,22 @@
 // model
 class User {
-  final String id;
-  final String title;
-  final String desc;
-  final String pts;
-  final String type;
+  final String firstName;
+  final String lastName;
+  final String email;
+  final String password;
+  final String points;
+  final String userType;
   final String status;
   final String tupid;
   final String imgloc;
 
   User({
-    required this.id,
-    required this.title,
-    required this.desc,
-    required this.pts,
-    required this.type,
+    required this.firstName,
+    required this.lastName,
+    required this.email,
+    required this.password,
+    required this.points,
+    required this.userType,
     required this.status,
     required this.tupid,
     required this.imgloc,
@@ -22,11 +24,12 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      id: json['first_name'],
-      title: json['last_name'],
-      desc: json['email'],
-      pts: json['points'],
-      type: json['user_type'],
+      firstName: json['first_name'],
+      lastName: json['last_name'],
+      email: json['email'],
+      password: json['password'],
+      points: json['points'],
+      userType: json['user_type'],
       status: json['status'],
       tupid: json['tup_id'],
       imgloc: json['image_location'],
