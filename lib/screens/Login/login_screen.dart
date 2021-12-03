@@ -2,9 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 import 'package:pahiream_frontend/widgets/global_widgets.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final TextEditingController _ctrlUserEmail = TextEditingController();
+  final TextEditingController _ctrlUserPass = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,6 +42,7 @@ class LoginPage extends StatelessWidget {
                   style: CommonStyleText.txtStyle(weigth: medium),
                 ),
                 TextFormField(
+                  cursorColor: kDark, controller: _ctrlUserEmail,
                   decoration: CommonStyleInput.textFieldStyle(),
                   //lalagyan dito ng controller, tapos kapag may ganon na na email sa database, wag na tumuloy
                 ),
@@ -44,6 +52,8 @@ class LoginPage extends StatelessWidget {
                   style: CommonStyleText.txtStyle(weigth: medium),
                 ),
                 TextFormField(
+                  cursorColor: kDark,
+                  controller: _ctrlUserPass,
                   decoration: CommonStyleInput.textFieldStyle(),
                 ),
                 SizedBox(
