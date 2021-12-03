@@ -9,8 +9,8 @@ Future<User> fetchUser(String email, String password, Function wrongPass,
   final response = await http.post(
     // Uri.parse('http://localhost/Team04-BSCS-NS-3A-M/Register/insert_user'),
     //yung function na hahanapin si x user using email and pass
-    Uri.parse('http://localhost/Team04-BSCS-NS-3A-M/Register/insert_user'),
-    body: {'email': email, 'user_password': password},
+    Uri.parse('http://localhost/Team04-BSCS-NS-3A-M/Login/get_user_by_email'),
+    body: {'email': email, 'password': password},
   );
   if (response.statusCode == 200) {
     // If the server dfirstName return a 201 CREATED response,

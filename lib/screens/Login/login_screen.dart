@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           SizedBox(width: pToF(10)),
                           Text(
-                            'User already exists. Try creating new account.',
+                            'Account does not exist',
                             style: CommonStyleText.txtStyle(
                                 size: pToF(15),
                                 color: kFontColorRedWarning,
