@@ -15,11 +15,15 @@ Future<User> createUser(
   final response = await http.post(
     Uri.parse('http://localhost/Team04-BSCS-NS-3A-M/Register/insert_user'),
     body: {
+      //TINANGGAL KO YUNG JSON
       'first_name': firstName,
       'last_name': lastName,
       'tup_id': tupID,
       'email': email,
       'password': password,
+      // 'status': status,
+      // 'tup_firstName': tupfirstName,
+      // 'image_location': imgloc,
     },
   );
 
