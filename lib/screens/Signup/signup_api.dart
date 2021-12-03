@@ -14,15 +14,12 @@ Future<User> createUser(
 ) async {
   final response = await http.post(
     Uri.parse('http://localhost/Team04-BSCS-NS-3A-M/Register/insert_user'),
-    //REMOVED HEADERS NAG KAKAROON NG BAD STATE: cannot set the body fields of Request password with content-password "text/html"
-    //LALAGYAN LANG ATA NG HEADER PAG RESPONSE
     body: {
-      //TINANGGAL KO YUNG JSON
       'first_name': firstName,
       'last_name': lastName,
       'tup_id': tupID,
       'email': email,
-      'user_password': password,
+      'password': password,
     },
   );
 
