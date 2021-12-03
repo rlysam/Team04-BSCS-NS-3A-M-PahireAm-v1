@@ -23,7 +23,7 @@ Future<User> createUser(
     },
   );
 
-  if (response.statusCode == 201) {
+  if (response.statusCode == 200) {
     // If the server dfirstName return a 201 CREATED response,
     // then parse the JSON.
     return User.fromJson(json.decode(response.body));

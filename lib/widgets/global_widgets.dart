@@ -3,6 +3,8 @@
 // Custom reusable widgets
 // https://www.youtube.com/watch?v=-eNm8pNYmjo
 
+//! ganito lang pala mag modify ng widget taena pinapahirapan ko sarili ko dati
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
@@ -15,17 +17,26 @@ class CommonStyleText {
     bool isUnderlined = false,
   }) {
     return TextStyle(
-      color: color,
-      fontSize: size,
-      fontWeight: weigth,
-      decoration: isUnderlined? TextDecoration.underline : TextDecoration.none
-    );
+        color: color,
+        fontSize: size,
+        fontWeight: weigth,
+        decoration:
+            isUnderlined ? TextDecoration.underline : TextDecoration.none);
   }
 }
 
 class CommonStyleInput {
-  static InputDecoration textFieldStyle(
-      {String labelTextStr = "", String hintTextStr = ""}) {
+  static InputDecoration textFieldStyle({
+    String labelTextStr = "",
+    String hintTextStr = "",
+    bool isCorrect = true,
+  }) {
+    OutlineInputBorder outlineRed() {
+      return OutlineInputBorder(
+          borderSide: BorderSide(width: 1, color: kFontColorRedWarning),
+          borderRadius: BorderRadius.circular(10));
+    }
+
     OutlineInputBorder outline() {
       return OutlineInputBorder(
           borderSide: const BorderSide(width: 1, color: Colors.grey),
@@ -33,14 +44,16 @@ class CommonStyleInput {
     }
 
     return InputDecoration(
-        contentPadding: const EdgeInsets.fromLTRB(15, 11, 11, 11),
+      //! size ng textbox? HEIGHT
+        contentPadding: const EdgeInsets.fromLTRB(15, 5, 11, 5),
         labelText: labelTextStr,
         hintText: hintTextStr,
         filled: true,
         fillColor: kWhite,
-        focusedBorder: outline(),
-        disabledBorder: outline(),
-        border: outline());
+        enabledBorder: (isCorrect ? outline() : outlineRed()),
+        focusedBorder: (isCorrect ? outline() : outlineRed()),
+        disabledBorder: (isCorrect ? outline() : outlineRed()),
+        border: (isCorrect ? outline() : outlineRed()));
   }
 }
 
