@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pahiream_frontend/screens/Login/login_api.dart';
+import 'package:pahiream_frontend/screens/Signup/user.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 import 'package:pahiream_frontend/widgets/global_widgets.dart';
 
@@ -12,6 +14,13 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _ctrlUserEmail = TextEditingController();
   final TextEditingController _ctrlUserPass = TextEditingController();
+  bool correctPassword = true; //true = initial value, para hindi error pakita
+  bool userExist = true; //true = initial value, para hindi error pakita
+  Future<User>? _futureUser;
+
+  wrongPass() => setState(() => correctPassword = false);
+  notFound() => setState(() => userExist = false);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,9 +52,30 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 TextFormField(
                   cursorColor: kDark, controller: _ctrlUserEmail,
-                  decoration: CommonStyleInput.textFieldStyle(),
+                  decoration:
+                      CommonStyleInput.textFieldStyle(isCorrect: userExist),
                   //lalagyan dito ng controller, tapos kapag may ganon na na email sa database, wag na tumuloy
                 ),
+                SizedBox(height: userExist ? 0 : pToF(10)),
+                userExist
+                    ? const SizedBox()
+                    : Row(
+                        children: [
+                          Icon(
+                            Icons.error_outline,
+                            color: kFontColorRedWarning,
+                            size: 16,
+                          ),
+                          SizedBox(width: pToF(10)),
+                          Text(
+                            'User already exists. Try creating new account.',
+                            style: CommonStyleText.txtStyle(
+                                size: pToF(15),
+                                color: kFontColorRedWarning,
+                                weigth: medium),
+                          )
+                        ],
+                      ),
                 SizedBox(height: pToF(20)),
                 Text(
                   'Password',
@@ -54,7 +84,41 @@ class _LoginPageState extends State<LoginPage> {
                 TextFormField(
                   cursorColor: kDark,
                   controller: _ctrlUserPass,
-                  decoration: CommonStyleInput.textFieldStyle(),
+                  decoration: CommonStyleInput.textFieldStyle(
+                      isCorrect: correctPassword),
+                ),
+                SizedBox(height: correctPassword ? 0 : pToF(10)),
+                correctPassword
+                    ? const SizedBox()
+                    : Row(
+                        children: [
+                          Icon(
+                            Icons.error_outline,
+                            color: kFontColorRedWarning,
+                            size: 16,
+                          ),
+                          SizedBox(width: pToF(10)),
+                          Text(
+                            'Wrong Password. Please try again or press Forgot Password.',
+                            style: CommonStyleText.txtStyle(
+                                size: pToF(15),
+                                color: kFontColorRedWarning,
+                                weigth: medium),
+                          )
+                        ],
+                      ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                      // kung ayaw ng may ripple effect
+                      // style: ElevatedButton.styleFrom(
+                      //   splashFactory: NoSplash.splashFactory,
+                      // ),
+                      onPressed: () {},
+                      child: Text(
+                        'Forgot Password',
+                        style: CommonStyleText.txtStyle(color: kPrimaryGreen),
+                      )),
                 ),
                 SizedBox(
                   height: pToF(30),
@@ -63,8 +127,9 @@ class _LoginPageState extends State<LoginPage> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      //dito lalagay yung function na JsonEncode
-                      //pag correct, lilipat ng screen, pag hindi, dito lang for no30w
+                      //pag correct, lilipat ng screen, pag hindi, dito lang for now
+                      _futureUser = fetchUser(_ctrlUserEmail.text,
+                          _ctrlUserPass.text, wrongPass, notFound);
                     },
                     child: Text(
                       'Login',
