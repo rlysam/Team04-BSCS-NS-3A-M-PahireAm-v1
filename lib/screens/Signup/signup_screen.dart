@@ -4,8 +4,25 @@ import 'package:flutter/material.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 import 'package:pahiream_frontend/widgets/global_widgets.dart';
 
-class SignupPage extends StatelessWidget {
+import 'signup_api.dart';
+import 'user.dart';
+
+class SignupPage extends StatefulWidget {
   const SignupPage({Key? key}) : super(key: key);
+
+  @override
+  State<SignupPage> createState() => _SignupPageState();
+}
+
+class _SignupPageState extends State<SignupPage> {
+  final TextEditingController _ctrlUserFname = TextEditingController();
+  final TextEditingController _ctrlUserLname = TextEditingController();
+  final TextEditingController _ctrlUserTUPId = TextEditingController();
+  final TextEditingController _ctrlUserEmail = TextEditingController();
+  final TextEditingController _ctrlUserPassword = TextEditingController();
+  final TextEditingController _ctrlUserPassword2 = TextEditingController();
+  Future<User>? _futureUser; //dadalin 'to sa user profile Future User from database if status code == 201
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -47,6 +64,7 @@ class SignupPage extends StatelessWidget {
                           SizedBox(
                             width: 240,
                             child: TextFormField(
+                              controller: _ctrlUserFname,
                               decoration: CommonStyleInput.textFieldStyle(),
                               //lalagyan dito ng controller, tapos kapag may ganon na na email sa database, wag na tumuloy
                             ),
@@ -64,6 +82,7 @@ class SignupPage extends StatelessWidget {
                           SizedBox(
                             width: 240,
                             child: TextFormField(
+                              controller: _ctrlUserLname,
                               decoration: CommonStyleInput.textFieldStyle(),
                               //lalagyan dito ng controller, tapos kapag may ganon na na email sa database, wag na tumuloy
                             ),
@@ -79,6 +98,7 @@ class SignupPage extends StatelessWidget {
                 SizedBox(
                   width: 240,
                   child: TextFormField(
+                    controller: _ctrlUserTUPId,
                     decoration: CommonStyleInput.textFieldStyle(),
                     //lalagyan dito ng controller, tapos kapag may ganon na na email sa database, wag na tumuloy
                   ),
@@ -89,6 +109,7 @@ class SignupPage extends StatelessWidget {
                   style: CommonStyleText.txtStyle(weigth: medium),
                 ),
                 TextFormField(
+                  controller: _ctrlUserEmail,
                   decoration: CommonStyleInput.textFieldStyle(),
                   //lalagyan dito ng controller, tapos kapag may ganon na na email sa database, wag na tumuloy
                 ),
@@ -106,6 +127,7 @@ class SignupPage extends StatelessWidget {
                           SizedBox(
                             width: 240,
                             child: TextFormField(
+                              controller: _ctrlUserPassword,
                               decoration: CommonStyleInput.textFieldStyle(),
                               //lalagyan dito ng controller, tapos kapag may ganon na na email sa database, wag na tumuloy
                             ),
@@ -123,6 +145,7 @@ class SignupPage extends StatelessWidget {
                           SizedBox(
                             width: 240,
                             child: TextFormField(
+                              controller: _ctrlUserPassword2,
                               decoration: CommonStyleInput.textFieldStyle(),
                               //lalagyan dito ng controller, tapos kapag may ganon na na email sa database, wag na tumuloy
                             ),
@@ -142,6 +165,18 @@ class SignupPage extends StatelessWidget {
                         onPressed: () {
                           //dito lalagay yung function na JsonEncode
                           //pag correct, lilipat ng screen, pag hindi, dito lang for no30w
+                          setState(() {
+                            // 1. Show dialog email verification 
+                            // 2. after verification, and confirmed verification 
+                            // 3. create user
+                            _futureUser = createUser(
+                              _ctrlUserFname.text,
+                              _ctrlUserLname.text,
+                              _ctrlUserTUPId.text,
+                              _ctrlUserEmail.text,
+                              _ctrlUserPassword.text,
+                            );
+                          });
                         },
                         child: Text(
                           'Register',
