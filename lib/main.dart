@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: Scaffold(
-            body: SignupPage()));
-            // body: LoginPage()));
+            // body: SignupPage()));
+            body: LoginPage()));
   }
 }
