@@ -7,6 +7,7 @@ import 'package:pahiream_frontend/widgets/global_widgets.dart';
 
 import 'signup_api.dart';
 import 'user.dart';
+import 'dart:developer';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({Key? key}) : super(key: key);
@@ -78,7 +79,9 @@ class _SignupPageState extends State<SignupPage> {
                 style:
                     CommonStyleButton.btnStyle(hintTextStr: 'Enter Code Here'),
                 onPressed: () {
-                  if (jsonObjectCode['code']==_ctrlUserVerificationCode.text) {
+                  if (jsonObjectCode['code'] ==
+                      _ctrlUserVerificationCode.text) {
+                    print("success");
                     getTheUser(); //after mag dialog
                   } else {
                     makeWrongCode();
@@ -233,16 +236,15 @@ class _SignupPageState extends State<SignupPage> {
                       SizedBox(
                         width: pToF(350),
                         child: ElevatedButton(
-                          onPressed: () {
+                          onPressed: () async {
                             //dito lalagay yung function na JsonEncode
                             //pag correct, lilipat ng screen, pag hindi, dito lang for no30w
                             // 1. Show dialog email verification
                             // 2. after verification, and confirmed verification
                             // 3. create user
                             // laman neto is yung passcode
-                            jsonObjectCode = getCode(_ctrlUserEmail.text,
+                            jsonObjectCode = await getCode(_ctrlUserEmail.text,
                                 _ctrlUserTUPId.text, () {});
-
                             showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
