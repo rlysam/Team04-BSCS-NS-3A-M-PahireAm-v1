@@ -5,6 +5,27 @@ import 'dart:async';
 
 import 'user.dart';
 
+// Future<User> getCode(String email, String tupID, Function userFound) async {
+//   final response = await http.post(
+//     Uri.parse('http://localhost/Team04-BSCS-NS-3A-M/Register/insert_user'),
+//     body: {'email': email, 'tup_id': tupID},
+//   );
+
+//   if (response.statusCode == 200) {
+//     // If the server dfirstName return a 201 CREATED response,
+//     // then parse the JSON.
+//     return User.fromJson(json.decode(response.body));
+//   } else if (response.statusCode == 409) {
+//     //Lalagay dito yung callback function na mag-wawarning na hindi pa created si user
+//     userFound();
+//     throw Exception('User Already Exist');
+//   } else {
+//     // If the server dfirstName not return a 201 CREATED response,
+//     // then throw an exception.
+//     throw Exception('Failed');
+//   }
+// }
+
 Future<User> createUser(
   String firstName,
   String lastName,

@@ -163,8 +163,9 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           )),
-          Expanded( flex: 1,
-            child: Container( 
+          Expanded(
+            flex: 1,
+            child: Container(
               decoration: BoxDecoration(
                   color: kPrimaryGreen,
                   image: const DecorationImage(
