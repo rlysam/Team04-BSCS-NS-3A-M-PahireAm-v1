@@ -22,6 +22,14 @@ class _LoginPageState extends State<LoginPage> {
   notFound() => setState(() => userExist = false);
 
   @override
+	void dispose() {
+		super.dispose();
+		_ctrlUserEmail.dispose();
+		_ctrlUserPass.dispose();
+	}
+
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
