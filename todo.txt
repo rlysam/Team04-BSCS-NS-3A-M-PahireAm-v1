@@ -27,3 +27,51 @@ Profile
 
 Note: After login, navigation.push() to Profile page without Navigation Header
 
+
+MOCKUP 13
+	UI Design Main Page Pahiram 8
+	UI Design Main Page Pasabay 8
+	UI Design Message Center 8
+	UI Design Fulfillment 8
+
+Pahiram Posts
+	Create 8
+	Update 8
+	Read 8
+	Delete 8
+
+Pasabay Posts
+	Create 8
+	Update 8
+	Read 8
+	Delete 8
+
+Frontend
+	Front-end Main Page Pahiram 8
+		Card 5
+	Front-end Main Page Pasabay 8
+		Cards 5
+
+
+Meeting topics:
+
+	Update dapat si database sa LucidChart
+
+	Front-end
+		Minors:
+			Gagawin ko yung natira pa sa Login saka Register (yung mga checks sa bawat, onReleeaseFocus() para sa email signup saka di)
+			Lalagyan ko rin ng splash
+			Aaralin ko na yung Provider para sa pag pass ng data as arguments sa mult level widgets
+		Mains:
+			Gawin yung main page + Navigation Bar
+			Gawin yung Card	
+				Pahiram 2x
+				Pasabay 2x
+	
+	UI design Yung mga kailangan gawin pa
+		yung mga kulang na parts na kailangan nasa design
+	
+	Backend
+		Yung nilagay sa Target for the week
+			-Pahiram Posts Create 8 Update 8 Read 8 Delete 8
+			-Pasabay Posts Create 8 Update 8 Read 8 Delete 8
