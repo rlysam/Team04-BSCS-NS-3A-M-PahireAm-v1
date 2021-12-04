@@ -7,6 +7,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 
 class CommonStyleText {
@@ -30,6 +31,7 @@ class CommonStyleInput {
     String labelTextStr = "",
     String hintTextStr = "",
     bool isCorrect = true,
+    bool hasIcon = false,
   }) {
     OutlineInputBorder outlineRed() {
       return OutlineInputBorder(
@@ -44,7 +46,15 @@ class CommonStyleInput {
     }
 
     return InputDecoration(
-      //! size ng textbox? HEIGHT
+        //! size ng textbox? HEIGHT
+        suffixIcon: hasIcon
+            ? MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: GestureDetector(
+                    child:
+                        (Icon(Icons.visibility_outlined, color: kIconColor1))),
+              )
+            : const SizedBox(),
         contentPadding: const EdgeInsets.fromLTRB(15, 5, 11, 5),
         labelText: labelTextStr,
         hintText: hintTextStr,
@@ -61,6 +71,7 @@ class CommonStyleButton {
   static ButtonStyle btnStyle(
       {String labelTextStr = "", String hintTextStr = ""}) {
     return ButtonStyle(
+        elevation: MaterialStateProperty.all(6),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),

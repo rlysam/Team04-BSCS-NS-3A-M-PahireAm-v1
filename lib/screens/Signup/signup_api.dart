@@ -31,6 +31,14 @@ Future<User> createUser(
     // If the server dfirstName return a 201 CREATED response,
     // then parse the JSON.
     return User.fromJson(json.decode(response.body));
+  } else if (response.statusCode == 404) {
+    //! not found
+    //Lalagay dito yung callback function na mag-wawarning na hindi pa created si user
+    throw Exception('Failed to login user: User does not exist.');
+  } else if (response.statusCode == 403) {
+    //! already exists
+    //Lalagay dito yung callback function na mag-wawarning na hindi pa created si user
+    throw Exception('Failed to login user: Wrong password.');
   } else {
     // If the server dfirstName not return a 201 CREATED response,
     // then throw an exception.

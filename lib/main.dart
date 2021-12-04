@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pahiream_frontend/route_generator.dart';
 import 'package:pahiream_frontend/screens/Login/login_screen.dart';
 import 'package:pahiream_frontend/screens/Signup/signup_screen.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
@@ -18,15 +19,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: true,
-        title: 'PahireAm v1.0',
-        theme: ThemeData(
-          //Nunito
-          textTheme: GoogleFonts.nunitoTextTheme(Theme.of(context).textTheme),
-          primarySwatch: Colors.blue,
-        ),
-        home: Scaffold(
-            // body: SignupPage()));
-            body: LoginPage()));
+      debugShowCheckedModeBanner: true,
+      title: 'PahireAm v1.0',
+      theme: ThemeData(
+        //Nunito
+        textTheme: GoogleFonts.nunitoTextTheme(Theme.of(context).textTheme),
+        primarySwatch: Colors.blue,
+      ),
+      initialRoute: '/',
+      onGenerateRoute: RouteGenerator.generateRoute,
+    );
   }
 }
