@@ -22,6 +22,14 @@ class _LoginPageState extends State<LoginPage> {
   notFound() => setState(() => userExist = false);
 
   @override
+	void dispose() {
+		super.dispose();
+		_ctrlUserEmail.dispose();
+		_ctrlUserPass.dispose();
+	}
+
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
@@ -164,12 +172,13 @@ class _LoginPageState extends State<LoginPage> {
             ),
           )),
           Expanded(
+            flex: 1,
             child: Container(
               decoration: BoxDecoration(
-                  color: kPrimaryPink,
+                  color: kPrimaryGreen,
                   image: const DecorationImage(
-                      fit: BoxFit.fitHeight,
-                      image: NetworkImage('https://i.imgur.com/CSdSJoJ.png'))),
+                      fit: BoxFit.contain,
+                      image: NetworkImage('https://i.imgur.com/ioLKZiy.png'))),
             ),
           ),
         ],
