@@ -7,7 +7,7 @@ import 'user.dart';
 
 getCode(String email, String tupID, Function userFound) async {
   final response = await http.post(
-    Uri.parse('http://localhost/Team04-BSCS-NS-3A-M/Register/insert_user'),
+    Uri.parse('http://localhost/Team04-BSCS-NS-3A-M/Register/verify_user'),
     body: {'email': email, 'tup_id': tupID},
   );
   if (response.statusCode == 200) {
