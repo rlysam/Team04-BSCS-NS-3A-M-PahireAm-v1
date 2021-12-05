@@ -36,6 +36,17 @@ class _SignupPageState extends State<SignupPage> {
 
   findUser() => setState(() => userNotExist = false);
   makeWrongCode() => setState(() => rightCode = false);
+  void getTheUser() {
+    return setState(() {
+      _futureUser = createUser(
+        _ctrlUserFname.text,
+        _ctrlUserLname.text,
+        _ctrlUserTUPId.text,
+        _ctrlUserEmail.text,
+        _ctrlUserPassword.text,
+      );
+    });
+  }
 
   @override
   void dispose() {
@@ -101,15 +112,15 @@ class _SignupPageState extends State<SignupPage> {
       body: Container(
           child: Row(
         children: [
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                  color: kPrimaryPink,
-                  image: const DecorationImage(
-                      fit: BoxFit.fitHeight,
-                      image: NetworkImage('https://i.imgur.com/CSdSJoJ.png'))),
-            ),
-          ),
+          // Expanded(
+          //   child: Container(
+          //     decoration: BoxDecoration(
+          //         color: kPrimaryPink,
+          //         image: const DecorationImage(
+          //             fit: BoxFit.fitHeight,
+          //             image: NetworkImage('https://i.imgur.com/CSdSJoJ.png'))),
+          //   ),
+          // ),
           Expanded(
               child: Center(
             child: Container(
@@ -271,15 +282,4 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 
-  void getTheUser() {
-    return setState(() {
-      _futureUser = createUser(
-        _ctrlUserFname.text,
-        _ctrlUserLname.text,
-        _ctrlUserTUPId.text,
-        _ctrlUserEmail.text,
-        _ctrlUserPassword.text,
-      );
-    });
-  }
 }
