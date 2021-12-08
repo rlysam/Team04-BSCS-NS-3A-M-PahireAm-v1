@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:html';
 import 'dart:js_util';
 
@@ -36,6 +38,8 @@ class _SignupPageState extends State<SignupPage> {
 
   findUser() => setState(() => userNotExist = false);
   makeWrongCode() => setState(() => rightCode = false);
+  doWrong() => rightCode = false;
+
   void getTheUser() {
     return setState(() {
       _futureUser = createUser(
@@ -60,50 +64,76 @@ class _SignupPageState extends State<SignupPage> {
     _ctrlUserVerificationCode.dispose();
   }
 
-  Dialog showVerificationDialog() {
-    return Dialog(
-      child: Container(
-          width: 490,
-          height: 380,
-          padding: EdgeInsets.symmetric(vertical: 23, horizontal: 28),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Color(0xffFFFFFF)),
-          alignment: Alignment.topLeft,
-          child: Column(
-            children: [
-              Text(
-                'Verify your email',
-                style: CommonStyleText.txtStyle(size: pToF(64), weigth: bold),
-              ),
-              TextField(
-                controller: _ctrlUserVerificationCode,
-                decoration: CommonStyleInput.textFieldStyle(
-                    hintTextStr: 'Enter verification code'),
-              ),
-              rightCode
-                  ? const SizedBox()
-                  : Text('wrong code',
-                      style: CommonStyleText.txtStyle(
-                          color: kFontColorRedWarning)),
-              ElevatedButton(
-                style:
-                    CommonStyleButton.btnStyle(hintTextStr: 'Enter Code Here'),
-                onPressed: () {
-                  if (jsonObjectCode['code'] ==
-                      _ctrlUserVerificationCode.text) {
-                    print("success");
-                    getTheUser(); //after mag dialog
-                  } else {
-                    makeWrongCode();
-                  }
-                },
-                child: Text('Verify',
-                    style: CommonStyleText.txtStyle(color: kWhite)),
-              )
-            ],
-          )),
-    );
+  StatefulBuilder showVerificationDialog() {
+    return StatefulBuilder(builder: (context, setState) {
+      return Dialog(
+        child: Container(
+            width: 490,
+            height: 380,
+            padding: EdgeInsets.symmetric(vertical: 23, horizontal: 28),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Color(0xffFFFFFF)),
+            alignment: Alignment.topLeft,
+            child: Column(
+              children: [
+                Text(
+                  'Email Verification',
+                  style: CommonStyleText.txtStyle(size: pToF(64), weigth: bold),
+                ),
+                SizedBox(height: pToF(30)),
+                Text('The code has been sent to your email.',
+                    style: CommonStyleText.txtStyle(weigth: medium)),
+                SizedBox(height: pToF(15)),
+                TextField(
+                    controller: _ctrlUserVerificationCode,
+                    decoration: CommonStyleInput.textFieldStyle(
+                        hintTextStr: 'Enter verification code')),
+                SizedBox(height: pToF(15)),
+                rightCode
+                    ? const SizedBox()
+                    : Row(
+						mainAxisAlignment: MainAxisAlignment.center,
+						crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.error_outline,
+                              color: kFontColorRedWarning,
+                              size: 16,
+                            ),
+                            SizedBox(width: pToF(10)),
+                            Text(
+                              'Account does not exist',
+                              style: CommonStyleText.txtStyle(
+                                  size: pToF(15),
+                                  color: kFontColorRedWarning,
+                                  weigth: medium),
+                            )
+                          ],
+                        ),
+                SizedBox(height: pToF(15)),
+                ElevatedButton(
+                  style: CommonStyleButton.btnStyle(
+                      hintTextStr: 'Enter Code Here'),
+                  onPressed: () {
+                    if (jsonObjectCode['code'] ==
+                        _ctrlUserVerificationCode.text) {
+                      print("/n/nsuccess: Taman Code/n/n");
+                      getTheUser(); //after mag dialog
+                    } else {
+                      print('Maling Code');
+                      setState(() {
+                        doWrong();
+                      });
+                    }
+                  },
+                  child: Text('Verify',
+                      style: CommonStyleText.txtStyle(color: kWhite)),
+                ),
+              ],
+            )),
+      );
+    });
   }
 
   @override
@@ -281,5 +311,4 @@ class _SignupPageState extends State<SignupPage> {
       )),
     );
   }
-
 }

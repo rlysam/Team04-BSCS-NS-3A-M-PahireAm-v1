@@ -13,18 +13,15 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const LoginPage());
       case '/loginPage':
         return MaterialPageRoute(builder: (_) => const LoginPage());
-      // ! sam ganito yung sa login page... pass _futureUser as argument
-      //   case '/signUpPage':
-      //     // Validation of correct data type
-      //     if (args is String) {
-      //       return MaterialPageRoute(
-      //         builder: (_) => const SignupPage(),
-      //       );
-      //     }
       case '/signUpPage':
         // Validation of correct data type
         return MaterialPageRoute(builder: (_) => const SignupPage());
-
+      // ! sam ganito yung sa Landing page... pass _futureUser as argument
+      case '/signLandingPage':
+        // Validation of correct data type
+        if (args is String) {
+          // return MaterialPageRoute(builder: (_) => const LandingPage());
+        }
         // If args is not of the correct type, return an error page.
         // You can also throw an exception while in development.
         return _errorRoute();
