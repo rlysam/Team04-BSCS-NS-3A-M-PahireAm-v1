@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pahiream_frontend/main.dart';
+import 'package:pahiream_frontend/screens/Landing/landing_screen.dart';
 import 'package:pahiream_frontend/screens/Login/login_screen.dart';
 import 'package:pahiream_frontend/screens/Signup/signup_screen.dart';
 
@@ -10,7 +11,9 @@ class RouteGenerator {
 
     switch (settings.name) {
       case '/':
-        return MaterialPageRoute(builder: (_) => const LoginPage());
+        return MaterialPageRoute(builder: (_) => const LandingPage());
+      // case '/':
+      //   return MaterialPageRoute(builder: (_) => const LoginPage());
       case '/loginPage':
         return MaterialPageRoute(builder: (_) => const LoginPage());
       case '/signUpPage':
