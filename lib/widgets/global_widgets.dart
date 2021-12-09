@@ -67,6 +67,12 @@ class CommonStyleInput {
   }
 }
 
+BoxDecoration divDecoration() {
+  return BoxDecoration(
+      border: Border.all(color: Colors.grey,width: 0.4),
+      borderRadius: BorderRadius.all(Radius.circular(10)));
+}
+
 class CommonStyleButton {
   static ButtonStyle btnStyle(
       {String labelTextStr = "", String hintTextStr = ""}) {

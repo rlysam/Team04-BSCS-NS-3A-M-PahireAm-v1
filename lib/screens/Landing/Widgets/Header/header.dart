@@ -1,5 +1,7 @@
 // Responsive Header
 import 'package:flutter/material.dart';
+import 'package:pahiream_frontend/screens/Landing/Widgets/Header/desktop_header.dart';
+import 'package:pahiream_frontend/screens/Landing/Widgets/Header/tablet_header.dart';
 import 'package:pahiream_frontend/utils/Responsive/responsive_layout.dart';
 
 class AppHeader extends StatelessWidget {
@@ -7,7 +9,9 @@ class AppHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      return Container();
-    // return ResponsiveLayout(desktopBody: desktopBody, mobileBody: mobileBody)
+    return ResponsiveLayout(
+      desktopBody: MyDesktopHeader(),
+      tabletBody: MyTabletHeader(),
+    );
   }
 }

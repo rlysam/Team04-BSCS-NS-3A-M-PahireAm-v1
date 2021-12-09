@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:pahiream_frontend/utils/constants.dart';
+import 'package:pahiream_frontend/screens/Landing/landing_screen_desktop.dart';
+import 'package:pahiream_frontend/screens/Landing/landing_screen_tablet.dart';
+import 'package:pahiream_frontend/utils/Responsive/responsive_layout.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text(size.width.toString()),
-          ],
-        ),
-      ),
+    return const ResponsiveLayout(
+      desktopBody: DesktopLanding(),
+      tabletBody: TabletLanding(),
     );
   }
 }

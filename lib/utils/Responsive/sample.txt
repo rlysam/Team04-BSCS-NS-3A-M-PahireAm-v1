@@ -1,0 +1,28 @@
+HERE Maps Billing:
+
+QnA: 
+
+Which Service do we need?
+=> HD GNSS Positioning. Can be accessed with a Navigate Edition SDK for Flutter.
+
+Here SDK for Flutter
+https://developer.here.com/documentation/flutter-sdk-navigate/4.9.4.0/dev_guide/index.html
+
+Here Product Edition Comparisons
+https://developer.here.com/products/here-sdk
+
+Where is the Navigate Edition?
+=> Available upon request only.
+
+How much? 
+=> Depends on how much requests are made. Needs billing detail to access details for Navigate Edition.
+=> 0.00 USD for freemium, 45.00 USD for freemium + additionalm 459.00 USD for Pro
+
+Pricing:
+https://developer.here.com/pricing#plan-details
+
+How they charge?
+=> Pay-as-you-go pricing. Same model with Google Maps API.
+
+Accuracy? 
+=>Best: 0.2m using satelite(no roof)
