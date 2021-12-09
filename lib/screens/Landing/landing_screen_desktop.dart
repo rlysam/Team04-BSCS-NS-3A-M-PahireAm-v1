@@ -1,12 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:pahiream_frontend/screens/Landing/Screen%20User%20Profile/user_profile.dart';
 import 'package:pahiream_frontend/screens/Landing/Widgets/Header/header.dart';
-import 'package:pahiream_frontend/utils/constants.dart';
-import 'package:pahiream_frontend/widgets/global_widgets.dart';
 
 class DesktopLanding extends StatelessWidget {
   const DesktopLanding({Key? key}) : super(key: key);
@@ -15,8 +11,22 @@ class DesktopLanding extends StatelessWidget {
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
     final Size size = MediaQuery.of(context).size;
+    const String destination = '/userProfile';
+    // const String destination = '/mainPage';
+    // const String destination = '/userProfile';
 
     return Scaffold(
-        body: UserProfile());
+      body: Column(
+        // ignore: prefer_const_literals_to_create_immutables
+        children: [
+          AppHeader(),
+          destination == '/userProfile'
+              ? UserProfile()
+              : destination == '/mainPage'
+                  ? Text('Main Page')
+                  : SizedBox(),
+        ],
+      ),
+    );
   }
 }

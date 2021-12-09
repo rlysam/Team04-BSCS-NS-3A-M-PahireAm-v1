@@ -1,9 +1,9 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:pahiream_frontend/screens/Landing/Widgets/Header/header.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 import 'package:pahiream_frontend/widgets/global_widgets.dart';
-
-
 
 class UserProfile extends StatelessWidget {
   const UserProfile({
@@ -12,10 +12,7 @@ class UserProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-    const AppHeader(),
-    Padding(
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 130),
       child: SizedBox(
         width: double.maxFinite,
@@ -36,7 +33,8 @@ class UserProfile extends StatelessWidget {
                   SizedBox(width: 40),
                   Expanded(
                     child: Container(
-                      color: Colors.amber,
+                      // ! debug
+                      //   color: Colors.amber,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         // mainAxisAlignment: MainAxisAlignment.start,
@@ -49,7 +47,6 @@ class UserProfile extends StatelessWidget {
                           SizedBox(height: 20),
                           LevelIndicator(),
                           SizedBox(height: 20),
-
                         ],
                       ),
                     ),
@@ -60,12 +57,9 @@ class UserProfile extends StatelessWidget {
           ],
         ),
       ),
-    )
-      ],
     );
   }
 }
-
 
 class LevelIndicator extends StatelessWidget {
   const LevelIndicator({
@@ -76,20 +70,35 @@ class LevelIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Column(
-          children: [Text('Savior'), Text('Level')],
+        Expanded(
+          flex: 1,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Savior'),
+              Text('Level'),
+            ],
+          ),
         ),
-        SizedBox(width: 45),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // LinearProgressIndicator(
-            //   value: 0.9,
-            //   backgroundColor: Colors.grey[300],
-            // ),
-            Text('****************'),
-            Text('Level'),
-          ],
+        // SizedBox(width: 45),
+        Expanded(
+          flex: 2,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // LinearProgressIndicator(
+              //   value: 0.9,
+              //   backgroundColor: Colors.grey[300],
+              // ),
+              Text('****************'),
+              Row(
+                children: [
+                  Text('Points: 450/500'),
+                  Icon(Icons.bolt, color: Colors.amber)
+                ],
+              )
+            ],
+          ),
         )
       ],
     );
@@ -111,18 +120,20 @@ class SubDetails extends StatelessWidget {
       // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         details(data, data2),
-        SizedBox(width: 30),
+        // SizedBox(width: 30),
         details(data, data2),
-        SizedBox(width: 30),
+        // SizedBox(width: 30),
         details(data, data2),
       ],
     );
   }
 
-  Column details(String data, String data2) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [Text(data), Text(data2)],
+  Expanded details(String data, String data2) {
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [Text(data), Text(data2)],
+      ),
     );
   }
 }
