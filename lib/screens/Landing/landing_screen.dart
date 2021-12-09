@@ -6,13 +6,16 @@ class LandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        children: [
-
-
-        ],
+      body: Center(
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Text(size.width.toString()),
+          ],
+        ),
       ),
     );
   }
