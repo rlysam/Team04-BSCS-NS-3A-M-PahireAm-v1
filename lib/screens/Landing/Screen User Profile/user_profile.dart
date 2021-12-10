@@ -11,8 +11,10 @@ class UserProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // var horizontal2 = 130;
+    double horizontal2 = 200;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 130),
+      padding: EdgeInsets.symmetric(horizontal: horizontal2),
       child: SizedBox(
         width: double.maxFinite,
         child: Column(
@@ -80,15 +82,16 @@ class LevelIndicator extends StatelessWidget {
         ),
         // SizedBox(width: 45),
         Expanded(
-          flex: 2,
+          flex: 1,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // LinearProgressIndicator(
-              //   value: 0.9,
-              //   backgroundColor: Colors.grey[300],
-              // ),
-              Text('****************'),
+              LinearProgressIndicator(
+                backgroundColor: kGray,
+                valueColor: AlwaysStoppedAnimation<Color>(kPrimaryGreen),
+                minHeight: 10,
+                value: 0.8,
+              ),
               Row(
                 children: [
                   Text('Points: 450/500'),
@@ -97,7 +100,8 @@ class LevelIndicator extends StatelessWidget {
               )
             ],
           ),
-        )
+        ),
+        Expanded(child: SizedBox()),
       ],
     );
   }

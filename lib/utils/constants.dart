@@ -12,6 +12,8 @@ var kIconColor1 = const Color(0xff8E7B7B);
 var kFontColorBlack = const Color(0xff544B4B);
 var kFontColorRed = const Color(0xffC41E3A);
 var kFontColorRedWarning = const Color(0xffE70E0E);
+var kGray = const Color(0xffDEDEE1);
+
 
 var kFontSizeHeader = pToF(48);
 var kFontSizeSubtitle = pToF(18);
