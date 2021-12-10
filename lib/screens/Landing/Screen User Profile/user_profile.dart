@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:pahiream_frontend/screens/Landing/Widgets/Header/header.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 import 'package:pahiream_frontend/widgets/global_widgets.dart';
 
@@ -22,14 +21,13 @@ class UserProfile extends StatelessWidget {
             SizedBox(height: 10),
             Text('Account'),
             Container(
-              padding:
-                  EdgeInsets.symmetric(vertical: 16.0, horizontal: 40.0),
+              padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 40.0),
               decoration: divDecoration(),
               child: Row(
                 //Whole Jane Doe
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  ProfilePicture(),
+                  ProfilePicture(radius2: 125, radius3: 120, radius4: 115),
                   SizedBox(width: 40),
                   Expanded(
                     child: Container(
@@ -114,7 +112,7 @@ class SubDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var data = 'Title';
-    var data2 = 'Substitle';
+    var data2 = 'Subtitle';
 
     return Row(
       // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -124,6 +122,7 @@ class SubDetails extends StatelessWidget {
         details(data, data2),
         // SizedBox(width: 30),
         details(data, data2),
+        // SizedBox(width: 90,),
       ],
     );
   }
@@ -139,7 +138,14 @@ class SubDetails extends StatelessWidget {
 }
 
 class ProfilePicture extends StatelessWidget {
-  const ProfilePicture({
+  var radius2 = 125.0;
+  var radius3 = 120.0;
+  var radius4 = 115.0;
+
+  ProfilePicture({
+    required this.radius2,
+    required this.radius3,
+    required this.radius4,
     Key? key,
   }) : super(key: key);
 
@@ -148,13 +154,13 @@ class ProfilePicture extends StatelessWidget {
     var url =
         'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80';
     return CircleAvatar(
-      radius: 125,
+      radius: radius2,
       backgroundColor: kPrimaryGreen,
       child: CircleAvatar(
-          radius: 120,
+          radius: radius3,
           backgroundColor: kWhite,
           child: CircleAvatar(
-            radius: 115,
+            radius: radius4,
             backgroundImage: NetworkImage(url),
           )),
     );

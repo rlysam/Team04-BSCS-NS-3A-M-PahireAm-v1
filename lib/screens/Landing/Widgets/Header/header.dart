@@ -10,7 +10,12 @@ class AppHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveLayout(
-      desktopBody: MyDesktopHeader(),
+      desktopBody: Column(
+        children: [
+          MyDesktopHeader(),
+            Divider(height: 1,thickness: 1,),
+        ],
+      ),
       tabletBody: MyTabletHeader(),
     );
   }

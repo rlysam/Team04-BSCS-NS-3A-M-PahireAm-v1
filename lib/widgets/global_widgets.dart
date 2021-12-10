@@ -32,6 +32,7 @@ class CommonStyleInput {
     String hintTextStr = "",
     bool isCorrect = true,
     bool hasIcon = false,
+    IconData myIcon = Icons.visibility_outlined,
   }) {
     OutlineInputBorder outlineRed() {
       return OutlineInputBorder(
@@ -51,8 +52,7 @@ class CommonStyleInput {
             ? MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(
-                    child:
-                        (Icon(Icons.visibility_outlined, color: kIconColor1))),
+                    child: Icon(myIcon, color: kIconColor1)),
               )
             : const SizedBox(),
         contentPadding: const EdgeInsets.fromLTRB(15, 5, 11, 5),
@@ -69,7 +69,7 @@ class CommonStyleInput {
 
 BoxDecoration divDecoration() {
   return BoxDecoration(
-      border: Border.all(color: Colors.grey,width: 0.4),
+      border: Border.all(color: Colors.grey, width: 0.4),
       borderRadius: BorderRadius.all(Radius.circular(10)));
 }
 
