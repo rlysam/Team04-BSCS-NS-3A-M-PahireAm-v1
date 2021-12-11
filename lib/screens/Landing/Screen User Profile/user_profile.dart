@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:pahiream_frontend/screens/Landing/Screen%20Pahiram/Widgets/rentee_pahiram_card.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 import 'package:pahiream_frontend/widgets/global_widgets.dart';
 
@@ -43,15 +44,31 @@ class UserProfile extends StatelessWidget {
                               style: CommonStyleText.txtStyle(
                                   size: 40, weigth: bold)),
                           SizedBox(height: 20),
-                          SubDetails(),
+                          SubDetailsSection(),
                           SizedBox(height: 20),
-                          LevelIndicator(),
+                          LevelIndicatorSection(),
                           SizedBox(height: 20),
                         ],
                       ),
                     ),
                   ),
                 ],
+              ),
+            ),
+            SizedBox(height: 50),
+            SizedBox(
+              height: MediaQuery.of(context).size.height/2,
+              child: GridView.count(
+                crossAxisCount: 4,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                children: List.generate(17, (index) {
+                  return Container(
+                    alignment: Alignment.center,
+                    child: RenteeCard(),
+                    // child: Container(color: kPrimaryGreen, child: Text('data')),
+                  );
+                }),
               ),
             )
           ],
@@ -61,8 +78,8 @@ class UserProfile extends StatelessWidget {
   }
 }
 
-class LevelIndicator extends StatelessWidget {
-  const LevelIndicator({
+class LevelIndicatorSection extends StatelessWidget {
+  const LevelIndicatorSection({
     Key? key,
   }) : super(key: key);
 
@@ -108,8 +125,8 @@ class LevelIndicator extends StatelessWidget {
 }
 
 // Yung nasa ilalim ng User Full Name
-class SubDetails extends StatelessWidget {
-  const SubDetails({
+class SubDetailsSection extends StatelessWidget {
+  const SubDetailsSection({
     Key? key,
   }) : super(key: key);
 

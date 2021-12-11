@@ -16,16 +16,19 @@ class DesktopLanding extends StatelessWidget {
     // const String destination = '/userProfile';
 
     return Scaffold(
-      body: Column(
-        // ignore: prefer_const_literals_to_create_immutables
-        children: [
-          AppHeader(),
-          destination == '/userProfile'
-              ? UserProfile()
-              : destination == '/mainPage'
-                  ? Text('Main Page')
-                  : SizedBox(),
-        ],
+      body: SizedBox(
+        height: size.height,
+        child: Column(
+          // ignore: prefer_const_literals_to_create_immutables
+          children: [
+            AppHeader(),
+            destination == '/userProfile'
+                ? UserProfile()
+                : destination == '/mainPage'
+                    ? Text('Main Page')
+                    : SizedBox(),
+          ],
+        ),
       ),
     );
   }

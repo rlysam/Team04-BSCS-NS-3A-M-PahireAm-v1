@@ -40,9 +40,14 @@ class MyDesktopHeader extends StatelessWidget {
                             )),
                         SizedBox(width: 10),
                         Text(
-                          'PAHIREAM',
+                          'Pahire',
                           style:
-                              CommonStyleText.txtStyle(size: 20, weigth: bold),
+                              CommonStyleText.txtStyle(color: kPrimaryGreen, size: 30, weigth: bold),
+                        ),
+                        Text(
+                          'Am',
+                          style:
+                              CommonStyleText.txtStyle(color: kPrimaryPink , size: 30, weigth: bold),
                         ),
                         SizedBox(width: 48),
                         SizedBox(

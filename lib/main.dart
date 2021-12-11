@@ -1,12 +1,6 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pahiream_frontend/route_generator.dart';
-import 'package:pahiream_frontend/screens/Login/login_screen.dart';
-import 'package:pahiream_frontend/screens/Signup/signup_screen.dart';
-import 'package:pahiream_frontend/utils/constants.dart';
-import 'package:pahiream_frontend/widgets/global_widgets.dart';
 
 void main() {
   runApp(const MyApp());
