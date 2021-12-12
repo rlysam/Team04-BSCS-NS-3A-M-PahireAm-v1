@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:pahiream_frontend/screens/Landing/Screen%20Pahiram/Widgets/rentee_pahiram_card.dart';
+import 'package:pahiream_frontend/screens/Landing/Screen%20Pahiram/Widgets/pahiram_card.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 import 'package:pahiream_frontend/widgets/global_widgets.dart';
 
@@ -172,8 +172,7 @@ class ProfilePicture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var url =
-        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80';
+
     return CircleAvatar(
       radius: radius2,
       backgroundColor: kPrimaryGreen,
@@ -182,7 +181,7 @@ class ProfilePicture extends StatelessWidget {
           backgroundColor: kWhite,
           child: CircleAvatar(
             radius: radius4,
-            backgroundImage: NetworkImage(url),
+            backgroundImage: NetworkImage(profilePictureURL),
           )),
     );
     // 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
