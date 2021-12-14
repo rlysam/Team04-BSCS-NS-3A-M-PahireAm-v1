@@ -7,6 +7,9 @@ var profilePictureURL =
 // Convert Figma Pixels to Flutter Pixels
 double pToF(double pixel) => pixel / 1.5;
 
+// Yung whitespace sa gilid ba...
+double horizontalPaddingPagesDesktop = 200;
+
 //Main Colors
 Color kPrimaryGreen = const Color(0xff26C4A4);
 Color kPrimaryPink = const Color(0xffF95C78);
@@ -15,6 +18,7 @@ Color kWhite = const Color(0xffF4F4FF);
 
 Color kIconColor1 = const Color(0xff8E7B7B);
 Color kFontColorBlack = const Color(0xff544B4B);
+Color kFontColorWhite = Colors.white;
 Color kFontColorRed = const Color(0xffC41E3A);
 Color kFontColorRedWarning = const Color(0xffE70E0E);
 Color kGray = const Color(0xffDEDEE1);

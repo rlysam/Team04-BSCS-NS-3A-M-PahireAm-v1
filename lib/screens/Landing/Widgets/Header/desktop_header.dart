@@ -1,13 +1,22 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:html';
+
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:pahiream_frontend/screens/Landing/Screen%20User%20Profile/user_profile.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 import 'package:pahiream_frontend/widgets/global_widgets.dart';
 
-class MyDesktopHeader extends StatelessWidget {
+class MyDesktopHeader extends StatefulWidget {
   const MyDesktopHeader({Key? key}) : super(key: key);
 
+  @override
+  State<MyDesktopHeader> createState() => _MyDesktopHeaderState();
+}
+
+class _MyDesktopHeaderState extends State<MyDesktopHeader> {
+  bool myValue = true;
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -41,13 +50,13 @@ class MyDesktopHeader extends StatelessWidget {
                         SizedBox(width: 10),
                         Text(
                           'Pahire',
-                          style:
-                              CommonStyleText.txtStyle(color: kPrimaryGreen, size: 30, weigth: bold),
+                          style: CommonStyleText.txtStyle(
+                              color: kPrimaryGreen, size: 30, weigth: bold),
                         ),
                         Text(
                           'Am',
-                          style:
-                              CommonStyleText.txtStyle(color: kPrimaryPink , size: 30, weigth: bold),
+                          style: CommonStyleText.txtStyle(
+                              color: kPrimaryPink, size: 30, weigth: bold),
                         ),
                         SizedBox(width: 48),
                         SizedBox(
@@ -67,10 +76,33 @@ class MyDesktopHeader extends StatelessWidget {
                     ),
                   ),
                 ),
-                MouseRegion(
-                    cursor: SystemMouseCursors.click,
-                    child:
-                        ProfilePicture(radius2: 30, radius3: 27, radius4: 23)),
+                Row(
+                  children: [
+                    Text(
+                      myValue ? 'Pahiram' : 'Pasabay',
+                      style: CommonStyleText.txtStyle(
+                          color: myValue ? kPrimaryGreen : kPrimaryPink,
+                          size: 24,
+                          weigth: bold),
+                    ),
+                    SizedBox(width: 20),
+                    Transform.scale(
+                      scale: 1.7,
+                      child: Switch(
+                          activeColor: kPrimaryGreen,
+                          inactiveThumbColor: kPrimaryPink,
+                          inactiveTrackColor: kPrimaryPink.withOpacity(.5),
+                          value: myValue,
+                          onChanged: (value) =>
+                              setState(() => myValue = value)),
+                    ),
+                    SizedBox(width: 30),
+                    MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: ProfilePicture(
+                            radius2: 30, radius3: 27, radius4: 23)),
+                  ],
+                ),
               ],
             ),
           ),

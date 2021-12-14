@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 import 'package:pahiream_frontend/widgets/global_widgets.dart';
 
-class RenteeCard extends StatelessWidget {
-  const RenteeCard({Key? key}) : super(key: key);
+class PahiramCards extends StatelessWidget {
+  const PahiramCards({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,41 +27,15 @@ class RenteeCard extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // !Picture
-              Stack(
-                alignment: Alignment.topRight,
-                children: [
-                  Container(
-                  // width: 339,  
-                 height: 150,
-                    alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: NetworkImage(url),
-                              fit: BoxFit.fitWidth))),
-                  Container(
-                    decoration: null,
-                    color: const Color.fromARGB(255, 221, 114, 107),
-                    padding: const EdgeInsets.all(5.0),
-                    child: Text(
-                      'Looking for',
-                      style: CommonStyleText.txtStyle(
-                          weigth: bold, color: kWhite, size: 14),
-                    ),
-                  )
-                ],
-              ),
+              PictureAndBanner(url: url),
               //!Details
               Padding(
-                padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
+                padding: const EdgeInsets.fromLTRB(6.0, 10.0, 6.0, 0),
                 child: ListTile(
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        'Physics Book Vol. 1',
-                        style: CommonStyleText.txtStyle(size: 16, weigth: bold),
-                      ),
+                      PostTitle(),
                       MouseRegion(
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
@@ -74,31 +48,14 @@ class RenteeCard extends StatelessWidget {
                   subtitle: Column(
                     children: [
                       SizedBox(height: 10),
+                      DayRatesRow(),
+                      PosterRankRow(),
                       Row(
                         children: [
-                          Icon(Icons.schedule,
+                          Icon(Icons.location_on,
                               size: 16, color: kFontColorBlack),
                           SizedBox(width: 5),
-                          Text('Weekdays'),
-                          SizedBox(width: 5),
-                          Icon(Icons.fiber_manual_record,
-                              size: 16, color: Colors.blue),
-                          SizedBox(width: 5),
-                          Text('PhP 20.00/day'),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Icon(Icons.person, size: 16, color: kFontColorBlack),
-                          SizedBox(width: 5),
-                          Text('Uzumaki Naruto'),
-                          SizedBox(width: 5),
-                          Icon(Icons.fiber_manual_record,
-                              size: 16, color: Colors.blue),
-                          SizedBox(width: 5),
-                          Text('Savior',
-                              style: CommonStyleText.txtStyle(
-                                  color: kPrimaryPink)),
+                          Text('7-Eleven'),
                         ],
                       ),
                       Row(
@@ -109,25 +66,18 @@ class RenteeCard extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  Icon(Icons.location_on,
-                                      size: 16, color: kFontColorBlack),
-                                  SizedBox(width: 5),
-                                  Text('7-Eleven'),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(Icons.more_vert,
-                                      size: 16, color: kFontColorBlack),
-                                  SizedBox(width: 5),
-                                ],
-                              ),
-                              Row(
-                                children: [
                                   Icon(Icons.local_shipping,
                                       size: 16, color: kFontColorBlack),
                                   SizedBox(width: 5),
                                   Text('Cafa, CoS, CiT'),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.calendar_today,
+                                      size: 16, color: kFontColorBlack),
+                                  SizedBox(width: 5),
+                                  Text('Date posted: '),
                                 ],
                               ),
                             ],
@@ -150,6 +100,111 @@ class RenteeCard extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class PosterRankRow extends StatelessWidget {
+  const PosterRankRow({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(Icons.person, size: 16, color: kFontColorBlack),
+        SizedBox(width: 5),
+        Text('Uzumaki Naruto'),
+        SizedBox(width: 5),
+        Icon(Icons.fiber_manual_record, size: 16, color: Colors.blue),
+        SizedBox(width: 5),
+        Text('Savior', style: CommonStyleText.txtStyle(color: kPrimaryPink)),
+      ],
+    );
+  }
+}
+
+class DayRatesRow extends StatelessWidget {
+  const DayRatesRow({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(Icons.schedule, size: 16, color: kFontColorBlack),
+        SizedBox(width: 5),
+        Text('Weekdays'),
+        SizedBox(width: 5),
+        Icon(Icons.fiber_manual_record, size: 16, color: Colors.blue),
+        SizedBox(width: 5),
+        Text('PhP 20.00/day'),
+      ],
+    );
+  }
+}
+
+class PostTitle extends StatelessWidget {
+  const PostTitle({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'Physics Book Vol. 1',
+      style: CommonStyleText.txtStyle(size: 16, weigth: bold),
+    );
+  }
+}
+
+class PictureAndBanner extends StatelessWidget {
+  const PictureAndBanner({
+    Key? key,
+    required this.url,
+  }) : super(key: key);
+
+  final String url;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      // !Picture
+      alignment: Alignment.topRight,
+      children: [
+        Container(
+            // width: 339,
+            height: 150,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: NetworkImage(url), fit: BoxFit.fitWidth))),
+        Banner()
+      ],
+    );
+  }
+}
+
+class Banner extends StatelessWidget {
+  const Banner({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: null,
+      // ! Banner Color
+      color: const Color.fromARGB(255, 221, 114, 107),
+      padding: const EdgeInsets.all(5.0),
+      // ! Banner Text
+      child: Text(
+        'for rent'.toUpperCase(),
+        style: CommonStyleText.txtStyle(
+            weigth: bold, color: kFontColorWhite, size: 14),
       ),
     );
   }
