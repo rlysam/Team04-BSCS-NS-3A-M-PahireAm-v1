@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:pahiream_frontend/screens/Landing/Screen%20Pahiram/Widgets/rentee_pahiram_card.dart';
+// import 'package:pahiream_frontend/screens/Landing/Screen%20Pahiram/Widgets/pahiram_card.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 import 'package:pahiream_frontend/widgets/global_widgets.dart';
 
@@ -12,67 +12,43 @@ class UserProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // var horizontal2 = 130;
-    double horizontal2 = 200;
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: horizontal2),
-      child: SizedBox(
-        width: double.maxFinite,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 10),
-            Text('Account'),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 40.0),
-              decoration: divDecoration(),
-              child: Row(
-                //Whole Jane Doe
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ProfilePicture(radius2: 125, radius3: 120, radius4: 115),
-                  SizedBox(width: 40),
-                  Expanded(
-                    child: Container(
-                      // ! debug
-                      //   color: Colors.amber,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        // mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text('Jane Doe',
-                              style: CommonStyleText.txtStyle(
-                                  size: 40, weigth: bold)),
-                          SizedBox(height: 20),
-                          SubDetailsSection(),
-                          SizedBox(height: 20),
-                          LevelIndicatorSection(),
-                          SizedBox(height: 20),
-                        ],
-                      ),
-                    ),
+      padding: EdgeInsets.symmetric(horizontal: horizontalPaddingPagesDesktop),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 10),
+          Text('Account'),
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 40.0),
+            decoration: divDecoration(),
+            child: Row(
+              //Whole Jane Doe
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ProfilePicture(radius2: 125, radius3: 120, radius4: 115),
+                SizedBox(width: 40),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    // mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text('Jane Doe',
+                          style: CommonStyleText.txtStyle(
+                              size: 40, weigth: bold)),
+                      SizedBox(height: 20),
+                      SubDetailsSection(),
+                      SizedBox(height: 20),
+                      LevelIndicatorSection(),
+                      SizedBox(height: 20),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            SizedBox(height: 50),
-            SizedBox(
-              height: MediaQuery.of(context).size.height/2,
-              child: GridView.count(
-                crossAxisCount: 4,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                children: List.generate(17, (index) {
-                  return Container(
-                    alignment: Alignment.center,
-                    child: RenteeCard(),
-                    // child: Container(color: kPrimaryGreen, child: Text('data')),
-                  );
-                }),
-              ),
-            )
-          ],
-        ),
+          ),
+          SizedBox(height: 50),
+        ],
       ),
     );
   }
@@ -82,7 +58,6 @@ class LevelIndicatorSection extends StatelessWidget {
   const LevelIndicatorSection({
     Key? key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -139,11 +114,8 @@ class SubDetailsSection extends StatelessWidget {
       // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         details(data, data2),
-        // SizedBox(width: 30),
         details(data, data2),
-        // SizedBox(width: 30),
         details(data, data2),
-        // SizedBox(width: 90,),
       ],
     );
   }
@@ -172,8 +144,7 @@ class ProfilePicture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var url =
-        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80';
+
     return CircleAvatar(
       radius: radius2,
       backgroundColor: kPrimaryGreen,
@@ -182,7 +153,7 @@ class ProfilePicture extends StatelessWidget {
           backgroundColor: kWhite,
           child: CircleAvatar(
             radius: radius4,
-            backgroundImage: NetworkImage(url),
+            backgroundImage: NetworkImage(profilePictureURL),
           )),
     );
     // 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),

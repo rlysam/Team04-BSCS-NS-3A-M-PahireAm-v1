@@ -5,9 +5,7 @@
 
 //! ganito lang pala mag modify ng widget taena pinapahirapan ko sarili ko dati
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 
 class CommonStyleText {
@@ -51,8 +49,7 @@ class CommonStyleInput {
         suffixIcon: hasIcon
             ? MouseRegion(
                 cursor: SystemMouseCursors.click,
-                child: GestureDetector(
-                    child: Icon(myIcon, color: kIconColor1)),
+                child: GestureDetector(child: Icon(myIcon, color: kIconColor1)),
               )
             : const SizedBox(),
         contentPadding: const EdgeInsets.fromLTRB(15, 5, 11, 5),
@@ -70,7 +67,23 @@ class CommonStyleInput {
 BoxDecoration divDecoration() {
   return BoxDecoration(
       border: Border.all(color: Colors.grey, width: 0.4),
-      borderRadius: BorderRadius.all(Radius.circular(10)));
+      borderRadius: const BorderRadius.all(Radius.circular(10)));
+}
+
+class CommonStyleCategoryBorder {
+  static BoxDecoration boxDecoration({
+    Color categoryColor = Colors.grey,
+    // bool isHighlighted = false,
+  }) {
+    return BoxDecoration(
+      border: Border.all(
+        color: categoryColor,
+        width: (categoryColor!=Colors.grey ? 3 : 2),
+      ),
+      color: (categoryColor!=Colors.grey ? categoryColor.withOpacity(.3) : Colors.transparent),
+      borderRadius: const BorderRadius.all(Radius.circular(10)),
+    );
+  }
 }
 
 class CommonStyleButton {

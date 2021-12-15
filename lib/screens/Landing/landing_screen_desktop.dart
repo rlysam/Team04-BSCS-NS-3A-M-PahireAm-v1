@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:pahiream_frontend/screens/Landing/Screen%20Posts/Screen%20Pahiram/pahiram_contents.dart';
 import 'package:pahiream_frontend/screens/Landing/Screen%20User%20Profile/user_profile.dart';
 import 'package:pahiream_frontend/screens/Landing/Widgets/Header/header.dart';
 
@@ -11,8 +12,8 @@ class DesktopLanding extends StatelessWidget {
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
     final Size size = MediaQuery.of(context).size;
-    const String destination = '/userProfile';
-    // const String destination = '/mainPage';
+    // const String destination = '/userProfile';
+    const String destination = '/mainPage';
     // const String destination = '/userProfile';
 
     return Scaffold(
@@ -25,7 +26,7 @@ class DesktopLanding extends StatelessWidget {
             destination == '/userProfile'
                 ? UserProfile()
                 : destination == '/mainPage'
-                    ? Text('Main Page')
+                    ? PahiramContents()
                     : SizedBox(),
           ],
         ),
