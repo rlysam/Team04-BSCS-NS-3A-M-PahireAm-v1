@@ -8,7 +8,7 @@ import 'package:pahiream_frontend/utils/constants.dart';
 import 'package:pahiream_frontend/widgets/global_widgets.dart';
 
 class PasabayCards extends StatelessWidget {
-  const PasabayCards({Key? key}) : super(key: key);
+  const PasabayCards({Key? key, }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -199,15 +199,16 @@ class PictureAndBanner extends StatelessWidget {
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image: NetworkImage(url), fit: BoxFit.fitWidth))),
-        Banner()
+        Banner(isRequest: false)
       ],
     );
   }
 }
 
 class Banner extends StatelessWidget {
+ final bool isRequest;
   const Banner({
-    Key? key,
+    Key? key, required this.isRequest,
   }) : super(key: key);
 
   @override
@@ -215,7 +216,7 @@ class Banner extends StatelessWidget {
     return Container(
       decoration: null,
       // ! Banner Color
-      color: const Color.fromARGB(255, 221, 114, 107),
+      color: isRequest? Color.fromARGB(255, 221, 114, 107) : Color.fromARGB(255, 75, 102, 255),
       padding: const EdgeInsets.all(5.0),
       // ! Banner Text
       child: Text(

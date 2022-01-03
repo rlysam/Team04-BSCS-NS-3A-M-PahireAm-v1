@@ -20,7 +20,7 @@ class PahiramContents extends StatelessWidget {
             Column(
               children: [
                 Text('Pasabay Card(Courier):'),
-            PahiramCards(),
+            PasabayCards(),
               ],
             ),
             Column(

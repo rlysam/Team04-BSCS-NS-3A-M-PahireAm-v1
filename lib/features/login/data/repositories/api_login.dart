@@ -2,7 +2,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 
-import 'package:pahiream_frontend/screens/Signup/user.dart';
+import 'package:pahiream_frontend/features/login/data/models/user.dart';
+
 
 Future<User> fetchUser(String email, String password, Function wrongPass,
     Function notFound) async {
