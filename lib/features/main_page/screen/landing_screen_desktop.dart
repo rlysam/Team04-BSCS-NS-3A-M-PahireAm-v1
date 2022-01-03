@@ -1,9 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:pahiream_frontend/screens/Landing/Screen%20Posts/Screen%20Pahiram/pahiram_contents.dart';
-import 'package:pahiream_frontend/screens/Landing/Screen%20User%20Profile/user_profile.dart';
-import 'package:pahiream_frontend/screens/Landing/Widgets/Header/header.dart';
+import 'package:pahiream_frontend/features/main_page/widgets/Header/header.dart';
+import 'package:pahiream_frontend/features/profile/presentation/pages/user_profile.dart';
 
 class DesktopLanding extends StatelessWidget {
   const DesktopLanding({Key? key}) : super(key: key);

@@ -4,11 +4,11 @@ import 'dart:html';
 import 'dart:js_util';
 
 import 'package:flutter/material.dart';
+import 'package:pahiream_frontend/features/signup/data/models/user.dart';
+import 'package:pahiream_frontend/features/signup/data/repositories/api_signup.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 import 'package:pahiream_frontend/widgets/global_widgets.dart';
 
-import 'api_signup.dart';
-import 'user.dart';
 import 'dart:developer';
 
 class SignupPage extends StatefulWidget {

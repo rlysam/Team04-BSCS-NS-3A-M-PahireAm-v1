@@ -1,7 +1,7 @@
 // Responsive Header
 import 'package:flutter/material.dart';
-import 'package:pahiream_frontend/screens/Landing/Widgets/Header/desktop_header.dart';
-import 'package:pahiream_frontend/screens/Landing/Widgets/Header/tablet_header.dart';
+import 'package:pahiream_frontend/features/main_page/widgets/Header/desktop_header.dart';
+import 'package:pahiream_frontend/features/main_page/widgets/Header/tablet_header.dart';
 import 'package:pahiream_frontend/utils/Responsive/responsive_layout.dart';
 
 class AppHeader extends StatelessWidget {
