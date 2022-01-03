@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pahiream_frontend/screens/Login/api_login.dart';
-import 'package:pahiream_frontend/screens/Signup/user.dart';
+import 'package:pahiream_frontend/features/login/data/repositories/api_login.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 import 'package:pahiream_frontend/widgets/global_widgets.dart';
 

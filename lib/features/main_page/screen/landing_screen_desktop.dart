@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:pahiream_frontend/features/main_page/features/pahiram/presentation/widgets/pahiram_contents.dart';
 import 'package:pahiream_frontend/features/main_page/widgets/Header/header.dart';
 import 'package:pahiream_frontend/features/profile/presentation/pages/user_profile.dart';
 
