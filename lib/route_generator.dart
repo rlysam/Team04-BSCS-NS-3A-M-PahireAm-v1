@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pahiream_frontend/features/login/presentation/pages/login_page.dart';
+import 'package:pahiream_frontend/features/main_page/screen/landing_screen.dart';
+import 'package:pahiream_frontend/features/signup/presentation/pages/signup_screen.dart';
 import 'package:pahiream_frontend/main.dart';
-import 'package:pahiream_frontend/screens/Landing/landing_screen.dart';
-import 'package:pahiream_frontend/screens/Login/login_screen.dart';
-import 'package:pahiream_frontend/screens/Signup/signup_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
