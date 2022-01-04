@@ -1,0 +1,13 @@
+Main page is the landing page.
+
+Features:
+
+1. switch_button kung may pasabay ba s'ya or pahiram
+
+2. post
+	-> yung mismong widget ay na card/post ay nandito 
+	-> yung buong infinitely scrollable na widget ay nandito
+
+3. categories
+	-> yung mismong category card
+	-> yung buong category panel andito rin
