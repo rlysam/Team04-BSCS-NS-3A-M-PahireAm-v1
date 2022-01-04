@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:pahiream_frontend/features/main_page/features/pahiram/presentation/widgets/pahiram_contents.dart';
 import 'package:pahiream_frontend/features/main_page/widgets/Header/header.dart';
 import 'package:pahiream_frontend/features/profile/presentation/pages/user_profile.dart';
 
@@ -23,11 +22,11 @@ class DesktopLanding extends StatelessWidget {
           // ignore: prefer_const_literals_to_create_immutables
           children: [
             AppHeader(),
-            destination == '/userProfile'
-                ? UserProfile()
-                : destination == '/mainPage'
-                    ? PahiramContents()
-                    : SizedBox(),
+            // destination == '/userProfile'
+            //     ? UserProfile()
+            //     : destination == '/mainPage'
+            //         ? PahiramContents()
+            //         : SizedBox(),
           ],
         ),
       ),

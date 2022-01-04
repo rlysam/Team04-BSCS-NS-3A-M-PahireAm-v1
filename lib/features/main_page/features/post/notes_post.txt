@@ -1,0 +1,7 @@
+1 post widget,
+
+2 different models
+2 different API
+2 different repository(?)
+
+2 different table yung post for [ pasabay ] and [ pahiram ]

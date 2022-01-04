@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pahiream_frontend/features/main_page/features/post/presentation/widgets/post_widget.dart';
 import 'package:pahiream_frontend/route_generator.dart';
 
 void main() {
@@ -20,8 +21,16 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.nunitoTextTheme(Theme.of(context).textTheme),
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/',
-      onGenerateRoute: RouteGenerator.generateRoute,
+      //   initialRoute: '/',
+      //   onGenerateRoute: RouteGenerator.generateRoute,
+      home: Scaffold(body: Center(child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+            Text('Doing POST in general'),
+          PostWidget(),
+        ],
+      ))),
     );
   }
 }
