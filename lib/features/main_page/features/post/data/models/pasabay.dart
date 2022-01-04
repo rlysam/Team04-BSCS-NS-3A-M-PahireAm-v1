@@ -6,20 +6,22 @@ import 'dart:convert';
 
 class Pasabay {
 
-    final int post_id;
-    final int user_id;
-    final String title;
-    final String first_name;
-    final String last_name;
-    final String type; //delivery|request
-    final num points;
-    final String from; 
-    final String destination; 
-    final int? quantity; // ! minsan NULL
-    final String rate; 
-    final String time_posted; 
-    final String delivery_time; 
-    final String date; 
+	final int post_id;
+	final int user_id;
+	final String title;
+	final String first_name;
+	final String last_name;
+	final String type; //delivery|request
+	final num points;
+	final String from; 
+	final String destination; 
+	final int? quantity; // ! minsan NULL
+	final String rate; 
+	final String time_posted; 
+	final String delivery_time; 
+	final String date; 
+	final String image_location; 
+	final String status; 
   Pasabay({
     required this.post_id,
     required this.user_id,
@@ -35,8 +37,9 @@ class Pasabay {
     required this.time_posted,
     required this.delivery_time,
     required this.date,
+    required this.image_location,
+    required this.status,
   });
-
 
   Pasabay copyWith({
     int? post_id,
@@ -53,6 +56,8 @@ class Pasabay {
     String? time_posted,
     String? delivery_time,
     String? date,
+    String? image_location,
+    String? status,
   }) {
     return Pasabay(
       post_id: post_id ?? this.post_id,
@@ -69,6 +74,8 @@ class Pasabay {
       time_posted: time_posted ?? this.time_posted,
       delivery_time: delivery_time ?? this.delivery_time,
       date: date ?? this.date,
+      image_location: image_location ?? this.image_location,
+      status: status ?? this.status,
     );
   }
 
@@ -88,6 +95,8 @@ class Pasabay {
       'time_posted': time_posted,
       'delivery_time': delivery_time,
       'date': date,
+      'image_location': image_location,
+      'status': status,
     };
   }
 
@@ -107,6 +116,8 @@ class Pasabay {
       time_posted: map['time_posted'] ?? '',
       delivery_time: map['delivery_time'] ?? '',
       date: map['date'] ?? '',
+      image_location: map['image_location'] ?? '',
+      status: map['status'] ?? '',
     );
   }
 
@@ -116,7 +127,7 @@ class Pasabay {
 
   @override
   String toString() {
-    return 'Pasabay(post_id: $post_id, user_id: $user_id, title: $title, first_name: $first_name, last_name: $last_name, type: $type, points: $points, from: $from, destination: $destination, quantity: $quantity, rate: $rate, time_posted: $time_posted, delivery_time: $delivery_time, date: $date)';
+    return 'Pasabay(post_id: $post_id, user_id: $user_id, title: $title, first_name: $first_name, last_name: $last_name, type: $type, points: $points, from: $from, destination: $destination, quantity: $quantity, rate: $rate, time_posted: $time_posted, delivery_time: $delivery_time, date: $date, image_location: $image_location, status: $status)';
   }
 
   @override
@@ -137,7 +148,9 @@ class Pasabay {
       other.rate == rate &&
       other.time_posted == time_posted &&
       other.delivery_time == delivery_time &&
-      other.date == date;
+      other.date == date &&
+      other.image_location == image_location &&
+      other.status == status;
   }
 
   @override
@@ -155,6 +168,8 @@ class Pasabay {
       rate.hashCode ^
       time_posted.hashCode ^
       delivery_time.hashCode ^
-      date.hashCode;
+      date.hashCode ^
+      image_location.hashCode ^
+      status.hashCode;
   }
 }
