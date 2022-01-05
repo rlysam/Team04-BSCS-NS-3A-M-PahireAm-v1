@@ -1,3 +1,7 @@
+// TODO: Wag muna gawing separate yung pag access ng file from repository, 'di ko ma gets eh
+// TODO: Write everything on REPOSITORY Class
+
+
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
@@ -55,3 +59,36 @@ Future<User> fetchUser(String email, String password, Function wrongPass,
 //     },
 //   );
 // }
+
+// ! BUSINESS OWNER --- SAMPLE API
+// import 'package:http/http.dart';
+// import 'dart:convert';
+
+Future loginBusinessOwner(String username, String password) async {
+
+	Map data = {"username": username, "password": password};
+	String jsonData = jsonEncode(data);
+	String url = "http://localhost:8000/login/business-owner";
+	Response response = await post(url, body: jsonData);
+	Map convertedData = jsonDecode(response.body);
+	return convertedData;
+
+}
+
+Future forgotPassword(String username_email, String password) async {
+	Map data = {"username_email": username_email, "password": password};
+	String jsonData = jsonEncode(data);
+	String url = "http://localhost:8000/forgot-password";
+	Response response = await post(url, body: jsonData);
+	Map convertedData = jsonDecode(response.body);
+	return convertedData;
+}
+
+Future submitVerificationCode(String username_email, String verification_code) async {
+	Map data = {"username_email": username_email, "verification_code": verification_code};
+	String jsonData = jsonEncode(data);
+	String url = "http://localhost:8000/forgot-password/code";
+	Response response = await post(url, body: jsonData);
+	Map convertedData = jsonDecode(response.body);
+	return convertedData;
+}
