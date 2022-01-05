@@ -20,6 +20,7 @@ Future<User> fetchUser(String email, String password, Function wrongPass,
   if (response.statusCode == 200) {
     // If the server dfirstName return a 201 CREATED response,
     // then parse the JSON.
+    // TODO  +=== ito yung kailangan isulat sa API return User.fromJson(json.decode(response.body));
     return User.fromJson(json.decode(response.body));
   } else if (response.statusCode == 404) {
     //Lalagay dito yung callback function na mag-wawarning na hindi pa created si user
@@ -64,31 +65,29 @@ Future<User> fetchUser(String email, String password, Function wrongPass,
 // import 'package:http/http.dart';
 // import 'dart:convert';
 
-Future loginBusinessOwner(String username, String password) async {
+// Future loginBusinessOwner(String username, String password) async {
+// 	Map data = {"username": username, "password": password};
+// 	String jsonData = jsonEncode(data);
+// 	String url = "http://localhost:8000/login/business-owner";
+// 	Response response = await post(url, body: jsonData);
+// 	Map convertedData = jsonDecode(response.body);
+// 	return convertedData;
+// }
 
-	Map data = {"username": username, "password": password};
-	String jsonData = jsonEncode(data);
-	String url = "http://localhost:8000/login/business-owner";
-	Response response = await post(url, body: jsonData);
-	Map convertedData = jsonDecode(response.body);
-	return convertedData;
+// Future forgotPassword(String username_email, String password) async {
+// 	Map data = {"username_email": username_email, "password": password};
+// 	String jsonData = jsonEncode(data);
+// 	String url = "http://localhost:8000/forgot-password";
+// 	Response response = await post(url, body: jsonData);
+// 	Map convertedData = jsonDecode(response.body);
+// 	return convertedData;
+// }
 
-}
-
-Future forgotPassword(String username_email, String password) async {
-	Map data = {"username_email": username_email, "password": password};
-	String jsonData = jsonEncode(data);
-	String url = "http://localhost:8000/forgot-password";
-	Response response = await post(url, body: jsonData);
-	Map convertedData = jsonDecode(response.body);
-	return convertedData;
-}
-
-Future submitVerificationCode(String username_email, String verification_code) async {
-	Map data = {"username_email": username_email, "verification_code": verification_code};
-	String jsonData = jsonEncode(data);
-	String url = "http://localhost:8000/forgot-password/code";
-	Response response = await post(url, body: jsonData);
-	Map convertedData = jsonDecode(response.body);
-	return convertedData;
-}
+// Future submitVerificationCode(String username_email, String verification_code) async {
+// 	Map data = {"username_email": username_email, "verification_code": verification_code};
+// 	String jsonData = jsonEncode(data);
+// 	String url = "http://localhost:8000/forgot-password/code";
+// 	Response response = await post(url, body: jsonData);
+// 	Map convertedData = jsonDecode(response.body);
+// 	return convertedData;
+// }
