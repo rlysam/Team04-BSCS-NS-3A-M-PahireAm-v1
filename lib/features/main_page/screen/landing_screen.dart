@@ -8,6 +8,8 @@ class LandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Todo : Implement Switch using Provide package
+    bool isPasabay = true;
     return const ResponsiveLayout(
       desktopBody: DesktopLanding(),
       tabletBody: TabletLanding(),
