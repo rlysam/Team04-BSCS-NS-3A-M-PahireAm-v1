@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pahiream_frontend/features/main_page/features/paged_main_content/presentation/widgets/pager.dart';
 import 'package:pahiream_frontend/route_generator.dart';
 
 void main() {
@@ -26,5 +27,5 @@ class _MyAppState extends State<MyApp> {
       initialRoute: '/',
       onGenerateRoute: RouteGenerator.generateRoute,
     );
-  }
+}
 }

@@ -1,9 +1,8 @@
 Main page is the landing page.
 
 Note: 
-	Maraming BlocProvider saka BlocConsumers
-		e.g. = //multiple Bloc Provider
-				// https://github.com/felangel/bloc/issues/15#issuecomment-462058084
+	https://pub.dev/documentation/flutter_bloc/latest/flutter_bloc/MultiBlocProvider-class.html
+	https://pub.dev/packages/flutter_bloc
 Note: 
 	Switch value is going to be passed using [Provider]	
 

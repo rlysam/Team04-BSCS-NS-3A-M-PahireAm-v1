@@ -10,8 +10,6 @@ class LandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Implement Switch using Provide package
-    // bool isPasabay = true; //Initial Value
     return BlocProvider(
       create: (_) => SwitchButtonCubit(),
       child: buildLandingPage(),

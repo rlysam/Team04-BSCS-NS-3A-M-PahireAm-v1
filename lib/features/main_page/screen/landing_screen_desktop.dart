@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:pahiream_frontend/features/main_page/features/categories/presentation/pages/category_view.dart';
+import 'package:pahiream_frontend/features/main_page/features/paged_main_content/presentation/widgets/MainContent.dart';
 import 'package:pahiream_frontend/features/main_page/widgets/Header/header.dart';
 import 'package:pahiream_frontend/features/profile/presentation/pages/user_profile.dart';
 
@@ -19,18 +21,36 @@ class DesktopLanding extends StatelessWidget {
       body: SizedBox(
         height: size.height,
         child: Column(
-          // ignore: prefer_const_literals_to_create_immutables
           children: [
-            //   TODO Lagay dito yung BloCConsumer
             AppHeader(),
-            // destination == '/userProfile'
-            //     ? UserProfile()
-            //     : destination == '/mainPage'
-            //         ? PahiramContents()
-            //         : SizedBox(),
+            destination == '/userProfile'
+                ? UserProfile()
+                : destination == '/mainPage'
+                    ? LandingPageUI()
+                    : SizedBox(),
           ],
         ),
       ),
+    );
+  }
+}
+
+class LandingPageUI extends StatefulWidget {
+  LandingPageUI({Key? key}) : super(key: key);
+
+  @override
+  _LandingPageUIState createState() => _LandingPageUIState();
+}
+
+class _LandingPageUIState extends State<LandingPageUI> {
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: [
+        //   TODO Implement categorybuilder
+        //   CategoryBuilder()
+        MainContent(),
+      ],
     );
   }
 }
