@@ -78,9 +78,8 @@ class _MgaPahiramState extends State<MgaPasabay> {
   }
 
   Widget buildInitialInput() {
-    //   TODO initial input is se-send nya yung page 1
     return Center(
-      child: CircularProgressIndicator(),
+      child: CityInputField(),
     );
   }
 
@@ -123,6 +122,33 @@ class _MgaPahiramState extends State<MgaPasabay> {
   }
 }
 
+
+class CityInputField extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 50),
+      child: TextField(
+        onSubmitted: (value) => submitPageNumber(context, value),
+        textInputAction: TextInputAction.search,
+        autofocus: true,
+        decoration: InputDecoration(
+          hintText: "Enter Page Number",
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+          suffixIcon: Icon(Icons.search),
+        ),
+      ),
+    );
+  }
+
+  void submitPageNumber(BuildContext context, String pahinaNumero) {
+    final postsDataCubit1 = context.read<PasabayPostsCubit>();
+    postsDataCubit1.get10PostsPasabay(int.parse(pahinaNumero));
+    final postsDataCubit = context.read<PahiramPostsCubit>();
+    postsDataCubit.get10PostsPahiram(int.parse(pahinaNumero));
+  }
+}
+
 class MgaPasabay extends StatefulWidget {
   const MgaPasabay({Key? key}) : super(key: key);
 
@@ -162,12 +188,13 @@ class _MgaPasabayState extends State<MgaPasabay> {
     );
   }
 
+
   Widget buildInitialInput() {
-    //   TODO initial input is se-send nya yung page 1
     return Center(
-      child: CircularProgressIndicator(),
+      child: CityInputField(),
     );
   }
+
 
   Widget buildLoading() {
     return Center(
