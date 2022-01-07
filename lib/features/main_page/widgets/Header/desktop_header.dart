@@ -78,24 +78,15 @@ class _MyDesktopHeaderState extends State<MyDesktopHeader> {
                     ),
                   ),
                 ),
-                // FIXME: GUMANA TO GAGU
-                BlocBuilder<SwitchButtonCubit, bool>(
-                  builder: (context, state) {
-          var value = context.read<SwitchButtonCubit>().state;
-                    return Row(
-                      children: [
-                        SwitchPahireAm(),
-                        value? SwitchPahireAm() : SizedBox(),
-                        // TODO Try lagyan din state dito ng ginagamit sa pahiream widget button
-                        // SwitchPahireAm(),
-                        SizedBox(width: 30),
-                        MouseRegion(
-                            cursor: SystemMouseCursors.click,
-                            child: ProfilePicture(
-                                radius2: 30, radius3: 27, radius4: 23)),
-                      ],
-                    );
-                  },
+                Row(
+                  children: [
+                    SwitchPahireAm(),
+                    SizedBox(width: 30),
+                    MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: ProfilePicture(
+                            radius2: 30, radius3: 27, radius4: 23)),
+                  ],
                 ),
               ],
             ),
