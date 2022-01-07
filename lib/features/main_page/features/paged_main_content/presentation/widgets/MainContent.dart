@@ -50,8 +50,6 @@ class _MgaPahiramState extends State<MgaPasabay> {
   @override
   Widget build(BuildContext context) {
     int currentPage = context.read<PagerCubit>().state;
-    final pahiramData = context.read<PahiramPostsCubit>();
-    pahiramData.get10PostsPahiram(currentPage);
 
     return BlocConsumer<PahiramPostsCubit, PahiramPostsState>(
       listener: (context, state) {
