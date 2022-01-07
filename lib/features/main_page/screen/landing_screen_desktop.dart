@@ -21,6 +21,7 @@ class DesktopLanding extends StatelessWidget {
         child: Column(
           // ignore: prefer_const_literals_to_create_immutables
           children: [
+            //   TODO Lagay dito yung BloCConsumer
             AppHeader(),
             // destination == '/userProfile'
             //     ? UserProfile()

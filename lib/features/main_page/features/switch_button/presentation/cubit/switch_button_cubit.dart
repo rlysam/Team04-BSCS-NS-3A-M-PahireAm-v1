@@ -1,8 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 
-part 'switch_button_state.dart';
-
-class SwitchButtonCubit extends Cubit<SwitchButtonState> {
-  SwitchButtonCubit() : super(SwitchButtonInitial());
+class SwitchButtonCubit extends Cubit<bool> {
+  SwitchButtonCubit() : super(true);
+  void changeValue(bool value) => emit(!value);
 }

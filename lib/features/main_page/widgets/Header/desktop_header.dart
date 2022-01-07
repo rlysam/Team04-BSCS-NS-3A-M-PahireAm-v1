@@ -3,9 +3,12 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/widgets/pahiream_switch.dart';
 import 'package:pahiream_frontend/features/profile/presentation/pages/user_profile.dart';
+import 'package:pahiream_frontend/main.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 import 'package:pahiream_frontend/widgets/global_widgets.dart';
+import 'package:provider/provider.dart';
 
 class MyDesktopHeader extends StatefulWidget {
   const MyDesktopHeader({Key? key}) : super(key: key);
@@ -15,10 +18,11 @@ class MyDesktopHeader extends StatefulWidget {
 }
 
 class _MyDesktopHeaderState extends State<MyDesktopHeader> {
-  bool myValue = true;
   @override
-  Widget build(BuildContext context) { final Size size = MediaQuery.of(context).size;
-
+  Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    bool myValue = Provider.of<GlobalDataPahireAm>(context).isPasabay;
+    print('\n\n\nSwitch VALUE: $myValue\n\n\n');
     return Container(
       height: 60,
       alignment: const Alignment(0, 0),
@@ -76,24 +80,8 @@ class _MyDesktopHeaderState extends State<MyDesktopHeader> {
                 ),
                 Row(
                   children: [
-                    Text(
-                      myValue ? 'Pahiram' : 'Pasabay',
-                      style: CommonStyleText.txtStyle(
-                          color: myValue ? kPrimaryGreen : kPrimaryPink,
-                          size: 24,
-                          weigth: bold),
-                    ),
-                    SizedBox(width: 20),
-                    Transform.scale(
-                      scale: 1.7,
-                      child: Switch(
-                          activeColor: kPrimaryGreen,
-                          inactiveThumbColor: kPrimaryPink,
-                          inactiveTrackColor: kPrimaryPink.withOpacity(.5),
-                          value: myValue,
-                          onChanged: (value) =>
-                              setState(() => myValue = value)),
-                    ),
+                    //   TODO: Baka hindi mag render, dahil Row inside Row
+                    SwitchPahireAm(),
                     SizedBox(width: 30),
                     MouseRegion(
                         cursor: SystemMouseCursors.click,
@@ -109,3 +97,4 @@ class _MyDesktopHeaderState extends State<MyDesktopHeader> {
     );
   }
 }
+
