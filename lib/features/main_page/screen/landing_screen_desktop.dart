@@ -6,9 +6,14 @@ import 'package:pahiream_frontend/features/main_page/features/paged_main_content
 import 'package:pahiream_frontend/features/main_page/widgets/Header/header.dart';
 import 'package:pahiream_frontend/features/profile/presentation/pages/user_profile.dart';
 
-class DesktopLanding extends StatelessWidget {
+class DesktopLanding extends StatefulWidget {
   const DesktopLanding({Key? key}) : super(key: key);
 
+  @override
+  State<DesktopLanding> createState() => _DesktopLandingState();
+}
+
+class _DesktopLandingState extends State<DesktopLanding> {
   @override
   Widget build(BuildContext context) {
     // ignore: unused_local_variable

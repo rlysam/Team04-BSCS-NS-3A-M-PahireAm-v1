@@ -8,9 +8,14 @@ import 'package:pahiream_frontend/features/main_page/screen/landing_screen_deskt
 import 'package:pahiream_frontend/features/main_page/screen/landing_screen_tablet.dart';
 import 'package:pahiream_frontend/utils/Responsive/responsive_layout.dart';
 
-class LandingPage extends StatelessWidget {
+class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
 
+  @override
+  State<LandingPage> createState() => _LandingPageState();
+}
+
+class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
