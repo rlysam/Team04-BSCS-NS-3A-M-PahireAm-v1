@@ -3,6 +3,8 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/cubit/switch_button_cubit.dart';
 import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/widgets/pahiream_switch.dart';
 import 'package:pahiream_frontend/features/profile/presentation/pages/user_profile.dart';
 import 'package:pahiream_frontend/main.dart';
@@ -21,8 +23,6 @@ class _MyDesktopHeaderState extends State<MyDesktopHeader> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    bool myValue = Provider.of<GlobalDataPahireAm>(context).isPasabay;
-    print('\n\n\nSwitch VALUE: $myValue\n\n\n');
     return Container(
       height: 60,
       alignment: const Alignment(0, 0),
@@ -78,16 +78,24 @@ class _MyDesktopHeaderState extends State<MyDesktopHeader> {
                     ),
                   ),
                 ),
-                Row(
-                  children: [
-                    //   TODO: Baka hindi mag render, dahil Row inside Row
-                    SwitchPahireAm(),
-                    SizedBox(width: 30),
-                    MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        child: ProfilePicture(
-                            radius2: 30, radius3: 27, radius4: 23)),
-                  ],
+                // FIXME: GUMANA TO GAGU
+                BlocBuilder<SwitchButtonCubit, bool>(
+                  builder: (context, state) {
+          var value = context.read<SwitchButtonCubit>().state;
+                    return Row(
+                      children: [
+                        SwitchPahireAm(),
+                        value? SwitchPahireAm() : SizedBox(),
+                        // TODO Try lagyan din state dito ng ginagamit sa pahiream widget button
+                        // SwitchPahireAm(),
+                        SizedBox(width: 30),
+                        MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: ProfilePicture(
+                                radius2: 30, radius3: 27, radius4: 23)),
+                      ],
+                    );
+                  },
                 ),
               ],
             ),
@@ -97,4 +105,3 @@ class _MyDesktopHeaderState extends State<MyDesktopHeader> {
     );
   }
 }
-

@@ -25,8 +25,12 @@ class _SwitchPahireAmState extends State<SwitchPahireAm> {
     //   TODO Pano a-access dito yung weather.isPasabay
 
     return BlocBuilder<SwitchButtonCubit, bool>(
-      builder: (context, switchValue) {
-          var sam = context.read<SwitchButtonCubit>();
+      builder: (context, state) {
+          var switchValue = context.read<SwitchButtonCubit>().state;
+          var data = context.read<SwitchButtonCubit>();
+          print(state);
+          print(switchValue);
+          print(data);
         return Row(
           children: [
             Text(
@@ -36,7 +40,7 @@ class _SwitchPahireAmState extends State<SwitchPahireAm> {
                   size: 24,
                   weigth: bold),
             ),
-            SizedBox(width: 20),
+            const SizedBox(width: 20),
             Transform.scale(
               scale: 1.7,
               child: Switch(
@@ -44,7 +48,7 @@ class _SwitchPahireAmState extends State<SwitchPahireAm> {
                   inactiveThumbColor: kPrimaryPink,
                   inactiveTrackColor: kPrimaryPink.withOpacity(.5),
                   value: switchValue,
-                  onChanged: (value) => sam.changeValue(value)),
+                  onChanged: (value) => data.changeValue(value)),
             ),
           ],
         );
