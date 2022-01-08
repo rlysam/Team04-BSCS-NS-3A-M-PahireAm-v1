@@ -12,8 +12,8 @@ import 'package:pahiream_frontend/features/main_page/features/switch_button/pres
 import 'package:provider/provider.dart';
 
 class MainContent extends StatefulWidget {
-  // final Post
-  const MainContent({Key? key}) : super(key: key);
+  final bool isPasabay;
+  const MainContent({Key? key, required this.isPasabay}) : super(key: key);
 
   @override
   _MainContentState createState() => _MainContentState();
@@ -22,15 +22,13 @@ class MainContent extends StatefulWidget {
 class _MainContentState extends State<MainContent> {
   @override
   Widget build(BuildContext context) {
-    var isPasabay = context.read<SwitchButtonCubit>().state;
-
     return BlocProvider(
       // get bulk of data na... then pass nalang
-      create: (context) => PagerCubit(),
+      create: (_) => PagerCubit(),
       child: ListView(
         children: [
           PagerWidget(),
-          isPasabay ? MgaPasabay() : MgaPahiram(),
+          widget.isPasabay ? MgaPasabay() : MgaPahiram(),
           PagerWidget(),
         ],
       ),
