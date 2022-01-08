@@ -13,7 +13,7 @@ import 'package:provider/provider.dart';
 
 class MainContent extends StatefulWidget {
   // final Post
-  MainContent({Key? key}) : super(key: key);
+  const MainContent({Key? key}) : super(key: key);
 
   @override
   _MainContentState createState() => _MainContentState();

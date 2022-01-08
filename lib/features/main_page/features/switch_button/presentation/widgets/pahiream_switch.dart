@@ -28,17 +28,14 @@ class _SwitchPahireAmState extends State<SwitchPahireAm> {
       builder: (context, state) {
           var switchValue = context.read<SwitchButtonCubit>().state;
           var data = context.read<SwitchButtonCubit>();
-          print(state);
-          print(switchValue);
-          print(data);
+          print("State: $state"); print("Switch Value:$switchValue"); print("Data: $data");
         return Row(
           children: [
             Text(
               switchValue ? 'Pahiram' : 'Pasabay',
               style: CommonStyleText.txtStyle(
                   color: switchValue ? kPrimaryGreen : kPrimaryPink,
-                  size: 24,
-                  weigth: bold),
+                  size: 24, weigth: bold),
             ),
             const SizedBox(width: 20),
             Transform.scale(
