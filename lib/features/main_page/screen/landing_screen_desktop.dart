@@ -6,6 +6,7 @@ import 'package:pahiream_frontend/features/main_page/features/categories/present
 import 'package:pahiream_frontend/features/main_page/features/paged_main_content/presentation/widgets/main_content.dart';
 import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/cubit/switch_button_cubit.dart';
 import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/widgets/pahiream_switch.dart';
+import 'package:pahiream_frontend/features/main_page/screen/landing_screen.dart';
 import 'package:pahiream_frontend/features/main_page/widgets/Header/header.dart';
 import 'package:pahiream_frontend/features/profile/presentation/pages/user_profile.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
@@ -36,7 +37,7 @@ class _DesktopLandingState extends State<DesktopLanding> {
                 ? UserProfile()
                 : destination == '/mainPage'
                     // ? LandingPageUI()
-                    ? Expanded(child: Container(color: kPrimaryGreen,))
+                    ? Expanded(child: LandingPageUI())
                     : SizedBox(),
           ],
         ),
@@ -55,16 +56,14 @@ class LandingPageUI extends StatefulWidget {
 class _LandingPageUIState extends State<LandingPageUI> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SwitchButtonCubit, bool>(
-      builder: (context, state) {
-        return ListView(
-          children: [
+        //   FIXME: EXPANDED?
+    return ListView(
+            shrinkWrap: true,
+          children: const [
             //   TODO Implement categorybuilder
             //   CategoryBuilder()
-            MainContent(isPasabay: state),
+            MainContent(),
           ],
         );
-      },
-    );
   }
 }

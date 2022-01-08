@@ -32,7 +32,7 @@ class _SwitchPahireAmState extends State<SwitchPahireAm> {
         return Row(
           children: [
             Text(
-              switchValue ? 'Pahiram' : 'Pasabay',
+              switchValue ?  'Pasabay':'Pahiram',
               style: CommonStyleText.txtStyle(
                   color: switchValue ? kPrimaryGreen : kPrimaryPink,
                   size: 24, weigth: bold),

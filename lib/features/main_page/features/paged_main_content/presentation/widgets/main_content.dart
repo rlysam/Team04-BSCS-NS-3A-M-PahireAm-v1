@@ -12,8 +12,7 @@ import 'package:pahiream_frontend/features/main_page/features/switch_button/pres
 import 'package:provider/provider.dart';
 
 class MainContent extends StatefulWidget {
-  final bool isPasabay;
-  const MainContent({Key? key, required this.isPasabay}) : super(key: key);
+  const MainContent({Key? key}) : super(key: key);
 
   @override
   _MainContentState createState() => _MainContentState();
@@ -22,16 +21,21 @@ class MainContent extends StatefulWidget {
 class _MainContentState extends State<MainContent> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      // get bulk of data na... then pass nalang
-      create: (_) => PagerCubit(),
-      child: ListView(
-        children: [
-          PagerWidget(),
-          widget.isPasabay ? MgaPasabay() : MgaPahiram(),
-          PagerWidget(),
-        ],
-      ),
+    return BlocBuilder<SwitchButtonCubit, bool>(
+      builder: (context, isPasabay) {
+        return BlocProvider(
+          // get bulk of data na... then pass nalang
+          create: (_) => PagerCubit(),
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              PagerWidget(),
+              isPasabay ? MgaPasabay() : MgaPahiram(),
+              PagerWidget(),
+            ],
+          ),
+        );
+      },
     );
   }
 }
@@ -43,8 +47,7 @@ class MgaPahiram extends StatefulWidget {
   _MgaPahiramState createState() => _MgaPahiramState();
 }
 
-class _MgaPahiramState extends State<MgaPasabay> {
-
+class _MgaPahiramState extends State<MgaPahiram> {
   @override
   Widget build(BuildContext context) {
     int currentPage = context.read<PagerCubit>().state;
@@ -62,27 +65,26 @@ class _MgaPahiramState extends State<MgaPasabay> {
         // }
       },
       builder: (context, state) {
-        if (state is PahiramPostsInitial) {
-          return buildInitialInput();
-        } else if (state is PahiramPostsLoading) {
+        // if (state is PahiramPostsInitial) {
+        //   return buildInitialInput();
+        // } 
+        if (state is PahiramPostsLoading) {
           return buildLoading();
         } else if (state is PahiramPostsLoaded) {
           return buildCardWithData(state.postsData);
         } else {
-          return buildInitialInput();
+          return buildLoading();
         }
       },
     );
   }
 
-  Widget buildInitialInput() {
-    return Center(
-      child: CityInputField(),
-    );
-  }
+//   Widget buildInitialInput() {
+//     return const Center(child: Text('initial value '),);
+//   }
 
   Widget buildLoading() {
-    return Center(
+    return const Center(
       child: CircularProgressIndicator(),
     );
   }
@@ -104,6 +106,7 @@ class _MgaPahiramState extends State<MgaPasabay> {
     // mag generate ng ListView.builder...
 
     return ListView(
+      shrinkWrap: true,
       children: [
         Expanded(
           child: ListView.builder(
@@ -120,33 +123,6 @@ class _MgaPahiramState extends State<MgaPasabay> {
   }
 }
 
-
-class CityInputField extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 50),
-      child: TextField(
-        onSubmitted: (value) => submitPageNumber(context, value),
-        textInputAction: TextInputAction.search,
-        autofocus: true,
-        decoration: InputDecoration(
-          hintText: "Enter Page Number",
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-          suffixIcon: Icon(Icons.search),
-        ),
-      ),
-    );
-  }
-
-  void submitPageNumber(BuildContext context, String pahinaNumero) {
-    final postsDataCubit1 = context.read<PasabayPostsCubit>();
-    postsDataCubit1.get10PostsPasabay(int.parse(pahinaNumero));
-    final postsDataCubit = context.read<PahiramPostsCubit>();
-    postsDataCubit.get10PostsPahiram(int.parse(pahinaNumero));
-  }
-}
-
 class MgaPasabay extends StatefulWidget {
   const MgaPasabay({Key? key}) : super(key: key);
 
@@ -155,7 +131,6 @@ class MgaPasabay extends StatefulWidget {
 }
 
 class _MgaPasabayState extends State<MgaPasabay> {
-
   @override
   Widget build(BuildContext context) {
     int currentPage = context.read<PagerCubit>().state;
@@ -186,13 +161,11 @@ class _MgaPasabayState extends State<MgaPasabay> {
     );
   }
 
-
   Widget buildInitialInput() {
-    return Center(
-      child: CityInputField(),
+    return const Center(
+      child: Text('Initial Value bobo'),
     );
   }
-
 
   Widget buildLoading() {
     return Center(
@@ -217,6 +190,7 @@ class _MgaPasabayState extends State<MgaPasabay> {
     // mag generate ng ListView.builder...
 
     return ListView(
+      shrinkWrap: true,
       children: [
         Expanded(
           child: ListView.builder(
