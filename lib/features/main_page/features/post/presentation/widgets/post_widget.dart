@@ -178,7 +178,6 @@ class PosterRankRow extends StatelessWidget {
         : (int.parse(data.points) > 50 && int.parse(data.points) < 100)
             ? ranks.elementAt(1)
             : ranks.elementAt(2);
-
     return Row(
       children: [
         Icon(Icons.person, size: 16, color: kFontColorBlack),
