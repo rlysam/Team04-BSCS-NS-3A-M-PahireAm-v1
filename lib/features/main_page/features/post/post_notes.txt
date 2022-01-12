@@ -1,0 +1,5 @@
+Need to have different state classes for PASABAY and PAHIRAM
+
+STATE note: this file contains a lot of boilerplate code, needs to have 2 sep. files
+
+CUBIT note: sa Cubit pwede isang file lang since onti lang naman nakalagay don

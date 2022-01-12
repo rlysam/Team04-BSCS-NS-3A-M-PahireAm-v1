@@ -1,0 +1,30 @@
+Feature Descriptions
+
+Note: 
+
+0. Sa tingin ko, yung pagination lang medyo magpapabagal...
+1. Pwede kayang isang user model nalang gawin? Authentication feature nalang?
+2. User Profile lang muna makikita, profile ng iba ay hindi muna ma-access
+
+1. login
+2. signup
+3. main_page
+	-> yung mismong Home page ng PahireAm
+		-> bali ito yung mismong page na buo na may header, categories, cards...
+	-> folder that holds other Features
+		-> Features	
+			1. categories
+				-> category card
+				-> category panel
+			2. pahiram
+				-> card
+				-> SingleChildScrollView
+			3. pasabay
+				-> card
+				-> SingleChildScrollView
+			4. switch_button
+				-> changes theme
+				-> changes Pasabay SCSV to Pahiram or vice versa
+4. profile
+	-> user profile
+	-> other user's profile

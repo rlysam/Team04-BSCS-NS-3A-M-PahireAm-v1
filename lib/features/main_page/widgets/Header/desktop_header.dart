@@ -3,9 +3,14 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/cubit/switch_button_cubit.dart';
+import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/widgets/pahiream_switch.dart';
 import 'package:pahiream_frontend/features/profile/presentation/pages/user_profile.dart';
+import 'package:pahiream_frontend/main.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 import 'package:pahiream_frontend/widgets/global_widgets.dart';
+import 'package:provider/provider.dart';
 
 class MyDesktopHeader extends StatefulWidget {
   const MyDesktopHeader({Key? key}) : super(key: key);
@@ -15,10 +20,9 @@ class MyDesktopHeader extends StatefulWidget {
 }
 
 class _MyDesktopHeaderState extends State<MyDesktopHeader> {
-  bool myValue = true;
   @override
-  Widget build(BuildContext context) { final Size size = MediaQuery.of(context).size;
-
+  Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Container(
       height: 60,
       alignment: const Alignment(0, 0),
@@ -76,24 +80,7 @@ class _MyDesktopHeaderState extends State<MyDesktopHeader> {
                 ),
                 Row(
                   children: [
-                    Text(
-                      myValue ? 'Pahiram' : 'Pasabay',
-                      style: CommonStyleText.txtStyle(
-                          color: myValue ? kPrimaryGreen : kPrimaryPink,
-                          size: 24,
-                          weigth: bold),
-                    ),
-                    SizedBox(width: 20),
-                    Transform.scale(
-                      scale: 1.7,
-                      child: Switch(
-                          activeColor: kPrimaryGreen,
-                          inactiveThumbColor: kPrimaryPink,
-                          inactiveTrackColor: kPrimaryPink.withOpacity(.5),
-                          value: myValue,
-                          onChanged: (value) =>
-                              setState(() => myValue = value)),
-                    ),
+                    SwitchPahireAm(),
                     SizedBox(width: 30),
                     MouseRegion(
                         cursor: SystemMouseCursors.click,

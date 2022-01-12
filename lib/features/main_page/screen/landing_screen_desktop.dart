@@ -1,13 +1,24 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:pahiream_frontend/features/main_page/features/pahiram/presentation/widgets/pahiram_contents.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pahiream_frontend/features/main_page/features/categories/presentation/pages/category_view.dart';
+import 'package:pahiream_frontend/features/main_page/features/paged_main_content/presentation/widgets/main_content.dart';
+import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/cubit/switch_button_cubit.dart';
+import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/widgets/pahiream_switch.dart';
+import 'package:pahiream_frontend/features/main_page/screen/landing_screen.dart';
 import 'package:pahiream_frontend/features/main_page/widgets/Header/header.dart';
 import 'package:pahiream_frontend/features/profile/presentation/pages/user_profile.dart';
+import 'package:pahiream_frontend/utils/constants.dart';
 
-class DesktopLanding extends StatelessWidget {
+class DesktopLanding extends StatefulWidget {
   const DesktopLanding({Key? key}) : super(key: key);
 
+  @override
+  State<DesktopLanding> createState() => _DesktopLandingState();
+}
+
+class _DesktopLandingState extends State<DesktopLanding> {
   @override
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
@@ -20,17 +31,39 @@ class DesktopLanding extends StatelessWidget {
       body: SizedBox(
         height: size.height,
         child: Column(
-          // ignore: prefer_const_literals_to_create_immutables
           children: [
             AppHeader(),
             destination == '/userProfile'
                 ? UserProfile()
                 : destination == '/mainPage'
-                    ? PahiramContents()
+                    // ? LandingPageUI()
+                    ? Expanded(child: LandingPageUI())
                     : SizedBox(),
           ],
         ),
       ),
     );
+  }
+}
+
+class LandingPageUI extends StatefulWidget {
+  LandingPageUI({Key? key}) : super(key: key);
+
+  @override
+  _LandingPageUIState createState() => _LandingPageUIState();
+}
+
+class _LandingPageUIState extends State<LandingPageUI> {
+  @override
+  Widget build(BuildContext context) {
+        //   FIXME: EXPANDED?
+    return ListView(
+            shrinkWrap: true,
+          children: const [
+            //   TODO Implement categorybuilder
+            //   CategoryBuilder()
+            MainContent(),
+          ],
+        );
   }
 }

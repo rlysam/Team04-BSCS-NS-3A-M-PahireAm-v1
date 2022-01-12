@@ -1,0 +1,33 @@
+Main page is the landing page.
+
+Note: 
+	https://pub.dev/documentation/flutter_bloc/latest/flutter_bloc/MultiBlocProvider-class.html
+	https://pub.dev/packages/flutter_bloc
+Note: 
+	Switch value is going to be passed using [Provider]	
+
+Features:
+
+1. switch_button kung may pasabay ba s'ya or pahiram
+		Note: Pwede siguro gawin nalang yung ganito
+		--- (Waseem shehadeh Ch.)
+	-> https://www.youtube.com/watch?v=lKNbyzgsBF4&t=564s
+		-> lagay sa landing_screen_desktop.dart
+			// bool isPasabay = true;
+
+2. paged_main_content
+	-> pagination is applied
+	https://pub.dev/packages/infinite_scroll_pagination/example
+	https://www.raywenderlich.com/14214369-infinite-scrolling-pagination-in-flutter#toc-anchor-004
+	https://github.com/themaaz32/infinite_list_pagination/blob/main/lib/model/passenger_data.dart
+
+3. post
+	-> yung mismong widget ay na card/post ay nandito 
+	-> yung buong infinitely scrollable na widget ay nandito
+
+4. categories
+	-> yung mismong category card
+	-> yung buong category panel andito rin
+	-> builder from API,
+		for MVP, gawin munang Horizontal ListView.Builder()
+			with fake list from FakeRepository
