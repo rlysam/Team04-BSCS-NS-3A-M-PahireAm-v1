@@ -1,6 +1,8 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:pahiream_frontend/features/login/presentation/pages/login_page.dart';
 import 'package:pahiream_frontend/features/main_page/screen/landing_screen.dart';
+import 'package:pahiream_frontend/features/profile/presentation/pages/user_profile.dart';
 import 'package:pahiream_frontend/features/signup/presentation/pages/signup_screen.dart';
 import 'package:pahiream_frontend/main.dart';
 
@@ -11,9 +13,16 @@ class RouteGenerator {
 
     switch (settings.name) {
       case '/':
-        return MaterialPageRoute(builder: (_) => const LandingPage());
-      // case '/':
-      //   return MaterialPageRoute(builder: (_) => const LoginPage());
+        // return MaterialPageRoute(
+        //     builder: (_) => AnimatedSplashScreen(
+        //         duration: 3000, splash: Icons.face,
+
+        //        splashTransition: SplashTransition.fadeTransition,
+        //   backgroundColor: Colors.blue ,
+        //         nextScreen: LandingPage()));
+        // case '/':ile
+        // return MaterialPageRoute(builder: (_) => const UserProfile());
+        return MaterialPageRoute(builder: (_) => const SignupPage());
       case '/loginPage':
         return MaterialPageRoute(builder: (_) => const LoginPage());
       case '/signUpPage':
