@@ -1,12 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/cupertino.dart';
+import 'dart:html';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-//import 'package:pahiream_frontend/screens/Landing/Screen%20Pahiram/Widgets/pahiram_card.dart';
-import 'package:pahiream_frontend/screens/Landing/Screen%20Posts/Screen%20Pahiram/Widgets/pahiram_card.dart';
-import 'package:pahiream_frontend/screens/Landing/Screen%20Posts/Screen%20Pasabay/Widgets/pasabay_card.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 import 'package:pahiream_frontend/widgets/global_widgets.dart';
 
@@ -672,9 +669,11 @@ class _SettingPostState extends State<SettingPost>{
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         //child: new SingleChildScrollView(
+                Text('Post CArds HErE'),
+                Text('Post CArds HErE')
 
-        PasabayCards(),
-        PasabayCards()
+        // PasabayCards(),
+        // PasabayCards()
 
             //SizedBox(width: 70),
             //SizedBox(height: 100),
@@ -713,7 +712,8 @@ class _SettingPostState extends State<SettingPost>{
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              PasabayCards(),
+                Text('Post CArds HErE')
+            //   PasabayCards(),
               //PasabayCards(),
               //PasabayCards(),
             ],
