@@ -28,6 +28,8 @@ class _DesktopLandingState extends State<DesktopLanding> {
     // const String destination = '/userProfile';
 
     return Scaffold(
+        floatingActionButton: IconButton(onPressed: (){}, icon: Icon(Icons.message)),
+        floatingActionButtonLocation: FloatingActionButtonLocation.miniEndDocked,
       body: SizedBox(
         height: size.height,
         child: Column(

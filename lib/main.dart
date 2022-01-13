@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pahiream_frontend/image_upload.dart';
 import 'package:pahiream_frontend/route_generator.dart';
 
 void main() {
@@ -23,8 +24,9 @@ class _MyAppState extends State<MyApp> {
         textTheme: GoogleFonts.nunitoTextTheme(Theme.of(context).textTheme),
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/',
-      onGenerateRoute: RouteGenerator.generateRoute,
+      home: ImageUpload(),
+    //   initialRoute: '/',
+    //   onGenerateRoute: RouteGenerator.generateRoute,
     );
 }
 }
