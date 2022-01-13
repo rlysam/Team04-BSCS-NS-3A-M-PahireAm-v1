@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:pahiream_frontend/features/main_page/features/post/data/datasources/post_api.dart';
+import 'package:pahiream_frontend/features/main_page/features/post/data/datasources/batch_posts_api.dart';
 import 'package:pahiream_frontend/features/main_page/features/post/data/models/posts_data.dart';
 
 
