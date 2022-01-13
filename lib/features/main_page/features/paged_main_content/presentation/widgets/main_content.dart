@@ -9,7 +9,6 @@ import 'package:pahiream_frontend/features/main_page/features/post/presentation/
 import 'package:pahiream_frontend/features/main_page/features/post/presentation/cubit/pasabay_posts_cubit.dart';
 import 'package:pahiream_frontend/features/main_page/features/post/presentation/widgets/post_widget.dart';
 import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/cubit/switch_button_cubit.dart';
-import 'package:provider/provider.dart';
 
 class MainContent extends StatefulWidget {
   const MainContent({Key? key}) : super(key: key);
@@ -26,13 +25,14 @@ class _MainContentState extends State<MainContent> {
         return BlocProvider(
           // get bulk of data na... then pass nalang
           create: (_) => PagerCubit(),
-          child: ListView(
-            shrinkWrap: true,
-            children: [
-              PagerWidget(),
-              isPasabay ? MgaPasabay() : MgaPahiram(),
-              PagerWidget(),
-            ],
+          child: SizedBox(
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                //   Note: Pag nag iba yung isPasabay State, matic mag re-reload na...
+                isPasabay ? MgaPasabay() : MgaPahiram(),
+              ],
+            ),
           ),
         );
       },
@@ -67,11 +67,23 @@ class _MgaPahiramState extends State<MgaPahiram> {
       builder: (context, state) {
         // if (state is PahiramPostsInitial) {
         //   return buildInitialInput();
-        // } 
+        // }
         if (state is PahiramPostsLoading) {
           return buildLoading();
         } else if (state is PahiramPostsLoaded) {
-          return buildCardWithData(state.postsData);
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                PagerWidget(),
+              ]),
+              buildCardWithData(state.postsData),
+              SizedBox(height: 20,),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                PagerWidget(),
+              ]),
+            ],
+          );
         } else {
           return buildLoading();
         }
@@ -85,7 +97,7 @@ class _MgaPahiramState extends State<MgaPahiram> {
 
   Widget buildLoading() {
     return const Center(
-      child: CircularProgressIndicator(),
+      child: Center(child: CircularProgressIndicator()),
     );
   }
 
@@ -109,7 +121,13 @@ class _MgaPahiramState extends State<MgaPahiram> {
       shrinkWrap: true,
       children: [
         Expanded(
-          child: ListView.builder(
+          child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                childAspectRatio: 5 / 4.3,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20
+                ),
             shrinkWrap: true,
             itemCount: batchOfPosts.length,
             itemBuilder: (context, index) {
@@ -153,7 +171,19 @@ class _MgaPasabayState extends State<MgaPasabay> {
         } else if (state is PasabayPostsLoading) {
           return buildLoading();
         } else if (state is PasabayPostsLoaded) {
-          return buildCardWithData(state.postsData);
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                PagerWidget(),
+              ]),
+              buildCardWithData(state.postsData),
+              SizedBox(height: 20,),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                PagerWidget(),
+              ]),
+            ],
+          );
         } else {
           return buildInitialInput();
         }
@@ -187,13 +217,17 @@ class _MgaPasabayState extends State<MgaPasabay> {
       batchOfPosts.add(onePost);
     });
 
-    // mag generate ng ListView.builder...
-
     return ListView(
       shrinkWrap: true,
       children: [
         Expanded(
-          child: ListView.builder(
+          child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                childAspectRatio: 5 / 4.3,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20
+                ),
             shrinkWrap: true,
             itemCount: batchOfPosts.length,
             itemBuilder: (context, index) {
@@ -206,6 +240,3 @@ class _MgaPasabayState extends State<MgaPasabay> {
     );
   }
 }
-
-// TODO implement blocConsumer Pasabay widget
-    // if else

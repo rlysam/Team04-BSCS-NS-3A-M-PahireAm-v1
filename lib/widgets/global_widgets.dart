@@ -1,10 +1,3 @@
-// ignore_for_file: must_be_immutable
-
-// Custom reusable widgets
-// https://www.youtube.com/watch?v=-eNm8pNYmjo
-
-//! ganito lang pala mag modify ng widget taena pinapahirapan ko sarili ko dati
-
 import 'package:flutter/material.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 
@@ -24,10 +17,25 @@ class CommonStyleText {
   }
 }
 
+class CommonStylePager {
+  static InputDecoration pagerStyle({
+    String hintTextStr = "",
+  }) {
+    return InputDecoration(
+        contentPadding: const EdgeInsets.only(left: 25),
+        hintText: hintTextStr,
+        filled: true,
+        fillColor: kWhite,
+        // border: ()
+        );
+  }
+}
+
 class CommonStyleInput {
   static InputDecoration textFieldStyle({
     String labelTextStr = "",
     String hintTextStr = "",
+    bool isPager = true,
     bool isCorrect = true,
     bool hasIcon = false,
     IconData myIcon = Icons.visibility_outlined,
@@ -45,14 +53,9 @@ class CommonStyleInput {
     }
 
     return InputDecoration(
-        //! size ng textbox? HEIGHT
-        suffixIcon: hasIcon
-            ? MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: GestureDetector(child: Icon(myIcon, color: kIconColor1)),
-              )
-            : const SizedBox(),
-        contentPadding: const EdgeInsets.fromLTRB(15, 5, 11, 5),
+        contentPadding: isPager
+            ? EdgeInsets.only(left: 25)
+            : const EdgeInsets.fromLTRB(15, 5, 11, 5),
         labelText: labelTextStr,
         hintText: hintTextStr,
         filled: true,
@@ -73,14 +76,15 @@ BoxDecoration divDecoration() {
 class CommonStyleCategoryBorder {
   static BoxDecoration boxDecoration({
     Color categoryColor = Colors.grey,
-    // bool isHighlighted = false,
   }) {
     return BoxDecoration(
       border: Border.all(
         color: categoryColor,
-        width: (categoryColor!=Colors.grey ? 3 : 2),
+        width: (categoryColor != Colors.grey ? 3 : 2),
       ),
-      color: (categoryColor!=Colors.grey ? categoryColor.withOpacity(.3) : Colors.transparent),
+      color: (categoryColor != Colors.grey
+          ? categoryColor.withOpacity(.3)
+          : Colors.transparent),
       borderRadius: const BorderRadius.all(Radius.circular(10)),
     );
   }
@@ -94,7 +98,6 @@ class CommonStyleButton {
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
-          // side: BorderSide(color: kPrimaryGreen),
         )),
         backgroundColor: MaterialStateProperty.all(kPrimaryGreen));
   }

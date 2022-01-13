@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/cubit/switch_button_cubit.dart';
 import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/widgets/pahiream_switch.dart';
 import 'package:pahiream_frontend/features/profile/presentation/pages/user_profile.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
@@ -36,10 +38,16 @@ class _MyDesktopHeaderState extends State<MyDesktopHeader> {
                     },
                     child: Row(
                       children: [
-                        CircleAvatar(
-                            backgroundColor: kPrimaryGreen.withOpacity(0.3),
-                            radius: 25,
-                            child: FlutterLogo( size: 30,)),
+                        BlocBuilder<SwitchButtonCubit,bool>(
+                          builder: (context, isPasabay) {
+                            return CircleAvatar(
+                                backgroundColor: isPasabay?kPrimaryGreen.withOpacity(0.3): kPrimaryPink.withOpacity(0.3),
+                                radius: 25,
+                                child: FlutterLogo(
+                                  size: 30,
+                                ));
+                          },
+                        ),
                         SizedBox(width: 10),
                         Text(
                           'Pahire',

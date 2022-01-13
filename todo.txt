@@ -28,31 +28,6 @@ Profile
 Note: After login, navigation.push() to Profile page without Navigation Header
 
 
-MOCKUP 13
-	UI Design Main Page Pahiram 8
-	UI Design Main Page Pasabay 8
-	UI Design Message Center 8
-	UI Design Fulfillment 8
-
-Pahiram Posts
-	Create 8
-	Update 8
-	Read 8
-	Delete 8
-
-Pasabay Posts
-	Create 8
-	Update 8
-	Read 8
-	Delete 8
-
-Frontend
-	Front-end Main Page Pahiram 8
-		Card 5
-	Front-end Main Page Pasabay 8
-		Cards 5
-
-
 Meeting topics:
 
 	Update dapat si database sa LucidChart

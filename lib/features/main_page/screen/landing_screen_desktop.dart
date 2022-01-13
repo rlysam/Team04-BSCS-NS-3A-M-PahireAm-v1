@@ -56,14 +56,18 @@ class LandingPageUI extends StatefulWidget {
 class _LandingPageUIState extends State<LandingPageUI> {
   @override
   Widget build(BuildContext context) {
-        //   FIXME: EXPANDED?
-    return ListView(
-            shrinkWrap: true,
-          children: const [
-            //   TODO Implement categorybuilder
-            //   CategoryBuilder()
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 400, vertical: 50),
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(height: 138, child: CategoryBuilder()),
+            SizedBox(height: 20),
             MainContent(),
           ],
-        );
+        ),
+      ),
+    );
   }
 }

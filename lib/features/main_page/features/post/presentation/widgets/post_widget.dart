@@ -1,21 +1,10 @@
-// Note: Responsive text FLUTTER:
-// https://www.youtube.com/watch?v=0O_qDZ48F7o
-
-// ignore_for_file: prefer_const_constructors
-
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:pahiream_frontend/features/main_page/features/post/data/models/post.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 import 'package:pahiream_frontend/widgets/global_widgets.dart';
 import 'package:provider/provider.dart';
 
-// var url =
-//     'https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60';
-
 class PostWidget extends StatelessWidget {
-  // TODO implement transforming Post Widget base on data
   final Post data;
 
   const PostWidget({
@@ -28,21 +17,19 @@ class PostWidget extends StatelessWidget {
     return SizedBox(
       width: 339,
       child: Provider(
-        //  TODO: Not yet tested if proper syntax
         create: (context) => data,
         child: Card(
           clipBehavior: Clip.antiAlias,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
-          elevation: 16,
+          elevation: 5,
           child: InkWell(
             onTap: () => print('Pindot card ka HUH'),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 PictureAndBanner(url: data.image_location),
-                //!Details
                 Padding(
                   padding: const EdgeInsets.fromLTRB(6.0, 10.0, 6.0, 0),
                   child: ListTile(
@@ -90,7 +77,6 @@ class PostWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                //ButtonBAr
               ],
             ),
           ),
@@ -124,7 +110,6 @@ class LocationDestinnationRowBuilder extends StatelessWidget {
   }
 }
 
-// TODO: gawin Widget nito 01/06/2022
 class LocationDestinationBuilder extends StatelessWidget {
   const LocationDestinationBuilder({
     Key? key,
@@ -133,19 +118,17 @@ class LocationDestinationBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Post data = Provider.of<Post>(context);
-    bool isPahiram = data.rent_due.isNotEmpty; //note: pahiram lang ang may rent_due
+    bool isPahiram = data.rent_due.isNotEmpty;
     return Row(
       children: [
         Icon(Icons.local_shipping, size: 16, color: kFontColorBlack),
         SizedBox(width: 5),
-// TODO: gawin Widget nito 01/06/2022
         Text(data.delivery_time),
       ],
     );
   }
 }
 
-// TODO: gawin Widget nito 01/06/2022
 class SecondRowBuilder extends StatelessWidget {
   const SecondRowBuilder({
     Key? key,
@@ -154,8 +137,7 @@ class SecondRowBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Post data = Provider.of<Post>(context);
-    bool isPahiram =
-        data.rent_due.isNotEmpty; //note: pahiram lang ang may rent_due
+    bool isPahiram = data.rent_due.isNotEmpty;
     return Align(
         alignment: AlignmentDirectional.centerStart,
         child: Text('PhP 20.00/day'));
@@ -171,8 +153,7 @@ class PosterRankRow extends StatelessWidget {
   Widget build(BuildContext context) {
     List<String> ranks = ['Basic', 'Intermediate', 'Savior'];
     Post data = Provider.of<Post>(context);
-    bool isPahiram =
-        data.rent_due.isNotEmpty; //note: pahiram lang ang may rent_due
+    bool isPahiram = data.rent_due.isNotEmpty;
     String rank = int.parse(data.points) < 50
         ? ranks.elementAt(0)
         : (int.parse(data.points) > 50 && int.parse(data.points) < 100)
@@ -200,8 +181,7 @@ class PostTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Post data = Provider.of<Post>(context);
-    bool isPahiram =
-        data.rent_due.isNotEmpty; //note: pahiram lang ang may rent_due
+    bool isPahiram = data.rent_due.isNotEmpty;
     String title = isPahiram ? data.item : data.title;
     return Text(
       title,
@@ -222,11 +202,9 @@ class PictureAndBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     Post data = Provider.of<Post>(context);
     return Stack(
-      // !Picture
       alignment: Alignment.topRight,
       children: [
         Container(
-            // width: 339,
             height: 150,
             alignment: Alignment.center,
             decoration: BoxDecoration(
@@ -247,17 +225,15 @@ class Banner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Post data = Provider.of<Post>(context);
-    bool isPahiram =
-        data.rent_due.isNotEmpty; //note: pahiram lang ang may rent_due
-    Color bannerColor = (((!isPahiram) && data.type == 'delivery')
-            ? kBanner1
-            : ((!isPahiram) && data.type == 'request')
-                ? kBanner2
-                : ((isPahiram) && data.type == 'rent')
-                    ? kBanner3
-                    : kBanner4
-        // ((isPahiram) && data.type=='request' ) ? Kbanner4
-        );
+    bool isPahiram = data.rent_due.isNotEmpty;
+    Color bannerColor = (((!isPahiram) &&
+            data.type.toLowerCase() == 'Courier'.toLowerCase())
+        ? kBanner1
+        : ((!isPahiram) && data.type.toLowerCase() == 'request'.toLowerCase())
+            ? kBanner2
+            : ((isPahiram) && data.type == 'rent')
+                ? kBanner3
+                : kBanner4);
     return Container(
       decoration: null,
       color: bannerColor,

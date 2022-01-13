@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/cubit/switch_button_cubit.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 import 'package:pahiream_frontend/widgets/global_widgets.dart';
 
@@ -21,8 +23,7 @@ class UserProfile extends StatefulWidget {
   _UserProfileState createState() => _UserProfileState();
 }
 
-class _UserProfileState extends State<UserProfile>{
-
+class _UserProfileState extends State<UserProfile> {
   String changePasswordOrDiscard = 'Change Password';
   String editOrSave = 'Edit Profile';
   bool isColor1 = true;
@@ -35,7 +36,8 @@ class _UserProfileState extends State<UserProfile>{
     bool isVisible = true;
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: horizontalPaddingPagesDesktop),
+        padding:
+            EdgeInsets.symmetric(horizontal: horizontalPaddingPagesDesktop),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -56,7 +58,9 @@ class _UserProfileState extends State<UserProfile>{
                       crossAxisAlignment: CrossAxisAlignment.start,
                       // mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text('Naruto Uzumaki', style: CommonStyleText.txtStyle(size: 40, weigth: bold)),
+                        Text('Naruto Uzumaki',
+                            style: CommonStyleText.txtStyle(
+                                size: 40, weigth: bold)),
                         SizedBox(height: 20),
                         SubDetailsSection(),
                         SizedBox(height: 20),
@@ -69,7 +73,6 @@ class _UserProfileState extends State<UserProfile>{
               ),
             ),
             SizedBox(height: 40),
-
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               //mainAxisSize: MainAxisSize.min,
@@ -87,10 +90,13 @@ class _UserProfileState extends State<UserProfile>{
                       //Account
                       //SizedBox(height: 10),
                       RaisedButton(
-
-                        color: isColor1 ? Colors.grey.shade50 : Colors.pink.shade50,
+                        color: isColor1
+                            ? Colors.grey.shade50
+                            : Colors.pink.shade50,
                         shape: RoundedRectangleBorder(
-                          side: isColor1 ? BorderSide(color: Colors.grey, width: 1) : BorderSide(color: kPrimaryPink, width: 1),
+                          side: isColor1
+                              ? BorderSide(color: Colors.grey, width: 1)
+                              : BorderSide(color: kPrimaryPink, width: 1),
                         ),
                         // 3
                         onPressed: () => {
@@ -98,7 +104,6 @@ class _UserProfileState extends State<UserProfile>{
                             isColor1 = !isColor1;
                             //buttonSetting = 'Account';
                           })
-
                         },
                         //decoration: divDecoration(),
                         child: Row(
@@ -109,30 +114,37 @@ class _UserProfileState extends State<UserProfile>{
                               Icons.account_box,
                               color: Colors.grey,
                               size: 30.0,
-                              semanticLabel: 'Text to announce in accessibility modes',
+                              semanticLabel:
+                                  'Text to announce in accessibility modes',
                             ),
                             SizedBox(width: 20),
                             SizedBox(height: 50),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('Account', style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
-                                Text('Personal Information', style: CommonStyleText.txtStyle(size: 10)),
+                                Text('Account',
+                                    style: CommonStyleText.txtStyle(
+                                        size: 15, weigth: bold)),
+                                Text('Personal Information',
+                                    style: CommonStyleText.txtStyle(size: 10)),
                               ],
                             ),
                           ],
                         ),
-
                       ),
 
                       //Post
                       SizedBox(height: 10),
                       RaisedButton(
-                        color: isColor2 ? Colors.grey.shade50 : Colors.pink.shade50,
+                        color: isColor2
+                            ? Colors.grey.shade50
+                            : Colors.pink.shade50,
                         shape: RoundedRectangleBorder(
-                          side: isColor2 ? BorderSide(color: Colors.grey, width: 1) : BorderSide(color: kPrimaryPink, width: 1),
+                          side: isColor2
+                              ? BorderSide(color: Colors.grey, width: 1)
+                              : BorderSide(color: kPrimaryPink, width: 1),
                         ),
-                        onPressed: (){
+                        onPressed: () {
                           isColor2 = !isColor2;
                           buttonSetting = 'Post';
                         },
@@ -144,16 +156,19 @@ class _UserProfileState extends State<UserProfile>{
                               Icons.location_pin,
                               color: Colors.grey,
                               size: 30.0,
-                              semanticLabel: 'Text to announce in accessibility modes',
+                              semanticLabel:
+                                  'Text to announce in accessibility modes',
                             ),
-
                             SizedBox(width: 20),
                             SizedBox(height: 50),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('Post', style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
-                                Text('Pasabay & Pahiram post', style: CommonStyleText.txtStyle(size: 10)),
+                                Text('Post',
+                                    style: CommonStyleText.txtStyle(
+                                        size: 15, weigth: bold)),
+                                Text('Pasabay & Pahiram post',
+                                    style: CommonStyleText.txtStyle(size: 10)),
                               ],
                             ),
                           ],
@@ -163,11 +178,15 @@ class _UserProfileState extends State<UserProfile>{
                       //Item
                       SizedBox(height: 10),
                       RaisedButton(
-                        color: isColor3 ? Colors.grey.shade50 : Colors.pink.shade50,
+                        color: isColor3
+                            ? Colors.grey.shade50
+                            : Colors.pink.shade50,
                         shape: RoundedRectangleBorder(
-                          side: isColor3 ? BorderSide(color: Colors.grey, width: 1) : BorderSide(color: kPrimaryPink, width: 1),
+                          side: isColor3
+                              ? BorderSide(color: Colors.grey, width: 1)
+                              : BorderSide(color: kPrimaryPink, width: 1),
                         ),
-                        onPressed: (){
+                        onPressed: () {
                           isColor3 = !isColor3;
                           buttonSetting = 'Item';
                         },
@@ -179,16 +198,19 @@ class _UserProfileState extends State<UserProfile>{
                               Icons.inventory_2_rounded,
                               color: Colors.grey,
                               size: 30.0,
-                              semanticLabel: 'Text to announce in accessibility modes',
+                              semanticLabel:
+                                  'Text to announce in accessibility modes',
                             ),
-
                             SizedBox(width: 20),
                             SizedBox(height: 50),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('Item', style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
-                                Text('Pasabay & Pahiram item', style: CommonStyleText.txtStyle(size: 10)),
+                                Text('Item',
+                                    style: CommonStyleText.txtStyle(
+                                        size: 15, weigth: bold)),
+                                Text('Pasabay & Pahiram item',
+                                    style: CommonStyleText.txtStyle(size: 10)),
                               ],
                             ),
                           ],
@@ -198,37 +220,44 @@ class _UserProfileState extends State<UserProfile>{
                       //Settings
                       SizedBox(height: 10),
                       RaisedButton(
-                          color: isColor4 ? Colors.grey.shade50 : Colors.pink.shade50,
-                          shape: RoundedRectangleBorder(
-                            side: isColor4 ? BorderSide(color: Colors.grey, width: 1) : BorderSide(color: kPrimaryPink, width: 1),
-                          ),
-                          onPressed: (){
-                            isColor4 = !isColor4;
-                            buttonSetting = 'Settings';
-                          },
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(width: 10),
-                              Icon(
-                                Icons.settings,
-                                color: Colors.grey,
-                                size: 30.0,
-                                semanticLabel: 'Text to announce in accessibility modes',
-                              ),
-
-                              SizedBox(width: 20),
-                              SizedBox(height: 50),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text('Settings', style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
-                                  Text('Account settings', style: CommonStyleText.txtStyle(size: 10)),
-                                ],
-                              ),
-                            ],
-                          ),
+                        color: isColor4
+                            ? Colors.grey.shade50
+                            : Colors.pink.shade50,
+                        shape: RoundedRectangleBorder(
+                          side: isColor4
+                              ? BorderSide(color: Colors.grey, width: 1)
+                              : BorderSide(color: kPrimaryPink, width: 1),
                         ),
+                        onPressed: () {
+                          isColor4 = !isColor4;
+                          buttonSetting = 'Settings';
+                        },
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(width: 10),
+                            Icon(
+                              Icons.settings,
+                              color: Colors.grey,
+                              size: 30.0,
+                              semanticLabel:
+                                  'Text to announce in accessibility modes',
+                            ),
+                            SizedBox(width: 20),
+                            SizedBox(height: 50),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('Settings',
+                                    style: CommonStyleText.txtStyle(
+                                        size: 15, weigth: bold)),
+                                Text('Account settings',
+                                    style: CommonStyleText.txtStyle(size: 10)),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -238,24 +267,22 @@ class _UserProfileState extends State<UserProfile>{
                 //SizedBox(height: 30),
                 Expanded(
                   flex: 4,
-
                   child: Column(
                     children: [
-                     // Expanded(
-                        //child:
-                        SizedBox(height: 20),
-                        Container(
-                          padding: EdgeInsets.fromLTRB(16, 16, 16, 16),
-                          //padding: EdgeInsets.symmetric(vertical: 32.0, horizontal: 40.0),
-                          //padding: EdgeInsets.all(10.0),
-                          decoration: divDecoration(),
+                      // Expanded(
+                      //child:
+                      SizedBox(height: 20),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(16, 16, 16, 16),
+                        //padding: EdgeInsets.symmetric(vertical: 32.0, horizontal: 40.0),
+                        //padding: EdgeInsets.all(10.0),
+                        decoration: divDecoration(),
 
-                          child: Column(
-                            //crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: <Widget> [
-
-                              //Account Button when clicked
-                              /*
+                        child: Column(
+                          //crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: <Widget>[
+                            //Account Button when clicked
+                            /*
                               Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
@@ -283,8 +310,8 @@ class _UserProfileState extends State<UserProfile>{
                               SettingAccount(),
                               */
 
-                              //Post Button when Clicked
-                              /*
+                            //Post Button when Clicked
+                            /*
                               Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
@@ -329,8 +356,8 @@ class _UserProfileState extends State<UserProfile>{
                               ),
                                 */
 
-                              //Item Button when Clicked
-                              /*
+                            //Item Button when Clicked
+                            /*
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
@@ -375,74 +402,68 @@ class _UserProfileState extends State<UserProfile>{
                               ),
                               */
 
-                              //Settings Button when clicked
+                            //Settings Button when clicked
 
-                              Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text('Settings', style: CommonStyleText.txtStyle(size: 30, weigth: bold)),
-                                    Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          OutlinedButton(
-                                            onPressed: (){
-                                              changePasswordOrDiscard = 'Cancel';
-                                              editOrSave = 'Save changes';
-
-                                              },
-                                                child:
-                                                Text(changePasswordOrDiscard),
-                                                style: OutlinedButton.styleFrom(
-                                                  primary: Colors.grey,
-                                                  textStyle: TextStyle(
-                                                    color: kPrimaryPink,
-                                                    fontSize: 15,
-                                                  ),
-                                                  side: BorderSide(color: Colors.grey, width: 1),
-                                                ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text('Settings',
+                                    style: CommonStyleText.txtStyle(
+                                        size: 30, weigth: bold)),
+                                Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      OutlinedButton(
+                                        onPressed: () {
+                                          changePasswordOrDiscard = 'Cancel';
+                                          editOrSave = 'Save changes';
+                                        },
+                                        child: Text(changePasswordOrDiscard),
+                                        style: OutlinedButton.styleFrom(
+                                          primary: Colors.grey,
+                                          textStyle: TextStyle(
+                                            color: kPrimaryPink,
+                                            fontSize: 15,
                                           ),
-                                          SizedBox(width: 10),
-                                          OutlinedButton(
-                                            onPressed: (){
-                                              buttonSetting = 'Settings';
-                                              changePasswordOrDiscard = 'Discard changes';
-                                              editOrSave = 'Save Changes';
-                                            },
-                                            child:
-                                            Text('Edit Profile'),
-                                            style: OutlinedButton.styleFrom(
-                                              primary: kPrimaryPink,
-                                              textStyle: TextStyle(
-                                                color: kPrimaryPink,
-                                                fontSize: 15,
-                                              ),
-                                              side: BorderSide(color: kPrimaryPink, width: 1),
-                                            ),
+                                          side: BorderSide(
+                                              color: Colors.grey, width: 1),
+                                        ),
+                                      ),
+                                      SizedBox(width: 10),
+                                      OutlinedButton(
+                                        onPressed: () {
+                                          buttonSetting = 'Settings';
+                                          changePasswordOrDiscard =
+                                              'Discard changes';
+                                          editOrSave = 'Save Changes';
+                                        },
+                                        child: Text('Edit Profile'),
+                                        style: OutlinedButton.styleFrom(
+                                          primary: kPrimaryPink,
+                                          textStyle: TextStyle(
+                                            color: kPrimaryPink,
+                                            fontSize: 15,
                                           ),
-                                        ]
-                                    )
+                                          side: BorderSide(
+                                              color: kPrimaryPink, width: 1),
+                                        ),
+                                      ),
+                                    ])
+                              ],
+                            ),
+                            SettingSettings(),
 
-                                  ],
-                              ),
-                              SettingSettings(),
-
-                              SizedBox(height: 20),
-
-                            ],
-                          ),
-
+                            SizedBox(height: 20),
+                          ],
                         ),
+                      ),
                     ],
                   ),
-
                 ),
               ],
             )
-
-
           ],
         ),
-
       ),
     );
   }
@@ -458,10 +479,9 @@ class SettingSettings extends StatefulWidget {
   _SettingSettingsState createState() => _SettingSettingsState();
 }
 
-class _SettingSettingsState extends State<SettingSettings>{
+class _SettingSettingsState extends State<SettingSettings> {
   @override
   Widget build(BuildContext context) {
-
     String lastName = 'Uzumaki';
     String firstName = 'Naruto';
     var tupID = 'TUPM-19-2401';
@@ -473,18 +493,26 @@ class _SettingSettingsState extends State<SettingSettings>{
     String course = 'Bachelor of Science in Computer Science';
 
     return Row(
-
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        details(lastName, firstName, contact, email, gender, college, course, birthday, tupID),
-
+        details(lastName, firstName, contact, email, gender, college, course,
+            birthday, tupID),
       ],
     );
   }
 
   // Details including Name, Contact No., Email
-  Expanded details(String lastName, String firstName, String contact, String email, String gender, String college,String course,String birthday, String tupID) {
+  Expanded details(
+      String lastName,
+      String firstName,
+      String contact,
+      String email,
+      String gender,
+      String college,
+      String course,
+      String birthday,
+      String tupID) {
     return Expanded(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -497,30 +525,44 @@ class _SettingSettingsState extends State<SettingSettings>{
             children: [
               SizedBox(width: 50),
               Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text('First Name', style: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 10)),
-                  Text(firstName,  style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
+                  Text('First Name',
+                      style: TextStyle(
+                          color: Colors.black.withOpacity(0.5), fontSize: 10)),
+                  Text(firstName,
+                      style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
                   SizedBox(height: 10),
-                  Text('Gender', style: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 10)),
-                  Text(gender,  style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
+                  Text('Gender',
+                      style: TextStyle(
+                          color: Colors.black.withOpacity(0.5), fontSize: 10)),
+                  Text(gender,
+                      style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
                   SizedBox(height: 10),
-                  Text('College', style: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 10)),
-                  Text(college,  style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
-
-                  ],
+                  Text('College',
+                      style: TextStyle(
+                          color: Colors.black.withOpacity(0.5), fontSize: 10)),
+                  Text(college,
+                      style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
+                ],
               ),
               SizedBox(width: 20),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text('Last Name', style: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 10)),
-                  Text(lastName,  style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
+                  Text('Last Name',
+                      style: TextStyle(
+                          color: Colors.black.withOpacity(0.5), fontSize: 10)),
+                  Text(lastName,
+                      style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
                   SizedBox(height: 10),
-                  Text('Contact No.', style: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 10)),
-                  Text(contact,  style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
+                  Text('Contact No.',
+                      style: TextStyle(
+                          color: Colors.black.withOpacity(0.5), fontSize: 10)),
+                  Text(contact,
+                      style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
                   SizedBox(height: 10),
                   //Text('Course', style: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 10)),
                   //Text(course,  style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
@@ -531,14 +573,23 @@ class _SettingSettingsState extends State<SettingSettings>{
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text('Email', style: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 10)),
-                  Text(email,  style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
+                  Text('Email',
+                      style: TextStyle(
+                          color: Colors.black.withOpacity(0.5), fontSize: 10)),
+                  Text(email,
+                      style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
                   SizedBox(height: 10),
-                  Text('TUP ID', style: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 10)),
-                  Text(tupID,  style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
+                  Text('TUP ID',
+                      style: TextStyle(
+                          color: Colors.black.withOpacity(0.5), fontSize: 10)),
+                  Text(tupID,
+                      style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
                   SizedBox(height: 10),
-                  Text('Course', style: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 10)),
-                  Text(course,  style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
+                  Text('Course',
+                      style: TextStyle(
+                          color: Colors.black.withOpacity(0.5), fontSize: 10)),
+                  Text(course,
+                      style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
                 ],
               ),
 
@@ -550,17 +601,13 @@ class _SettingSettingsState extends State<SettingSettings>{
 
 
                */
-
             ],
           )
-
         ],
       ),
     );
   }
-
 }
-
 
 //Setting Account
 class SettingAccount extends StatefulWidget {
@@ -572,10 +619,9 @@ class SettingAccount extends StatefulWidget {
   _SettingAccountState createState() => _SettingAccountState();
 }
 
-class _SettingAccountState extends State<SettingAccount>{
+class _SettingAccountState extends State<SettingAccount> {
   @override
   Widget build(BuildContext context) {
-
     var name = 'Uzumaki Naruto';
     var birthday = '03-31-00';
     var contact = '(02) 1234 - 5678';
@@ -584,14 +630,12 @@ class _SettingAccountState extends State<SettingAccount>{
     var course = 'Bachelor of Science in Computer Science';
 
     return Row(
-
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         SizedBox(width: 70),
         details(name, contact, email),
         details_2(birthday, gender, course),
-
       ],
     );
   }
@@ -603,14 +647,23 @@ class _SettingAccountState extends State<SettingAccount>{
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('Name', style: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 10)),
-          Text('   ' + name,  style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
+          Text('Name',
+              style: TextStyle(
+                  color: Colors.black.withOpacity(0.5), fontSize: 10)),
+          Text('   ' + name,
+              style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
           SizedBox(height: 10),
-          Text('Contact No.', style: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 10)),
-          Text('   ' + contact,  style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
+          Text('Contact No.',
+              style: TextStyle(
+                  color: Colors.black.withOpacity(0.5), fontSize: 10)),
+          Text('   ' + contact,
+              style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
           SizedBox(height: 10),
-          Text('Email', style: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 10)),
-          Text('   ' + email,  style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
+          Text('Email',
+              style: TextStyle(
+                  color: Colors.black.withOpacity(0.5), fontSize: 10)),
+          Text('   ' + email,
+              style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
           SizedBox(height: 10),
         ],
       ),
@@ -624,14 +677,23 @@ class _SettingAccountState extends State<SettingAccount>{
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('Birthday', style: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 10)),
-          Text('   ' + birthday,  style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
+          Text('Birthday',
+              style: TextStyle(
+                  color: Colors.black.withOpacity(0.5), fontSize: 10)),
+          Text('   ' + birthday,
+              style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
           SizedBox(height: 10),
-          Text('Gender', style: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 10)),
-          Text('   ' + gender,  style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
+          Text('Gender',
+              style: TextStyle(
+                  color: Colors.black.withOpacity(0.5), fontSize: 10)),
+          Text('   ' + gender,
+              style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
           SizedBox(height: 10),
-          Text('Course', style: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 10)),
-          Text('   ' + course,  style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
+          Text('Course',
+              style: TextStyle(
+                  color: Colors.black.withOpacity(0.5), fontSize: 10)),
+          Text('   ' + course,
+              style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
           SizedBox(height: 10),
         ],
       ),
@@ -649,10 +711,9 @@ class SettingPost extends StatefulWidget {
   _SettingPostState createState() => _SettingPostState();
 }
 
-class _SettingPostState extends State<SettingPost>{
+class _SettingPostState extends State<SettingPost> {
   @override
   Widget build(BuildContext context) {
-
     var name = 'Uzumaki Naruto';
     var birthday = '03-31-00';
     var contact = '(02) 1234 - 5678';
@@ -661,22 +722,21 @@ class _SettingPostState extends State<SettingPost>{
     var course = 'Bachelor of Science in Computer Science';
 
     return Row(
-
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         //child: new SingleChildScrollView(
-                Text('Post CArds HErE'),
-                Text('Post CArds HErE')
+        Text('Post CArds HErE'),
+        Text('Post CArds HErE')
 
         // PasabayCards(),
         // PasabayCards()
 
-            //SizedBox(width: 70),
-            //SizedBox(height: 100),
-            //SizedBox(width: 70),
-            //details(name, contact, email),
-         //),
+        //SizedBox(width: 70),
+        //SizedBox(height: 100),
+        //SizedBox(width: 70),
+        //details(name, contact, email),
+        //),
 
         //SizedBox(width: 120),
         //details(nameString, name),
@@ -704,18 +764,18 @@ class _SettingPostState extends State<SettingPost>{
   // Post - Pasabay and Pahiram Card
   Expanded details(String name, String contact, String email) {
     return Expanded(
-        //child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-                Text('Post CArds HErE')
-            //   PasabayCards(),
-              //PasabayCards(),
-              //PasabayCards(),
-            ],
-          ),
-        //),
+      //child: SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text('Post CArds HErE')
+          //   PasabayCards(),
+          //PasabayCards(),
+          //PasabayCards(),
+        ],
+      ),
+      //),
     );
   }
 
@@ -736,7 +796,6 @@ class _SettingPostState extends State<SettingPost>{
  */
 }
 
-
 class LevelIndicatorSection extends StatelessWidget {
   const LevelIndicatorSection({
     Key? key,
@@ -750,8 +809,14 @@ class LevelIndicatorSection extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Basic', style: TextStyle(color: kPrimaryGreen, fontWeight: FontWeight.bold)),
-              Text('Level', style: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 10),),
+              Text('Basic',
+                  style: TextStyle(
+                      color: kPrimaryGreen, fontWeight: FontWeight.bold)),
+              Text(
+                'Level',
+                style: TextStyle(
+                    color: Colors.black.withOpacity(0.5), fontSize: 10),
+              ),
             ],
           ),
         ),
@@ -812,7 +877,10 @@ class SubDetailsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(data,  style: CommonStyleText.txtStyle(size: 15, weigth: bold)), Text(data2, style: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 10))
+          Text(data, style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
+          Text(data2,
+              style:
+                  TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 10))
         ],
       ),
     );
@@ -833,17 +901,20 @@ class ProfilePicture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    return CircleAvatar(
-      radius: radius2,
-      backgroundColor: kPrimaryGreen,
-      child: CircleAvatar(
-          radius: radius3,
-          backgroundColor: kWhite,
+    return BlocBuilder<SwitchButtonCubit, bool>(
+      builder: (context, isPasabay) {
+        return CircleAvatar(
+          radius: radius2,
+          backgroundColor: isPasabay? kPrimaryGreen : kPrimaryPink,
           child: CircleAvatar(
-            radius: radius4,
-            backgroundImage: NetworkImage(profilePictureURL),
-          )),
+              radius: radius3,
+              backgroundColor: kWhite,
+              child: CircleAvatar(
+                radius: radius4,
+                backgroundImage: NetworkImage(profilePictureURL),
+              )),
+        );
+      },
     );
     // 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
   }

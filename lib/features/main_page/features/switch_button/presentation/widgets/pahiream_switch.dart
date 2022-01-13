@@ -16,6 +16,7 @@ class SwitchPahireAm extends StatefulWidget {
 }
 
 class _SwitchPahireAmState extends State<SwitchPahireAm> {
+
   void changeSwitchValue(BuildContext context, bool value) {
     final switchCubit = context.read<SwitchButtonCubit>();
   }
