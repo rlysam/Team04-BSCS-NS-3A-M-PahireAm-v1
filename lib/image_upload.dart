@@ -20,7 +20,6 @@ class ImageUpload extends StatefulWidget {
 }
 
 class _ImageUpload extends State<ImageUpload> {
-
   FilePickerResult? pickedImage;
   Uint8List? logoBase64;
 
@@ -40,40 +39,41 @@ class _ImageUpload extends State<ImageUpload> {
   }
 
   Future<void> uploadImage() async {
-     //show your own loading or progressing code here
+    //show your own loading or progressing code here
 
-     String uploadurl = "http://192.168.0.112/test/image_upload.php";
-     //dont use http://localhost , because emulator don't get that address
-     //insted use your local IP address or use live URL
-     //hit "ipconfig" in windows or "ip a" in linux to get you local IP
+    String uploadurl =
+        "http://localhost/Team04-BSCS-NS-3A-M/Pasabay_chat/sample";
+    //dont use http://localhost , because emulator don't get that address
+    //insted use your local IP address or use live URL
+    //hit "ipconfig" in windows or "ip a" in linux to get you local IP
 
-    try{
-    //   List<int> imageBytes = logoBase64.readAsBytesSync();
-    //   String baseimage = base64Encode(imageBytes);
+    try {
+      //   List<int> imageBytes = logoBase64.readAsBytesSync();
+      //   String baseimage = base64Encode(imageBytes);
       String baseimage = base64Encode(logoBase64!);
       //convert file image to Base64 encoding
-      var response = await http.post(
-              Uri(path: uploadurl),
-              body: {
-                 'image': baseimage,
-              }
-      );
-      if(response.statusCode == 200){
-         var jsondata = json.decode(response.body); //decode json data
-         if(jsondata["error"]){ //check error sent from server
-             print(jsondata["msg"]);
-             //if error return from server, show message from server
-         }else{
-             print("Upload successful");
-         }
-      }else{
+      var response = await http.post(Uri.parse(uploadurl), body: {
+        'image': baseimage,
+        'image_name':
+            'palagay dito yung filetype kung di kaya filename kung di kaya file path'
+      });
+      if (response.statusCode == 200) {
+        var jsondata = json.decode(response.body); //decode json data
+        if (jsondata["error"]) {
+          //check error sent from server
+          print(jsondata["msg"]);
+          //if error return from server, show message from server
+        } else {
+          print("Upload successful");
+        }
+      } else {
         print("Error during connection to server");
         //there is error during connecting to server,
         //status code might be 404 = url not found
       }
-    }catch(e){
-       print("Error during converting to Base64");
-       //there is error during converting file image to base64 encoding.
+    } catch (e) {
+      print("Error during converting to Base64");
+      //there is error during converting file image to base64 encoding.
     }
   }
 
