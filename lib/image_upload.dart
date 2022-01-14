@@ -1,31 +1,42 @@
+// https://stackoverflow.com/questions/50036393/how-to-convert-an-image-to-base64-image-in-flutter
+// https://stackoverflow.com/questions/50036393/how-to-convert-an-image-to-base64-image-in-flutter
+// https://stackoverflow.com/questions/50036393/how-to-convert-an-image-to-base64-image-in-flutter
+// https://stackoverflow.com/questions/50036393/how-to-convert-an-image-to-base64-image-in-flutter
+// https://stackoverflow.com/questions/50036393/how-to-convert-an-image-to-base64-image-in-flutter
+// + yung function na isa for php
+
 import 'dart:convert';
-import 'dart:io';
+import 'dart:typed_data';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 //import http package manually
 
-class ImageUpload extends StatefulWidget{
+class ImageUpload extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _ImageUpload();
   }
 }
 
-class _ImageUpload extends State<ImageUpload>{
+class _ImageUpload extends State<ImageUpload> {
 
-  late File uploadimage; //variable for choosed file
+  FilePickerResult? pickedImage;
+  Uint8List? logoBase64;
 
-  Future<void> chooseImage() async {
-    final choosedimage = await ImagePicker().pickImage(
-      imageQuality: 70,
-      maxWidth: 1440,
-      source: ImageSource.gallery,
-    );
-        //set source: ImageSource.camera to get image from camera
+  void chooseImage() async {
+    pickedImage = await FilePicker.platform.pickFiles();
+    if (pickedImage != null) {
+      try {
         setState(() {
-            uploadimage = choosedimage as File;
+          logoBase64 = pickedImage!.files.first.bytes;
         });
+      } catch (err) {
+        print(err);
+      }
+    } else {
+      print('No Image Selected');
+    }
   }
 
   Future<void> uploadImage() async {
@@ -37,11 +48,12 @@ class _ImageUpload extends State<ImageUpload>{
      //hit "ipconfig" in windows or "ip a" in linux to get you local IP
 
     try{
-      List<int> imageBytes = uploadimage.readAsBytesSync();
-      String baseimage = base64Encode(imageBytes);
+    //   List<int> imageBytes = logoBase64.readAsBytesSync();
+    //   String baseimage = base64Encode(imageBytes);
+      String baseimage = base64Encode(logoBase64!);
       //convert file image to Base64 encoding
       var response = await http.post(
-              Uri(path: uploadurl), 
+              Uri(path: uploadurl),
               body: {
                  'image': baseimage,
               }
@@ -61,67 +73,69 @@ class _ImageUpload extends State<ImageUpload>{
       }
     }catch(e){
        print("Error during converting to Base64");
-       //there is error during converting file image to base64 encoding. 
+       //there is error during converting file image to base64 encoding.
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-         appBar: AppBar(
-           title: Text("Upload Image to Server"),
-           backgroundColor: Colors.deepOrangeAccent,
-         ),
-         body:Container(
-             height:300,
-             alignment: Alignment.center,
-             child:Column(
-                    mainAxisAlignment: MainAxisAlignment.center, //content alignment to center 
-                    children: <Widget>[
-                        Container(  //show image here after choosing image
-                            child:uploadimage == null? 
-                               Container(): //if uploadimage is null then show empty container
-                               Container(   //elese show image here
-                                  child: SizedBox( 
-                                     height:150,
-                                     child:Image.file(uploadimage) //load image from file
-                                  )
-                               )
-                        ),
-
-                        Container( 
-                            //show upload button after choosing image
-                          child:uploadimage == null? 
-                               Container(): //if uploadimage is null then show empty container
-                               Container(   //elese show uplaod button
-                                  child:RaisedButton.icon(
-                                    onPressed: (){
-                                        uploadImage();
-                                        //start uploading image
-                                    }, 
-                                    icon: Icon(Icons.file_upload), 
-                                    label: Text("UPLOAD IMAGE"),
-                                    color: Colors.deepOrangeAccent,
-                                    colorBrightness: Brightness.dark,
-                                    //set brghtness to dark, because deepOrangeAccent is darker coler
-                                    //so that its text color is light
-                                  )
-                               ) 
-                        ),
-
-                        Container(
-                          child: RaisedButton.icon(
-                            onPressed: (){
-                                chooseImage(); // call choose image function
-                            },
-                            icon:Icon(Icons.folder_open),
-                            label: Text("CHOOSE IMAGE"),
-                            color: Colors.deepOrangeAccent,
-                            colorBrightness: Brightness.dark,
-                          ),
-                        )
-              ],),
-          ),
+      appBar: AppBar(
+        title: Text("Upload Image to Server"),
+        backgroundColor: Colors.deepOrangeAccent,
+      ),
+      body: Container(
+        height: 300,
+        alignment: Alignment.center,
+        child: Column(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //content alignment to center
+          children: <Widget>[
+            // Container(
+            //     //show image here after choosing image
+            //     child: uploadimage == null
+            //         ? Container()
+            //         : //if uploadimage is null then show empty container
+            //         Container(
+            //             //elese show image here
+            //             child: SizedBox(
+            //                 height: 150,
+            //                 child:
+            //                     Image.file(uploadimage) //load image from file
+            //                 ))),
+            Container(
+                //show upload button after choosing image
+                child: pickedImage == null
+                    ? Container()
+                    : //if uploadimage is null then show empty container
+                    Container(
+                        //elese show uplaod button
+                        child: RaisedButton.icon(
+                        onPressed: () {
+                          uploadImage();
+                          //start uploading image
+                        },
+                        icon: Icon(Icons.file_upload),
+                        label: Text("UPLOAD IMAGE"),
+                        color: Colors.deepOrangeAccent,
+                        colorBrightness: Brightness.dark,
+                        //set brghtness to dark, because deepOrangeAccent is darker coler
+                        //so that its text color is light
+                      ))),
+            Container(
+              child: RaisedButton.icon(
+                onPressed: () {
+                  chooseImage(); // call choose image function
+                },
+                icon: Icon(Icons.folder_open),
+                label: Text("CHOOSE IMAGE"),
+                color: Colors.deepOrangeAccent,
+                colorBrightness: Brightness.dark,
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
