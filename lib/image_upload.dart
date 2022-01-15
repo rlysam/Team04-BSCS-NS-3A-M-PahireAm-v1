@@ -20,7 +20,6 @@ class ImageUpload extends StatefulWidget {
 }
 
 class _ImageUpload extends State<ImageUpload> {
-
   FilePickerResult? pickedImage;
   Uint8List? logoBase64;
 
@@ -30,12 +29,11 @@ class _ImageUpload extends State<ImageUpload> {
     if (pickedImage != null) {
       try {
         setState(() {
-
           logoBase64 = pickedImage!.files.first.bytes;
-        print('\n\n\n\n\n');
-        print('FileName:::: ');
-        print(pickedImage!.names.elementAt(0).toString());
-        print('\n\n\n\n\n');
+          print('\n\n\n\n\n');
+          print('FileName:::: ');
+          print(pickedImage!.names.elementAt(0).toString());
+          print('\n\n\n\n\n');
         });
       } catch (err) {
         print(err);
@@ -49,7 +47,7 @@ class _ImageUpload extends State<ImageUpload> {
     //show your own loading or progressing code here
 
     String uploadurl =
-        "http://localhost/Team04-BSCS-NS-3A-M/Pasabay_chat/sample";
+        "http://localhost/Team04-BSCS-NS-3A-M/Pahiram_chat/send_message";
     //dont use http://localhost , because emulator don't get that address
     //insted use your local IP address or use live URL
     //hit "ipconfig" in windows or "ip a" in linux to get you local IP
@@ -62,7 +60,10 @@ class _ImageUpload extends State<ImageUpload> {
       var response = await http.post(Uri.parse(uploadurl), body: {
         'image': baseimage,
         'image_name': pickedImage!.names.elementAt(0).toString(),
-            // 'palagay dito yung filetype kung di kaya filename kung di kaya file path'
+        'chat_type': 'image',
+        'post_id': "74", // sample lng to
+        'user_id': "1", //sample lang din to
+        // 'palagay dito yung filetype kung di kaya filename kung di kaya file path'
       });
       if (response.statusCode == 200) {
         var jsondata = json.decode(response.body); //decode json data
