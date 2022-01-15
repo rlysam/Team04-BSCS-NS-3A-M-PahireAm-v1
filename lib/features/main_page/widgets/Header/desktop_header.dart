@@ -43,9 +43,8 @@ class _MyDesktopHeaderState extends State<MyDesktopHeader> {
                             return CircleAvatar(
                                 backgroundColor: isPasabay?kPrimaryGreen.withOpacity(0.3): kPrimaryPink.withOpacity(0.3),
                                 radius: 25,
-                                child: FlutterLogo(
-                                  size: 30,
-                                ));
+                                // child: FlutterLogo( size: 30,));
+                                child: Image.asset(('assets/images/Vector.png')));
                           },
                         ),
                         SizedBox(width: 10),
