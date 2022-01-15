@@ -6,6 +6,7 @@ import 'package:pahiream_frontend/features/main_page/features/post/presentation/
 import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/cubit/switch_button_cubit.dart';
 import 'package:pahiream_frontend/features/main_page/screen/landing_screen_desktop.dart';
 import 'package:pahiream_frontend/features/main_page/screen/landing_screen_tablet.dart';
+import 'package:pahiream_frontend/features/main_page/widgets/Header/landing_location_cubit.dart';
 import 'package:pahiream_frontend/utils/Responsive/responsive_layout.dart';
 
 class LandingPage extends StatefulWidget {
@@ -20,6 +21,9 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (_) => LandingLocationCubit(),
+        ),
         BlocProvider(
           create: (_) => SwitchButtonCubit(),
         ),

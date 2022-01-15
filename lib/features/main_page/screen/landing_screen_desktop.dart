@@ -8,6 +8,7 @@ import 'package:pahiream_frontend/features/main_page/features/switch_button/pres
 import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/widgets/pahiream_switch.dart';
 import 'package:pahiream_frontend/features/main_page/screen/landing_screen.dart';
 import 'package:pahiream_frontend/features/main_page/widgets/Header/header.dart';
+import 'package:pahiream_frontend/features/main_page/widgets/Header/landing_location_cubit.dart';
 import 'package:pahiream_frontend/features/profile/presentation/pages/user_profile.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 
@@ -23,26 +24,49 @@ class _DesktopLandingState extends State<DesktopLanding> {
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
     final Size size = MediaQuery.of(context).size;
-    // const String destination = '/userProfile';
-    const String destination = '/mainPage';
-    // const String destination = '/userProfile';
+
+    String destination = '/mainPage';
 
     return Scaffold(
-      body: SizedBox(
-        height: size.height,
-        child: Column(
-          children: [
-            AppHeader(),
-            destination == '/userProfile'
-                ? UserProfile()
-                : destination == '/mainPage'
-                    // ? LandingPageUI()
-                    ? Expanded(child: LandingPageUI())
-                    : SizedBox(),
-          ],
-        ),
+      body: BlocBuilder<LandingLocationCubit, bool>(
+        builder: (context, mainLocation) {
+            if (!mainLocation) {
+                destination='/userProfile';
+            } else {
+                destination='/mainPage';
+            }
+          return SizedBox(
+            height: size.height,
+            child: Column(
+              children: [
+                AppHeader(),
+                destination == '/userProfile'
+                    ? Expanded(
+                        child: UserProfilePageUI(),
+                      )
+                    : destination == '/mainPage'
+                        ? Expanded(child: LandingPageUI())
+                        : SizedBox(),
+              ],
+            ),
+          );
+        },
       ),
     );
+  }
+}
+
+class UserProfilePageUI extends StatefulWidget {
+  UserProfilePageUI({Key? key}) : super(key: key);
+
+  @override
+  _UserProfilePageUIState createState() => _UserProfilePageUIState();
+}
+
+class _UserProfilePageUIState extends State<UserProfilePageUI> {
+  @override
+  Widget build(BuildContext context) {
+    return UserProfile();
   }
 }
 

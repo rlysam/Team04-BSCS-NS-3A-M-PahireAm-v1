@@ -15,15 +15,12 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) {
           return const CustomSplashPahireAm(child: LandingPage());
         });
-      // case '/':ile
-      // return MaterialPageRoute(builder: (_) => const UserProfile());
-      // return MaterialPageRoute(builder: (_) => const SignupPage());
       case '/loginPage':
         return MaterialPageRoute(builder: (_) => const LoginPage());
       case '/signUpPage':
         return MaterialPageRoute(builder: (_) => const SignupPage());
       // ! sam ganito yung sa Landing page... pass _futureUser as argument
-      case '/signLandingPage':
+      case '/landingPage':
         // Validation of correct data type
         if (args is String) {
           return MaterialPageRoute(builder: (_) => const LandingPage());
