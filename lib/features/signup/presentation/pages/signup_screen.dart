@@ -93,24 +93,24 @@ class _SignupPageState extends State<SignupPage> {
                 rightCode
                     ? const SizedBox()
                     : Row(
-						mainAxisAlignment: MainAxisAlignment.center,
-						crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.error_outline,
-                              color: kFontColorRedWarning,
-                              size: 16,
-                            ),
-                            SizedBox(width: pToF(10)),
-                            Text(
-                              'Account does not exist',
-                              style: CommonStyleText.txtStyle(
-                                  size: pToF(15),
-                                  color: kFontColorRedWarning,
-                                  weigth: medium),
-                            )
-                          ],
-                        ),
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.error_outline,
+                            color: kFontColorRedWarning,
+                            size: 16,
+                          ),
+                          SizedBox(width: pToF(10)),
+                          Text(
+                            'Account does not exist',
+                            style: CommonStyleText.txtStyle(
+                                size: pToF(15),
+                                color: kFontColorRedWarning,
+                                weigth: medium),
+                          )
+                        ],
+                      ),
                 SizedBox(height: pToF(15)),
                 ElevatedButton(
                   style: CommonStyleButton.btnStyle(
@@ -120,6 +120,7 @@ class _SignupPageState extends State<SignupPage> {
                         _ctrlUserVerificationCode.text) {
                       print("/n/nsuccess: Taman Code/n/n");
                       getTheUser(); //after mag dialog
+                      Navigator.of(context).pushNamed('/landingPage');
                     } else {
                       print('Maling Code');
                       setState(() {
@@ -139,176 +140,214 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-          child: Row(
+      body: Column(
         children: [
-          // Expanded(
-          //   child: Container(
-          //     decoration: BoxDecoration(
-          //         color: kPrimaryPink,
-          //         image: const DecorationImage(
-          //             fit: BoxFit.fitHeight,
-          //             image: NetworkImage('https://i.imgur.com/CSdSJoJ.png'))),
-          //   ),
-          // ),
-          Expanded(
-              child: Center(
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ElevatedButton(
+                    onPressed: () =>
+                        Navigator.of(context).pushNamed('/loginPage'),
+                    child: Icon(Icons.navigate_before)),
+              ],
+            ),
+          ),
+          Center(
             child: Container(
-              // constraints: BoxConstraints(maxWidth: 240),
-              padding: EdgeInsets.symmetric(horizontal: pToF(120)),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Create Account',
-                    style:
-                        CommonStyleText.txtStyle(size: pToF(64), weigth: bold),
-                  ),
-                  SizedBox(height: pToF(70)),
-                  Row(
-                    children: [
-                      Column(
+                width: 700,
+                child: Row(
+                  children: [
+                    Expanded(
+                        child: Center(
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: pToF(120)),
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              'First Name',
+                              'Create Account',
+                              style: CommonStyleText.txtStyle(
+                                  size: pToF(64), weigth: bold),
+                            ),
+                            SizedBox(height: pToF(70)),
+                            Row(
+                              children: [
+                                Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'First Name',
+                                        style: CommonStyleText.txtStyle(
+                                            weigth: medium),
+                                      ),
+                                      SizedBox(
+                                        width: 240,
+                                        child: TextFormField(
+                                          controller: _ctrlUserFname,
+                                          decoration:
+                                              CommonStyleInput.textFieldStyle(),
+                                          //lalagyan dito ng controller, tapos kapag may ganon na na email sa database, wag na tumuloy
+                                        ),
+                                      ),
+                                    ]),
+                                SizedBox(width: pToF(20)),
+                                Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Last Name',
+                                        style: CommonStyleText.txtStyle(
+                                            weigth: medium),
+                                      ),
+                                      SizedBox(
+                                        width: 240,
+                                        child: TextFormField(
+                                          controller: _ctrlUserLname,
+                                          decoration:
+                                              CommonStyleInput.textFieldStyle(),
+                                          //lalagyan dito ng controller, tapos kapag may ganon na na email sa database, wag na tumuloy
+                                        ),
+                                      ),
+                                    ]),
+                              ],
+                            ),
+                            SizedBox(height: pToF(20)),
+                            Text(
+                              'TUP ID Number',
                               style: CommonStyleText.txtStyle(weigth: medium),
                             ),
                             SizedBox(
                               width: 240,
                               child: TextFormField(
-                                controller: _ctrlUserFname,
+                                controller: _ctrlUserTUPId,
                                 decoration: CommonStyleInput.textFieldStyle(),
                                 //lalagyan dito ng controller, tapos kapag may ganon na na email sa database, wag na tumuloy
                               ),
                             ),
-                          ]),
-                      SizedBox(width: pToF(20)),
-                      Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
+                            SizedBox(height: pToF(20)),
                             Text(
-                              'Last Name',
+                              'TUP Email',
                               style: CommonStyleText.txtStyle(weigth: medium),
                             ),
-                            SizedBox(
-                              width: 240,
-                              child: TextFormField(
-                                controller: _ctrlUserLname,
-                                decoration: CommonStyleInput.textFieldStyle(),
-                                //lalagyan dito ng controller, tapos kapag may ganon na na email sa database, wag na tumuloy
-                              ),
+                            TextFormField(
+                              controller: _ctrlUserEmail,
+                              decoration: CommonStyleInput.textFieldStyle(),
+                              //lalagyan dito ng controller, tapos kapag may ganon na na email sa database, wag na tumuloy
                             ),
-                          ]),
-                    ],
-                  ),
-                  SizedBox(height: pToF(20)),
-                  Text(
-                    'TUP ID Number',
-                    style: CommonStyleText.txtStyle(weigth: medium),
-                  ),
-                  SizedBox(
-                    width: 240,
-                    child: TextFormField(
-                      controller: _ctrlUserTUPId,
-                      decoration: CommonStyleInput.textFieldStyle(),
-                      //lalagyan dito ng controller, tapos kapag may ganon na na email sa database, wag na tumuloy
-                    ),
-                  ),
-                  SizedBox(height: pToF(20)),
-                  Text(
-                    'TUP Email',
-                    style: CommonStyleText.txtStyle(weigth: medium),
-                  ),
-                  TextFormField(
-                    controller: _ctrlUserEmail,
-                    decoration: CommonStyleInput.textFieldStyle(),
-                    //lalagyan dito ng controller, tapos kapag may ganon na na email sa database, wag na tumuloy
-                  ),
-                  SizedBox(height: pToF(20)),
-                  Row(
-                    children: [
-                      Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Password',
-                              style: CommonStyleText.txtStyle(weigth: medium),
-                            ),
-                            SizedBox(
-                              width: 240,
-                              child: TextFormField(
-                                controller: _ctrlUserPassword,
-                                decoration: CommonStyleInput.textFieldStyle(),
-                                //lalagyan dito ng controller, tapos kapag may ganon na na email sa database, wag na tumuloy
-                              ),
-                            ),
-                          ]),
-                      SizedBox(width: pToF(20)),
-                      Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Confirm Password',
-                              style: CommonStyleText.txtStyle(weigth: medium),
+                            SizedBox(height: pToF(20)),
+                            Row(
+                              children: [
+                                Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Password',
+                                        style: CommonStyleText.txtStyle(
+                                            weigth: medium),
+                                      ),
+                                      SizedBox(
+                                        width: 240,
+                                        child: TextFormField(
+                                          controller: _ctrlUserPassword,
+                                          decoration:
+                                              CommonStyleInput.textFieldStyle(),
+                                          //lalagyan dito ng controller, tapos kapag may ganon na na email sa database, wag na tumuloy
+                                        ),
+                                      ),
+                                    ]),
+                                SizedBox(width: pToF(20)),
+                                Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Confirm Password',
+                                        style: CommonStyleText.txtStyle(
+                                            weigth: medium),
+                                      ),
+                                      SizedBox(
+                                        width: 240,
+                                        child: TextFormField(
+                                          controller: _ctrlUserPassword2,
+                                          decoration:
+                                              CommonStyleInput.textFieldStyle(),
+                                          //lalagyan dito ng controller, tapos kapag may ganon na na email sa database, wag na tumuloy
+                                        ),
+                                      ),
+                                    ]),
+                              ],
                             ),
                             SizedBox(
-                              width: 240,
-                              child: TextFormField(
-                                controller: _ctrlUserPassword2,
-                                decoration: CommonStyleInput.textFieldStyle(),
-                                //lalagyan dito ng controller, tapos kapag may ganon na na email sa database, wag na tumuloy
-                              ),
+                              height: pToF(30),
                             ),
-                          ]),
-                    ],
-                  ),
-                  SizedBox(
-                    height: pToF(30),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: pToF(350),
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            //dito lalagay yung function na JsonEncode
-                            //pag correct, lilipat ng screen, pag hindi, dito lang for no30w
-                            // 1. Show dialog email verification
-                            // 2. after verification, and confirmed verification
-                            // 3. create user
-                            // laman neto is yung passcode
-                            jsonObjectCode = await getCode(_ctrlUserEmail.text,
-                                _ctrlUserTUPId.text, () {});
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return showVerificationDialog();
-                                });
-                            // Navigator.pop(context);
-                          },
-                          child: Text(
-                            'Register',
-                            style: CommonStyleText.txtStyle(
-                                size: pToF(24), color: kWhite, weigth: medium),
-                          ),
-                          style: CommonStyleButton.btnStyle(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: pToF(350),
+                                  child: ElevatedButton(
+                                    onPressed: () async {
+                                      jsonObjectCode = await getCode(
+                                          _ctrlUserEmail.text,
+                                          _ctrlUserTUPId.text,
+                                          () {});
+                                      showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return showVerificationDialog();
+                                          });
+                                      // Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                      'Register',
+                                      style: CommonStyleText.txtStyle(
+                                          size: pToF(24),
+                                          color: kWhite,
+                                          weigth: medium),
+                                    ),
+                                    style: CommonStyleButton.btnStyle(),
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
                         ),
                       ),
-                    ],
-                  )
-                ],
-              ),
-            ),
-          )),
+                    )),
+                  ],
+                )),
+          ),
         ],
-      )),
+      ),
+    );
+  }
+}
+
+class SignupUISides extends StatefulWidget {
+  SignupUISides({Key? key}) : super(key: key);
+
+  @override
+  _SignupUISidesState createState() => _SignupUISidesState();
+}
+
+class _SignupUISidesState extends State<SignupUISides> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 400, vertical: 50),
+      child: SignupPage(),
     );
   }
 }

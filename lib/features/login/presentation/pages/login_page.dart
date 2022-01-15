@@ -142,6 +142,11 @@ class _LoginPageState extends State<LoginPage> {
                         //pag correct, lilipat ng screen, pag hindi, dito lang for now
                         _futureUser = fetchUser(_ctrlUserEmail.text,
                             _ctrlUserPass.text, wrongPass, notFound);
+                        
+                        if (_futureUser!=null) {
+                            Navigator.of(context).pushNamed('/landingPage');
+                        } else {
+                        }
                       },
                       child: Text(
                         'Login',

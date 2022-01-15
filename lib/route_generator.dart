@@ -13,7 +13,7 @@ class RouteGenerator {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) {
-          return const CustomSplashPahireAm(child: LandingPage());
+          return const CustomSplashPahireAm(child: LoginPage());
         });
       case '/loginPage':
         return MaterialPageRoute(builder: (_) => const LoginPage());
@@ -54,7 +54,7 @@ class CustomSplashPahireAm extends StatefulWidget {
     required this.child,
   }) : super(key: key);
 
-  final LandingPage child;
+  final Widget child;
 
   @override
   State<CustomSplashPahireAm> createState() => _CustomSplashPahireAmState();
