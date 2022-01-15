@@ -20,15 +20,22 @@ class ImageUpload extends StatefulWidget {
 }
 
 class _ImageUpload extends State<ImageUpload> {
+
   FilePickerResult? pickedImage;
   Uint8List? logoBase64;
 
   void chooseImage() async {
     pickedImage = await FilePicker.platform.pickFiles();
+
     if (pickedImage != null) {
       try {
         setState(() {
+
           logoBase64 = pickedImage!.files.first.bytes;
+        print('\n\n\n\n\n');
+        print('FileName:::: ');
+        print(pickedImage!.names.elementAt(0).toString());
+        print('\n\n\n\n\n');
         });
       } catch (err) {
         print(err);
@@ -54,8 +61,8 @@ class _ImageUpload extends State<ImageUpload> {
       //convert file image to Base64 encoding
       var response = await http.post(Uri.parse(uploadurl), body: {
         'image': baseimage,
-        'image_name':
-            'palagay dito yung filetype kung di kaya filename kung di kaya file path'
+        'image_name': pickedImage!.names.elementAt(0).toString(),
+            // 'palagay dito yung filetype kung di kaya filename kung di kaya file path'
       });
       if (response.statusCode == 200) {
         var jsondata = json.decode(response.body); //decode json data
