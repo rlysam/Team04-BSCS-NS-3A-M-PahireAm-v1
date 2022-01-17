@@ -172,7 +172,7 @@ class _UserProfileState extends State<UserProfile> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('Item',
+                                  Text('Inventory',
                                       style: CommonStyleText.txtStyle(
                                           size: 15, weigth: bold)),
                                   Text('Pasabay & Pahiram item',

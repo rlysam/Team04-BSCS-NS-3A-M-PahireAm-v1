@@ -7,25 +7,31 @@ import 'package:meta/meta.dart';
 class Post {
   final String post_id;
   final String user_id;
-  final String title;
   final String first_name;
   final String last_name;
-  final String type; //delivery|request
   final String points;
+  final String time_posted;
+  final String date;
+  final String image_location;
+  final String status;
+
+
+  //   User INPUT
+  final String title;
+  final String type; //delivery|request
+//   !! TODO yung Pasabay or Pahiram, base sa SWITCH --- indicate on screen
   final String location;
   final String destination;
   final String quantity; // ! minsan NULL (PERO nakalagay sa database CREATE TABLE "NOT NULL")
   final String rate;
-  final String time_posted;
-  final String delivery_time;
-  final String date;
   final String tags;
-  final String image_location;
-  final String status;
+  final String delivery_time;
+
   //   Unique to pahiram:
   final String participant_id;
   final String participant_first_name;
   final String participant_last_name;
+
   final String item;
   final String item_id;
   final String rent_due;

@@ -13,7 +13,7 @@ class RouteGenerator {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) {
-          return const CustomSplashPahireAm(child: LoginPage());
+          return const CustomSplashPahireAm(child: LandingPage());
         });
       case '/loginPage':
         return MaterialPageRoute(builder: (_) => const LoginPage());

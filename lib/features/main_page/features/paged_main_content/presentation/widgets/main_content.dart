@@ -51,42 +51,52 @@ class _MgaPahiramState extends State<MgaPahiram> {
   @override
   Widget build(BuildContext context) {
     int currentPage = context.read<PagerCubit>().state;
-    final pahiramData = context.read<PahiramPostsCubit>();
-    pahiramData.get10PostsPahiram(currentPage);
+    var pahiramData = context.read<PahiramPostsCubit>();
 
-    return BlocConsumer<PahiramPostsCubit, PahiramPostsState>(
+    return BlocConsumer<PagerCubit, int>(
       listener: (context, state) {
-        // if (state is PostsDataError) {
-        //   Scaffold.of(context).showSnackBar(
-        //     SnackBar(
-        //       content: Text(state.message),
-        //     ),
-        //   );
-        // }
+        // TODO: implement listener
       },
-      builder: (context, state) {
-        // if (state is PahiramPostsInitial) {
-        //   return buildInitialInput();
-        // }
-        if (state is PahiramPostsLoading) {
-          return buildLoading();
-        } else if (state is PahiramPostsLoaded) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                PagerWidget(),
-              ]),
-              buildCardWithData(state.postsData),
-              SizedBox(height: 20,),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                PagerWidget(),
-              ]),
-            ],
-          );
-        } else {
-          return buildLoading();
-        }
+      builder: (context, pageNum) {
+        pahiramData.get10PostsPahiram(pageNum);
+
+        return BlocConsumer<PahiramPostsCubit, PahiramPostsState>(
+          listener: (context, state) {
+            // if (state is PostsDataError) {
+            //   Scaffold.of(context).showSnackBar(
+            //     SnackBar(
+            //       content: Text(state.message),
+            //     ),
+            //   );
+            // }
+          },
+          builder: (context, state) {
+            // if (state is PahiramPostsInitial) {
+            //   return buildInitialInput();
+            // }
+            if (state is PahiramPostsLoading) {
+              return buildLoading();
+            } else if (state is PahiramPostsLoaded) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    PagerWidget(),
+                  ]),
+                  buildCardWithData(state.postsData),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    PagerWidget(),
+                  ]),
+                ],
+              );
+            } else {
+              return buildLoading();
+            }
+          },
+        );
       },
     );
   }
@@ -126,8 +136,7 @@ class _MgaPahiramState extends State<MgaPahiram> {
                 crossAxisCount: 3,
                 childAspectRatio: 5 / 4.3,
                 crossAxisSpacing: 20,
-                mainAxisSpacing: 20
-                ),
+                mainAxisSpacing: 20),
             shrinkWrap: true,
             itemCount: batchOfPosts.length,
             itemBuilder: (context, index) {
@@ -152,41 +161,51 @@ class _MgaPasabayState extends State<MgaPasabay> {
   @override
   Widget build(BuildContext context) {
     int currentPage = context.read<PagerCubit>().state;
-    final pasabayData = context.read<PasabayPostsCubit>();
-    pasabayData.get10PostsPasabay(currentPage);
+    var pasabayData = context.read<PasabayPostsCubit>();
 
-    return BlocConsumer<PasabayPostsCubit, PasabayPostsState>(
+    return BlocConsumer<PagerCubit, int>(
       listener: (context, state) {
-        // if (state is PostsDataError) {
-        //   Scaffold.of(context).showSnackBar(
-        //     SnackBar(
-        //       content: Text(state.message),
-        //     ),
-        //   );
-        // }
+        // TODO: implement listener
       },
-      builder: (context, state) {
-        if (state is PasabayPostsInitial) {
-          return buildInitialInput();
-        } else if (state is PasabayPostsLoading) {
-          return buildLoading();
-        } else if (state is PasabayPostsLoaded) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                PagerWidget(),
-              ]),
-              buildCardWithData(state.postsData),
-              SizedBox(height: 20,),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                PagerWidget(),
-              ]),
-            ],
-          );
-        } else {
-          return buildInitialInput();
-        }
+      builder: (context, pageNum) {
+    pasabayData.get10PostsPasabay(pageNum);
+
+        return BlocConsumer<PasabayPostsCubit, PasabayPostsState>(
+          listener: (context, state) {
+            // if (state is PostsDataError) {
+            //   Scaffold.of(context).showSnackBar(
+            //     SnackBar(
+            //       content: Text(state.message),
+            //     ),
+            //   );
+            // }
+          },
+          builder: (context, state) {
+            if (state is PasabayPostsInitial) {
+              return buildInitialInput();
+            } else if (state is PasabayPostsLoading) {
+              return buildLoading();
+            } else if (state is PasabayPostsLoaded) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    PagerWidget(),
+                  ]),
+                  buildCardWithData(state.postsData),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    PagerWidget(),
+                  ]),
+                ],
+              );
+            } else {
+              return buildInitialInput();
+            }
+          },
+        );
       },
     );
   }
@@ -226,8 +245,7 @@ class _MgaPasabayState extends State<MgaPasabay> {
                 crossAxisCount: 3,
                 childAspectRatio: 5 / 4.3,
                 crossAxisSpacing: 20,
-                mainAxisSpacing: 20
-                ),
+                mainAxisSpacing: 20),
             shrinkWrap: true,
             itemCount: batchOfPosts.length,
             itemBuilder: (context, index) {
