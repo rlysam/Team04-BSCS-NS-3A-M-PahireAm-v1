@@ -1,4 +1,5 @@
 import 'package:division/division.dart';
+import 'package:flutter/widgets.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 
 // example for containers/ same with "div"
@@ -66,3 +67,18 @@ final styleCreatePostBtn = ParentStyle()
 ..alignmentContent.center()
 ..borderRadius(all: 25)
   ;
+
+final styleServiceCard = ParentStyle()
+  ..background.color(kWhite)
+  ..width(500)
+  ..height(150)
+  ..borderRadius(all: 10)
+  ..margin(all:9)
+  ..padding(right: 16, left: 16, top: 15, bottom: 17.3);
+
+final styleServiceTitle = TxtStyle()
+  ..fontSize(22)
+  ..letterSpacing(0)
+  ..bold()
+  ..textOverflow(TextOverflow.ellipsis)
+  ..textColor(kFontColorBlack);

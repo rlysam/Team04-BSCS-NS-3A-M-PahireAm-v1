@@ -2,8 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pahiream_frontend/features/main_page/features/paged_main_content/presentation/cubit/pager_cubit.dart';
 import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/cubit/switch_button_cubit.dart';
 import 'package:pahiream_frontend/features/main_page/widgets/Header/landing_location_cubit.dart';
+import 'package:pahiream_frontend/features/profile/presentation/widgets/cubit/user_inv_pager_cubit.dart';
+import 'package:pahiream_frontend/features/profile/presentation/widgets/user_inventory.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 import 'package:pahiream_frontend/widgets/global_widgets.dart';
 
@@ -23,296 +26,294 @@ class _UserProfileState extends State<UserProfile> {
   bool isColor2 = true;
   bool isColor3 = true;
   bool isColor4 = true;
+  List<String> option = [
+    'Overview', //view details
+    'Posts',
+    'Inventory', // status == active
+    'Settings', //change/update details
+  ];
   @override
   Widget build(BuildContext context) {
     String buttonSetting = 'Account';
     bool isVisible = true;
     return Scaffold(body: BlocBuilder<SwitchButtonCubit, bool>(
       builder: (context, isPasabay) {
-        return Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: horizontalPaddingPagesDesktop),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 10),
-              Text('Account'),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 40.0),
-                decoration: divDecoration(),
-                child: AccountSection(),
-              ),
-              SizedBox(height: 40),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Settings'),
-                        RaisedButton(
-                          color: isColor1
-                              ? Colors.grey.shade50
-                              : Colors.pink.shade50,
-                          shape: RoundedRectangleBorder(
-                            side: isColor1
-                                ? BorderSide(color: Colors.grey, width: 1)
-                                : BorderSide(color: kPrimaryPink, width: 1),
+        return BlocProvider(
+          create: (context) => InventoryPagerCubit(),
+          child: Padding(
+            padding:
+                EdgeInsets.symmetric(horizontal: horizontalPaddingPagesDesktop),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 10),
+                Text('Account'),
+                Container(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 16.0, horizontal: 40.0),
+                  decoration: divDecoration(),
+                  child: AccountSection(),
+                ),
+                SizedBox(height: 40),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                        height: 550,
+                        width: 300,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(''),
+                          RaisedButton(
+                            color: isColor1
+                                ? Colors.grey.shade50
+                                : Colors.pink.shade50,
+                            shape: RoundedRectangleBorder(
+                              side: isColor1
+                                  ? BorderSide(color: Colors.grey, width: 1)
+                                  : BorderSide(color: kPrimaryPink, width: 1),
+                            ),
+                            // 3
+                            onPressed: () => {
+                              setState(() {
+                                isColor1 = !isColor1;
+                                //buttonSetting = 'Account';
+                              })
+                            },
+                            //decoration: divDecoration(),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(width: 10),
+                                Icon(
+                                  Icons.account_box,
+                                  color: Colors.grey,
+                                  size: 30.0,
+                                  semanticLabel:
+                                      'Text to announce in accessibility modes',
+                                ),
+                                SizedBox(width: 20),
+                                SizedBox(height: 50),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('Account',
+                                        style: CommonStyleText.txtStyle(
+                                            size: 15, weigth: bold)),
+                                    Text('Personal Information',
+                                        style:
+                                            CommonStyleText.txtStyle(size: 10)),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                          // 3
-                          onPressed: () => {
-                            setState(() {
-                              isColor1 = !isColor1;
-                              //buttonSetting = 'Account';
-                            })
-                          },
-                          //decoration: divDecoration(),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(width: 10),
-                              Icon(
-                                Icons.account_box,
-                                color: Colors.grey,
-                                size: 30.0,
-                                semanticLabel:
-                                    'Text to announce in accessibility modes',
-                              ),
-                              SizedBox(width: 20),
-                              SizedBox(height: 50),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text('Account',
-                                      style: CommonStyleText.txtStyle(
-                                          size: 15, weigth: bold)),
-                                  Text('Personal Information',
-                                      style:
-                                          CommonStyleText.txtStyle(size: 10)),
-                                ],
-                              ),
-                            ],
+                          SizedBox(height: 10),
+                          RaisedButton(
+                            color: isColor2
+                                ? Colors.grey.shade50
+                                : Colors.pink.shade50,
+                            shape: RoundedRectangleBorder(
+                              side: isColor2
+                                  ? BorderSide(color: Colors.grey, width: 1)
+                                  : BorderSide(color: kPrimaryPink, width: 1),
+                            ),
+                            onPressed: () {},
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(width: 10),
+                                Icon(
+                                  Icons.location_pin,
+                                  color: Colors.grey,
+                                  size: 30.0,
+                                  semanticLabel:
+                                      'Text to announce in accessibility modes',
+                                ),
+                                SizedBox(width: 20),
+                                SizedBox(height: 50),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('My Post',
+                                        style: CommonStyleText.txtStyle(
+                                            size: 15, weigth: bold)),
+                                    Text('Edit Or Delete Post',
+                                        style:
+                                            CommonStyleText.txtStyle(size: 10)),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
 
-                        //Post
-                        SizedBox(height: 10),
-                        RaisedButton(
-                          color: isColor2
-                              ? Colors.grey.shade50
-                              : Colors.pink.shade50,
-                          shape: RoundedRectangleBorder(
-                            side: isColor2
-                                ? BorderSide(color: Colors.grey, width: 1)
-                                : BorderSide(color: kPrimaryPink, width: 1),
+                          //Item
+                          SizedBox(height: 10),
+                          RaisedButton(
+                            color: isColor3
+                                ? Colors.grey.shade50
+                                : Colors.pink.shade50,
+                            shape: RoundedRectangleBorder(
+                              side: isColor3
+                                  ? BorderSide(color: Colors.grey, width: 1)
+                                  : BorderSide(color: kPrimaryPink, width: 1),
+                            ),
+                            onPressed: () {},
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(width: 10),
+                                Icon(
+                                  Icons.inventory_2_rounded,
+                                  color: Colors.grey,
+                                  size: 30.0,
+                                  semanticLabel:
+                                      'Text to announce in accessibility modes',
+                                ),
+                                SizedBox(width: 20),
+                                SizedBox(height: 50),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('Inventory',
+                                        style: CommonStyleText.txtStyle(
+                                            size: 15, weigth: bold)),
+                                    Text('Mga gusto/pinapahiram na...',
+                                        style:
+                                            CommonStyleText.txtStyle(size: 10)),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                          onPressed: () {
-                            isColor2 = !isColor2;
-                            buttonSetting = 'Post';
-                          },
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(width: 10),
-                              Icon(
-                                Icons.location_pin,
-                                color: Colors.grey,
-                                size: 30.0,
-                                semanticLabel:
-                                    'Text to announce in accessibility modes',
-                              ),
-                              SizedBox(width: 20),
-                              SizedBox(height: 50),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text('Post',
-                                      style: CommonStyleText.txtStyle(
-                                          size: 15, weigth: bold)),
-                                  Text('Pasabay & Pahiram post',
-                                      style:
-                                          CommonStyleText.txtStyle(size: 10)),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
 
-                        //Item
-                        SizedBox(height: 10),
-                        RaisedButton(
-                          color: isColor3
-                              ? Colors.grey.shade50
-                              : Colors.pink.shade50,
-                          shape: RoundedRectangleBorder(
-                            side: isColor3
-                                ? BorderSide(color: Colors.grey, width: 1)
-                                : BorderSide(color: kPrimaryPink, width: 1),
+                          //Settings
+                          SizedBox(height: 10),
+                          RaisedButton(
+                            color: isColor4
+                                ? Colors.grey.shade50
+                                : Colors.pink.shade50,
+                            shape: RoundedRectangleBorder(
+                              side: isColor4
+                                  ? BorderSide(color: Colors.grey, width: 1)
+                                  : BorderSide(color: kPrimaryPink, width: 1),
+                            ),
+                            onPressed: () {},
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(width: 10),
+                                Icon(
+                                  Icons.settings,
+                                  color: Colors.grey,
+                                  size: 30.0,
+                                  semanticLabel:
+                                      'Text to announce in accessibility modes',
+                                ),
+                                SizedBox(width: 20),
+                                SizedBox(height: 50),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('Settings',
+                                        style: CommonStyleText.txtStyle(
+                                            size: 15, weigth: bold)),
+                                    Text('Change or Update Profile',
+                                        style:
+                                            CommonStyleText.txtStyle(size: 10)),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                          onPressed: () {
-                            isColor3 = !isColor3;
-                            buttonSetting = 'Item';
-                          },
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(width: 10),
-                              Icon(
-                                Icons.inventory_2_rounded,
-                                color: Colors.grey,
-                                size: 30.0,
-                                semanticLabel:
-                                    'Text to announce in accessibility modes',
-                              ),
-                              SizedBox(width: 20),
-                              SizedBox(height: 50),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text('Inventory',
-                                      style: CommonStyleText.txtStyle(
-                                          size: 15, weigth: bold)),
-                                  Text('Pasabay & Pahiram item',
-                                      style:
-                                          CommonStyleText.txtStyle(size: 10)),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-
-                        //Settings
-                        SizedBox(height: 10),
-                        RaisedButton(
-                          color: isColor4
-                              ? Colors.grey.shade50
-                              : Colors.pink.shade50,
-                          shape: RoundedRectangleBorder(
-                            side: isColor4
-                                ? BorderSide(color: Colors.grey, width: 1)
-                                : BorderSide(color: kPrimaryPink, width: 1),
-                          ),
-                          onPressed: () {
-                            isColor4 = !isColor4;
-                            buttonSetting = 'Settings';
-                          },
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(width: 10),
-                              Icon(
-                                Icons.settings,
-                                color: Colors.grey,
-                                size: 30.0,
-                                semanticLabel:
-                                    'Text to announce in accessibility modes',
-                              ),
-                              SizedBox(width: 20),
-                              SizedBox(height: 50),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text('Settings',
-                                      style: CommonStyleText.txtStyle(
-                                          size: 15, weigth: bold)),
-                                  Text('Account settings',
-                                      style:
-                                          CommonStyleText.txtStyle(size: 10)),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-
-                  //About
-                  SizedBox(width: 20),
-                  //SizedBox(height: 30),
-                  Expanded(
-                    flex: 4,
-                    child: Column(
-                      children: [
-                        // Expanded(
-                        //child:
-                        SizedBox(height: 20),
-                        Container(
-                          padding: EdgeInsets.fromLTRB(16, 16, 16, 16),
-                          //padding: EdgeInsets.symmetric(vertical: 32.0, horizontal: 40.0),
-                          //padding: EdgeInsets.all(10.0),
-                          decoration: divDecoration(),
-
-                          child: Column(
-                            //crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: <Widget>[
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('Settings',
-                                      style: CommonStyleText.txtStyle(
-                                          size: 30, weigth: bold)),
-                                  Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        OutlinedButton(
-                                          onPressed: () {
-                                            changePasswordOrDiscard = 'Cancel';
-                                            editOrSave = 'Save changes';
-                                          },
-                                          child: Text(changePasswordOrDiscard),
-                                          style: OutlinedButton.styleFrom(
-                                            primary: Colors.grey,
-                                            textStyle: TextStyle(
-                                              color: kPrimaryPink,
-                                              fontSize: 15,
-                                            ),
-                                            side: BorderSide(
-                                                color: Colors.grey, width: 1),
-                                          ),
-                                        ),
-                                        SizedBox(width: 10),
-                                        OutlinedButton(
-                                          onPressed: () {
-                                            buttonSetting = 'Settings';
-                                            changePasswordOrDiscard =
-                                                'Discard changes';
-                                            editOrSave = 'Save Changes';
-                                          },
-                                          child: Text('Edit Profile'),
-                                          style: OutlinedButton.styleFrom(
-                                            primary: kPrimaryPink,
-                                            textStyle: TextStyle(
-                                              color: kPrimaryPink,
-                                              fontSize: 15,
-                                            ),
-                                            side: BorderSide(
-                                                color: kPrimaryPink, width: 1),
-                                          ),
-                                        ),
-                                      ])
-                                ],
-                              ),
-                              SettingSettings(),
-                              SizedBox(height: 20),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              )
-            ],
+                    SizedBox(width: 20),
+                    Expanded(
+                        child: SizedBox(
+                            height:500,
+                            width: 700,
+                            child: CurrentUsersPosts())),
+                    //   child:UserOverview(changePasswordOrDiscard: changePasswordOrDiscard),),
+                  ],
+                )
+              ],
+            ),
           ),
         );
       },
     ));
+  }
+}
+
+class UserOverview extends StatelessWidget {
+  const UserOverview({
+    Key? key,
+    required this.changePasswordOrDiscard,
+  }) : super(key: key);
+
+  final String changePasswordOrDiscard;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 4,
+      child: Column(
+        children: [
+          // Expanded(
+          //child:
+          SizedBox(height: 20),
+          Container(
+            padding: EdgeInsets.fromLTRB(16, 16, 16, 16),
+            decoration: divDecoration(),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Overview',
+                        style:
+                            CommonStyleText.txtStyle(size: 30, weigth: bold)),
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      OutlinedButton(
+                        onPressed: () {},
+                        child: Text(changePasswordOrDiscard),
+                        style: OutlinedButton.styleFrom(
+                          primary: Colors.grey,
+                          textStyle: TextStyle(
+                            color: kPrimaryPink,
+                            fontSize: 15,
+                          ),
+                          side: BorderSide(color: Colors.grey, width: 1),
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      OutlinedButton(
+                        onPressed: () {},
+                        child: Text('Edit Profile'),
+                        style: OutlinedButton.styleFrom(
+                          primary: kPrimaryPink,
+                          textStyle: TextStyle(
+                            color: kPrimaryPink,
+                            fontSize: 15,
+                          ),
+                          side: BorderSide(color: kPrimaryPink, width: 1),
+                        ),
+                      ),
+                    ])
+                  ],
+                ),
+                SettingSettings(),
+                SizedBox(height: 20),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -472,15 +473,6 @@ class _SettingSettingsState extends State<SettingSettings> {
                       style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
                 ],
               ),
-
-              /*
-              SizedBox(height: 10),
-              Text('Email', style: TextStyle(color: Colors.black.withOpacity(0.5), fontSize: 10)),
-              Text(email,  style: CommonStyleText.txtStyle(size: 15, weigth: bold)),
-              SizedBox(height: 10),
-
-
-               */
             ],
           )
         ],

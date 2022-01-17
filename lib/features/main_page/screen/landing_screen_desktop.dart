@@ -22,7 +22,8 @@ class _DesktopLandingState extends State<DesktopLanding> {
     // ignore: unused_local_variable
     final Size size = MediaQuery.of(context).size;
 
-    String destination = '/mainPage';
+    // String destination = '/mainPage';
+    String destination = '/userProfile';
 
     return Scaffold(
         floatingActionButton: FloatingBtnPahireAm(),
