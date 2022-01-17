@@ -4,13 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pahiream_frontend/features/main_page/features/categories/presentation/pages/category_view.dart';
 import 'package:pahiream_frontend/features/main_page/features/paged_main_content/presentation/widgets/main_content.dart';
-import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/cubit/switch_button_cubit.dart';
-import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/widgets/pahiream_switch.dart';
-import 'package:pahiream_frontend/features/main_page/screen/landing_screen.dart';
+import 'package:pahiream_frontend/features/main_page/widgets/Floating%20Action%20Button/floatingButton.dart';
 import 'package:pahiream_frontend/features/main_page/widgets/Header/header.dart';
 import 'package:pahiream_frontend/features/main_page/widgets/Header/landing_location_cubit.dart';
 import 'package:pahiream_frontend/features/profile/presentation/pages/user_profile.dart';
-import 'package:pahiream_frontend/utils/constants.dart';
 
 class DesktopLanding extends StatefulWidget {
   const DesktopLanding({Key? key}) : super(key: key);
@@ -28,6 +25,7 @@ class _DesktopLandingState extends State<DesktopLanding> {
     String destination = '/mainPage';
 
     return Scaffold(
+        floatingActionButton: FloatingBtnPahireAm(),
       body: BlocBuilder<LandingLocationCubit, bool>(
         builder: (context, mainLocation) {
             if (!mainLocation) {

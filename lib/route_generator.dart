@@ -85,7 +85,7 @@ class _CustomSplashPahireAmState extends State<CustomSplashPahireAm>
     //   var logo =  Image.asset('assets/images/logo.gif');
     var logo = Image.asset('assets/images/Vector.png');
     return AnimatedSplashScreen(
-        duration: 2000, //mili sec
+        duration: 100, //mili sec
         splash: RotationTransition(
           turns: Tween(begin: 0.0, end: 1.0).animate(_controller),
           child: logo,

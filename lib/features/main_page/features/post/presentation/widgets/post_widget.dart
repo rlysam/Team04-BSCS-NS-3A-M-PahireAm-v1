@@ -36,7 +36,7 @@ class PostWidget extends StatelessWidget {
                     title: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        PostTitle(),
+                        const PostTitle(),
                         MouseRegion(
                           cursor: SystemMouseCursors.click,
                           child: GestureDetector(

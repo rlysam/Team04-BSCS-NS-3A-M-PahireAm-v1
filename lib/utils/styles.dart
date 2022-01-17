@@ -15,3 +15,54 @@ final styleSideMenuTitle = TxtStyle()
   ..bold()
   ..letterSpacing(1.8)
   ..textColor(kPrimaryGreen);
+
+
+
+
+
+
+// example for containers/ same with "div"
+final styleCreatePostDialog = ParentStyle()
+  ..background.color(kWhite)
+  ..padding(all: 15)
+  ..maxWidth(800)
+//   ..height(600)
+//   ..border(right: 1, color: kGray)
+  ..elevation(5)
+;
+
+// example for containers/ same with "div"
+final styleFloatingActionButton = ParentStyle()
+//   ..background.color(kPrimaryGreen)
+//   ..width(400)
+//   ..width(140)
+//   ..border(right: 1, color: kGray)
+;
+
+// example for containers/ same with "div"
+final styleChatBtn = ParentStyle()
+..background.color(kPrimaryGreen)
+..elevation(3)
+..padding(all: 5)
+..maxHeight(40)
+..alignmentContent.center()
+..borderRadius(all: 10)
+  ;
+
+// example for Texts
+final styleFABFont = TxtStyle()
+  ..fontSize(24 / 1.2)
+  ..bold()
+  ..letterSpacing(1.4)
+  ..textColor(kWhite);
+
+
+// example for containers/ same with "div"
+final styleCreatePostBtn = ParentStyle()
+..background.color(kPrimaryGreen)
+..elevation(3)
+..padding(all: 5)
+..maxHeight(40)
+..alignmentContent.center()
+..borderRadius(all: 25)
+  ;
