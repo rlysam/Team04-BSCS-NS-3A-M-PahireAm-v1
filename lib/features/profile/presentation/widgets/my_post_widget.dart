@@ -60,7 +60,7 @@ class MyPost extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                IconButton(onPressed: (){
-                                deletePostById(data.post_id);
+                                deletePostByIdPahiram(data.post_id);
                                },icon: const Icon(Icons.delete)),
                                const SizedBox(width:30),
                                IconButton(onPressed: (){
