@@ -8,7 +8,7 @@ import 'package:pahiream_frontend/features/login/data/models/user.dart';
 
 deletePostById(String postID) async {
   final response = await http.post(
-    Uri.parse('http://localhost/Team04-BSCS-NS-3A-M/Login/get_user_by_email'),
+    Uri.parse('http://localhost/Team04-BSCS-NS-3A-M/Pasabay_post/deactivate_post'),
     // String to
     body: {'post_id' : postID},
   );

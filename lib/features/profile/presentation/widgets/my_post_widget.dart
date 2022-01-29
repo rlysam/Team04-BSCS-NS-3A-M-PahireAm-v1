@@ -53,7 +53,7 @@ class MyPost extends StatelessWidget {
                           children: [
                             Row(children: [
                                Txt(isPahiram?('Pahiram'):('Pasabay')),
-                               SizedBox(width:30),
+                               const SizedBox(width:30),
                                 Txt(data.type),
                             ]),
                             Row(
@@ -61,12 +61,12 @@ class MyPost extends StatelessWidget {
                                 children: [
                                IconButton(onPressed: (){
                                 deletePostById(data.post_id);
-                               },icon: Icon(Icons.delete)),
-                               SizedBox(width:30),
+                               },icon: const Icon(Icons.delete)),
+                               const SizedBox(width:30),
                                IconButton(onPressed: (){
                                 //    TODO
 
-                               },icon: Icon(Icons.edit)),
+                               },icon: const Icon(Icons.edit)),
                             ]),
                           ],
                         ),

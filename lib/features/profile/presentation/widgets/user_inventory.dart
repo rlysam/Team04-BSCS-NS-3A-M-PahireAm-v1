@@ -6,7 +6,7 @@ import 'package:pahiream_frontend/features/main_page/features/post/data/models/p
 import 'package:pahiream_frontend/features/main_page/features/post/data/models/posts_data.dart';
 import 'package:pahiream_frontend/features/main_page/features/post/presentation/cubit/pahiram_posts_cubit.dart';
 import 'package:pahiream_frontend/features/profile/presentation/widgets/cubit/user_inv_pager_cubit.dart';
-import 'package:pahiream_frontend/features/profile/presentation/widgets/my_post.dart';
+import 'package:pahiream_frontend/features/profile/presentation/widgets/my_post_widget.dart';
 
 // ! PAHIRAM POST
 class CurrentUsersPosts extends StatefulWidget {
