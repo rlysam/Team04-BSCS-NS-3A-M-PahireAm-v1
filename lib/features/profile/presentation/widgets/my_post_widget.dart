@@ -1,8 +1,12 @@
+// ignore_for_file: avoid_unnecessary_containers
+
 import 'package:division/division.dart';
 import 'package:flutter/material.dart';
 import 'package:pahiream_frontend/features/main_page/features/post/data/models/post.dart';
 import 'package:pahiream_frontend/features/profile/data/repositories/my_posts_repository.dart';
 import 'package:pahiream_frontend/utils/styles.dart';
+
+// To Do - Pahiram palang yung delete sa my_post
 
 class MyPost extends StatelessWidget {
   final Post data; 
@@ -15,6 +19,8 @@ class MyPost extends StatelessWidget {
     // Post data = Provider.of<Post>(context);
     bool isPahiram = data.rent_due.isNotEmpty;
     String title = isPahiram ? data.item : data.title;
+
+    // TODO GAWAN ng BUILDER if different UI kapag ISPAHIRAM OR  IS PASABAY
 
     return Container(
       alignment: Alignment.bottomCenter,
