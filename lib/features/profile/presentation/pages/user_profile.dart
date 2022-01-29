@@ -706,7 +706,7 @@ class LevelIndicatorSection extends StatelessWidget {
                     valueColor: AlwaysStoppedAnimation<Color>(
                         isPasabay ? kPrimaryGreen : kPrimaryPink),
                     minHeight: 10,
-                    value: 0.8,
+                    value: (50/100),
                   ),
                   Row(
                     children: [

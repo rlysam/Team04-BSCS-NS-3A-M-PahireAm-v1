@@ -19,18 +19,17 @@ class Category extends StatelessWidget {
         return MouseRegion(
           cursor: SystemMouseCursors.click,
           child: Container(
-            padding: EdgeInsets.all(6),
+            padding: const EdgeInsets.all(6),
             decoration: CommonStyleCategoryBorder.boxDecoration(
                 categoryColor: isPasabay? kPrimaryGreen: kPrimaryPink),
-            height: 100,
             child: AspectRatio(
-              aspectRatio: 3 / 2,
+              aspectRatio: 160 / 80,
               child: Center(
                 child: Column(
                   children: [
                     Container(
                       color: isPasabay? kPrimaryGreen: kPrimaryPink,
-                      child: FittedBox(
+                      child: const FittedBox(
                           fit: BoxFit.cover,
                           child: SizedBox.square(dimension: 60)),
                     ),

@@ -83,9 +83,7 @@ class _MgaPahiramState extends State<MgaPahiram> {
                     PagerWidget(),
                   ]),
                   buildCardWithData(state.postsData),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  const SizedBox( height: 20),
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                     PagerWidget(),
                   ]),
@@ -134,7 +132,7 @@ class _MgaPahiramState extends State<MgaPahiram> {
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 childAspectRatio: 5 / 4.3,
-                crossAxisSpacing: 20,
+                crossAxisSpacing: 18,
                 mainAxisSpacing: 20),
             shrinkWrap: true,
             itemCount: batchOfPosts.length,
@@ -192,9 +190,7 @@ class _MgaPasabayState extends State<MgaPasabay> {
                     PagerWidget(),
                   ]),
                   buildCardWithData(state.postsData),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  const SizedBox( height: 20),
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                     PagerWidget(),
                   ]),
@@ -210,15 +206,11 @@ class _MgaPasabayState extends State<MgaPasabay> {
   }
 
   Widget buildInitialInput() {
-    return const Center(
-      child: Text('Initial Value bobo'),
-    );
+    return const Center( child: Text('Initial Value bobo'),);
   }
 
   Widget buildLoading() {
-    return Center(
-      child: CircularProgressIndicator(),
-    );
+    return const Center( child: CircularProgressIndicator());
   }
 
   Widget buildCardWithData(PostsData postsData) {
@@ -243,7 +235,7 @@ class _MgaPasabayState extends State<MgaPasabay> {
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 childAspectRatio: 5 / 4.3,
-                crossAxisSpacing: 20,
+                crossAxisSpacing: 18,
                 mainAxisSpacing: 20),
             shrinkWrap: true,
             itemCount: batchOfPosts.length,

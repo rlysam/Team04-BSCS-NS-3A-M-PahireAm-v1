@@ -1,6 +1,7 @@
 import 'package:division/division.dart';
 import 'package:flutter/material.dart';
 import 'package:pahiream_frontend/features/main_page/features/post/data/models/post.dart';
+import 'package:pahiream_frontend/features/profile/data/repositories/my_posts_repository.dart';
 import 'package:pahiream_frontend/utils/styles.dart';
 
 class MyPost extends StatelessWidget {
@@ -58,9 +59,14 @@ class MyPost extends StatelessWidget {
                             Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                               IconButton(onPressed: (){},icon: Icon(Icons.delete)),
+                               IconButton(onPressed: (){
+                                deletePostById(data.post_id);
+                               },icon: Icon(Icons.delete)),
                                SizedBox(width:30),
-                               IconButton(onPressed: (){},icon: Icon(Icons.edit)),
+                               IconButton(onPressed: (){
+                                //    TODO
+
+                               },icon: Icon(Icons.edit)),
                             ]),
                           ],
                         ),

@@ -6,15 +6,19 @@ import 'package:meta/meta.dart';
 
 class Post {
   final String post_id;
+
+// OP details
   final String user_id;
   final String first_name;
   final String last_name;
   final String points;
+
+// ssytem details
   final String time_posted;
   final String date;
+
   final String image_location;
   final String status;
-
 
   //   User INPUT
   final String title;
@@ -35,6 +39,9 @@ class Post {
   final String item;
   final String item_id;
   final String rent_due;
+
+
+
 
   Post({
     required this.post_id,

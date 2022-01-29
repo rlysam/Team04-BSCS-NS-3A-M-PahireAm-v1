@@ -1,9 +1,5 @@
-// ignore_for_file: prefer_const_constructors
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pahiream_frontend/features/main_page/features/post/features/create_post/presentation/widgets/create_post_widget.dart';
 import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/cubit/switch_button_cubit.dart';
 import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/widgets/pahiream_switch.dart';
 import 'package:pahiream_frontend/features/main_page/widgets/Header/landing_location_cubit.dart';
@@ -25,6 +21,19 @@ class _MyDesktopHeaderState extends State<MyDesktopHeader> {
     return BlocBuilder<LandingLocationCubit, bool>(
       builder: (context, mainLocation) {
         var data = context.read<LandingLocationCubit>();
+        var inputDecoration = InputDecoration(
+            contentPadding: const EdgeInsets.fromLTRB(15, 5, 11, 5),
+            // labelText: '',
+            hintText: 'Search',
+            filled: true,
+            fillColor: const Color(0xFFEDEEF2),
+            enabledBorder: (OutlineInputBorder(
+                borderSide: const BorderSide(width: 1, color: Colors.grey),
+                borderRadius: BorderRadius.circular(10))),
+                suffixIcon: const Icon(Icons.search_outlined),
+            border: (OutlineInputBorder( borderSide: const BorderSide(width: 1, color: Colors.grey),
+                borderRadius: BorderRadius.circular(10))));
+
         return Container(
             height: 60,
             alignment: const Alignment(0, 0),
@@ -57,7 +66,7 @@ class _MyDesktopHeaderState extends State<MyDesktopHeader> {
                                           ('assets/images/Vector.png')));
                                 },
                               ),
-                              SizedBox(width: 10),
+                              const SizedBox(width: 10),
                               Text(
                                 'Pahire',
                                 style: CommonStyleText.txtStyle(
@@ -72,19 +81,13 @@ class _MyDesktopHeaderState extends State<MyDesktopHeader> {
                                     size: 30,
                                     weigth: bold),
                               ),
-                              SizedBox(width: 48),
+                              const SizedBox(width: 48),
                               SizedBox(
                                 width: 300,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    TextFormField(
-                                      cursorColor: kDark,
-                                      decoration:
-                                          CommonStyleInput.textFieldStyle(
-                                              myIcon: Icons.search,
-                                              hasIcon: true),
-                                    )
+                                    TextFormField( cursorColor: kDark, decoration: inputDecoration)
                                   ],
                                 ),
                               )
@@ -94,12 +97,12 @@ class _MyDesktopHeaderState extends State<MyDesktopHeader> {
                       ),
                       Row(
                         children: [
-                          SwitchPahireAm(),
-                          SizedBox(width: 30),
+                          const SwitchPahireAm(),
+                          const SizedBox(width: 30),
                           GestureDetector(
-                              onTap: (){
-                                  data.goToUserProfile();
-                              },
+                            onTap: () {
+                              data.goToUserProfile();
+                            },
                             child: MouseRegion(
                                 cursor: SystemMouseCursors.click,
                                 child: ProfilePicture(

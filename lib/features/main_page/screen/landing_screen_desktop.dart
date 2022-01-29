@@ -79,17 +79,17 @@ class LandingPageUI extends StatefulWidget {
 class _LandingPageUIState extends State<LandingPageUI> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 400, vertical: 50),
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(height: 138, child: CategoryBuilder()),
-            SizedBox(height: 20),
-            MainContent(),
-          ],
-        ),
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(height: 50),
+          SizedBox(height: 160/1.5, child: CategoryBuilder()),
+          SizedBox(height: 20),
+          Padding( padding: EdgeInsets.symmetric(horizontal: 400),
+            child: MainContent(),
+          ),
+        ],
       ),
     );
   }
