@@ -3,8 +3,8 @@ import 'package:bloc/bloc.dart';
 
 // NOTE No State needed
 
-class PagerCubit extends Cubit<int> {
-  PagerCubit() : super(1); //Page 1 muna
+class InventoryPagerCubit extends Cubit<int> {
+  InventoryPagerCubit() : super(1); //Page 1 muna
 
   void nextPage() => emit(state + 1);
   void prevPage() {

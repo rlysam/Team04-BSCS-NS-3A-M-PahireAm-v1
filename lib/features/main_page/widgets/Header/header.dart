@@ -11,12 +11,14 @@ class AppHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveLayout(
       desktopBody: Column(
-        children: [
+        children: const [
+          SizedBox(height: 10),
           MyDesktopHeader(),
-            Divider(height: 1,thickness: 1,),
+          SizedBox(height: 10),
+          Divider(height: 1, thickness: 1),
         ],
       ),
-      tabletBody: MyTabletHeader(),
+      tabletBody: const MyTabletHeader(),
     );
   }
 }

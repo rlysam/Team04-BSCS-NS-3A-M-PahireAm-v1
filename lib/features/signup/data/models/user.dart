@@ -1,5 +1,6 @@
 // model
 class User {
+    //! USER ID = OK
   final String firstName;
   final String lastName;
   final String email;
@@ -31,7 +32,7 @@ class User {
       points: json['points'],
       userType: json['user_type'],
       status: json['status'],
-      tupid: json['tup_id'],
+      tupid: json['tup_id'], //! Dito meron na
       imgloc: json['image_location'],
     );
   }

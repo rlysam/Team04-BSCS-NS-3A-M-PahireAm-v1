@@ -142,6 +142,19 @@ class _LoginPageState extends State<LoginPage> {
                         //pag correct, lilipat ng screen, pag hindi, dito lang for now
                         _futureUser = fetchUser(_ctrlUserEmail.text,
                             _ctrlUserPass.text, wrongPass, notFound);
+                        
+                        if (_futureUser!=null) {
+                            // ! lagay sa Cubit yung future User
+                            _futureUser?.then((value) {
+                            //   value.
+                              
+                            });
+
+                            // TODO gawin lagay sa argument yung user details
+                            Navigator.of(context).pushNamed('/landingPage');
+
+                        } else {
+                        }
                       },
                       child: Text(
                         'Login',
