@@ -33,12 +33,6 @@ class _CreatePostDialogState extends State<CreatePostDialog> {
     _textFieldControllers[4].dispose();
   }
 
-
-
-
-
-
-
   FilePickerResult? pickedImage;
   Uint8List? logoBase64;
 
@@ -76,7 +70,7 @@ class _CreatePostDialogState extends State<CreatePostDialog> {
     String datetime = DateTime.now().toString();
 
     String uploadurl =
-        "http://localhost/Team04-BSCS-NS-3A-M/Pahiram_chat/send_message";
+        "http://localhost/Team04-BSCS-NS-3A-M/Pasabay_post/create_post";
     //dont use http://localhost , because emulator don't get that address
     //insted use your local IP address or use live URL
     //hit "ipconfig" in windows or "ip a" in linux to get you local IP
@@ -88,27 +82,24 @@ class _CreatePostDialogState extends State<CreatePostDialog> {
       //convert file image to Base64 encoding
       var s = "Seller Fname";
       var response = await http.post(Uri.parse(uploadurl), body: {
+        'user_id': "1", // Laging 1
 
-      'user_id': "100", // Laging 1
-      
-      'first_name': s,
-      'last_name': "Seller Lname",
+        'first_name': s,
+        'last_name': "Seller Lname",
 
-      'points': "2",
-      'time_posted': datetime,
-      'date': datetime,
+        'points': "2",
+        'time_posted': datetime,
+        'date': datetime,
 
-      'status': 'Active',
+        'title': title,
+        'type': type, //Pahiram Pasabay
 
-      'title': title,
-      'type': type, //Pahiram Pasabay
+        'location': location,
+        //'destination': destination,
+        //'quantity': quantity,
 
-      'location': location,
-      'destination': destination,
-      'quantity': quantity,
-
-      'rate': rate,
-      'image_location': {'product_image/'+datetime+'/'+s}.toString(),
+        'rate': rate,
+        'image_location': {'product_image/' + datetime + '/' + s}.toString(),
 
         'image': baseimage,
         'image_name': pickedImage!.names.elementAt(0).toString(),
@@ -137,12 +128,6 @@ class _CreatePostDialogState extends State<CreatePostDialog> {
       //there is error during converting file image to base64 encoding.
     }
   }
-
-
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -281,13 +266,13 @@ class _CreatePostDialogState extends State<CreatePostDialog> {
                                 List<String> data = [];
 
                                 createPost(
-                               _textFieldControllers[0].text  ,
+                                  _textFieldControllers[0].text,
                                   isPasabay ? 'Pasabay' : 'Pahiram',
-                               _textFieldControllers[1].text  ,
-                               _textFieldControllers[2].text  ,
+                                  _textFieldControllers[1].text,
+                                  _textFieldControllers[2].text,
                                   '1',
-                               _textFieldControllers[3].text  ,
-                                //   image_location,
+                                  _textFieldControllers[3].text,
+                                  //   image_location,
                                 );
                                 // Wala lang destination yung Pahiram
                                 // TODO  --- Call repository to send all these data to backend
