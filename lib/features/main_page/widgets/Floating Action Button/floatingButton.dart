@@ -1,8 +1,11 @@
 // ignore: file_names
+import 'dart:html';
+
 import 'package:division/division.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pahiream_frontend/features/main_page/features/chat/widget/CustomChatWidget.dart';
+import 'package:pahiream_frontend/features/main_page/features/chat/widget/custom_chat_widget.dart';
+import 'package:pahiream_frontend/features/main_page/features/chat/widget/offer_widget.dart';
 import 'package:pahiream_frontend/features/main_page/features/post/features/create_post/presentation/widgets/create_post_widget.dart';
 import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/cubit/switch_button_cubit.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
@@ -72,7 +75,8 @@ class ChatButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return 
+    GestureDetector(
         onTap: () {
           showGeneralDialog(
             barrierLabel: "Label",
@@ -86,7 +90,14 @@ class ChatButton extends StatelessWidget {
                 child: Container(
                   height: 600,
                   width: 400,
-                  child: const SizedBox.expand(child: MyPopupChat()),
+                  child: Material(
+                    child: ListView(
+                        children: [
+                   OfferWidget(),
+                   CustomChatWidget(),
+                        ],
+                    ),
+                  ),
                   margin: const EdgeInsets.only(bottom: 50, left: 12, right: 12),
                   decoration: BoxDecoration(
                     color: Colors.white,

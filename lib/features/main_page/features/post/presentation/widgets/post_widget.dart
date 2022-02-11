@@ -68,6 +68,7 @@ class PostWidget extends StatelessWidget {
                               child: GestureDetector(
                                   onTap: () {
                                     print('\n\nSino kakausapin mo gagu');
+                                    print(data.image_location);
                                   },
                                   child: Icon(Icons.mode_comment_outlined)),
                             )
@@ -182,7 +183,7 @@ class PostTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     Post data = Provider.of<Post>(context);
     bool isPahiram = data.rent_due.isNotEmpty;
-    String title = isPahiram ? data.item : data.title;
+    String title =  data.title;
     return Text(
       title,
       style: CommonStyleText.txtStyle(size: 16, weigth: bold),

@@ -36,87 +36,83 @@ class Post {
   final String participant_first_name;
   final String participant_last_name;
 
-  final String item;
-  final String item_id;
+//   final String item;
+//   final String item_id;
+
   final String rent_due;
-
-
-
 
   Post({
     required this.post_id,
     required this.user_id,
-    required this.title,
     required this.first_name,
     required this.last_name,
-    required this.type,
     required this.points,
+    required this.time_posted,
+    required this.date,
+    required this.image_location,
+    required this.status,
+    required this.title,
+    required this.type,
     required this.location,
     required this.destination,
     required this.quantity,
     required this.rate,
-    required this.time_posted,
-    required this.delivery_time,
-    required this.date,
     required this.tags,
-    required this.image_location,
-    required this.status,
+    required this.delivery_time,
     required this.participant_id,
     required this.participant_first_name,
     required this.participant_last_name,
-    required this.item,
-    required this.item_id,
     required this.rent_due,
   });
+
+
+
+
 
   Post copyWith({
     String? post_id,
     String? user_id,
-    String? title,
     String? first_name,
     String? last_name,
-    String? type,
     String? points,
+    String? time_posted,
+    String? date,
+    String? image_location,
+    String? status,
+    String? title,
+    String? type,
     String? location,
     String? destination,
     String? quantity,
     String? rate,
-    String? time_posted,
-    String? delivery_time,
-    String? date,
     String? tags,
-    String? image_location,
-    String? status,
+    String? delivery_time,
     String? participant_id,
     String? participant_first_name,
     String? participant_last_name,
-    String? item,
-    String? item_id,
     String? rent_due,
   }) {
     return Post(
       post_id: post_id ?? this.post_id,
       user_id: user_id ?? this.user_id,
-      title: title ?? this.title,
       first_name: first_name ?? this.first_name,
       last_name: last_name ?? this.last_name,
-      type: type ?? this.type,
       points: points ?? this.points,
+      time_posted: time_posted ?? this.time_posted,
+      date: date ?? this.date,
+      image_location: image_location ?? this.image_location,
+      status: status ?? this.status,
+      title: title ?? this.title,
+      type: type ?? this.type,
       location: location ?? this.location,
       destination: destination ?? this.destination,
       quantity: quantity ?? this.quantity,
       rate: rate ?? this.rate,
-      time_posted: time_posted ?? this.time_posted,
-      delivery_time: delivery_time ?? this.delivery_time,
-      date: date ?? this.date,
       tags: tags ?? this.tags,
-      image_location: image_location ?? this.image_location,
-      status: status ?? this.status,
+      delivery_time: delivery_time ?? this.delivery_time,
       participant_id: participant_id ?? this.participant_id,
       participant_first_name: participant_first_name ?? this.participant_first_name,
       participant_last_name: participant_last_name ?? this.participant_last_name,
-      item: item ?? this.item,
-      item_id: item_id ?? this.item_id,
       rent_due: rent_due ?? this.rent_due,
     );
   }
@@ -125,26 +121,24 @@ class Post {
     return {
       'post_id': post_id,
       'user_id': user_id,
-      'title': title,
       'first_name': first_name,
       'last_name': last_name,
-      'type': type,
       'points': points,
+      'time_posted': time_posted,
+      'date': date,
+      'image_location': image_location,
+      'status': status,
+      'title': title,
+      'type': type,
       'location': location,
       'destination': destination,
       'quantity': quantity,
       'rate': rate,
-      'time_posted': time_posted,
-      'delivery_time': delivery_time,
-      'date': date,
       'tags': tags,
-      'image_location': image_location,
-      'status': status,
+      'delivery_time': delivery_time,
       'participant_id': participant_id,
       'participant_first_name': participant_first_name,
       'participant_last_name': participant_last_name,
-      'item': item,
-      'item_id': item_id,
       'rent_due': rent_due,
     };
   }
@@ -153,26 +147,24 @@ class Post {
     return Post(
       post_id: map['post_id'] ?? '',
       user_id: map['user_id'] ?? '',
-      title: map['title'] ?? '',
       first_name: map['first_name'] ?? '',
       last_name: map['last_name'] ?? '',
-      type: map['type'] ?? '',
       points: map['points'] ?? '',
+      time_posted: map['time_posted'] ?? '',
+      date: map['date'] ?? '',
+      image_location: map['image_location'] ?? '',
+      status: map['status'] ?? '',
+      title: map['title'] ?? '',
+      type: map['type'] ?? '',
       location: map['location'] ?? '',
       destination: map['destination'] ?? '',
       quantity: map['quantity'] ?? '',
       rate: map['rate'] ?? '',
-      time_posted: map['time_posted'] ?? '',
-      delivery_time: map['delivery_time'] ?? '',
-      date: map['date'] ?? '',
       tags: map['tags'] ?? '',
-      image_location: map['image_location'] ?? '',
-      status: map['status'] ?? '',
+      delivery_time: map['delivery_time'] ?? '',
       participant_id: map['participant_id'] ?? '',
       participant_first_name: map['participant_first_name'] ?? '',
       participant_last_name: map['participant_last_name'] ?? '',
-      item: map['item'] ?? '',
-      item_id: map['item_id'] ?? '',
       rent_due: map['rent_due'] ?? '',
     );
   }
@@ -183,7 +175,7 @@ class Post {
 
   @override
   String toString() {
-    return 'Weather(post_id: $post_id, user_id: $user_id, title: $title, first_name: $first_name, last_name: $last_name, type: $type, points: $points, location: $location, destination: $destination, quantity: $quantity, rate: $rate, time_posted: $time_posted, delivery_time: $delivery_time, date: $date, tags: $tags, image_location: $image_location, status: $status, participant_id: $participant_id, participant_first_name: $participant_first_name, participant_last_name: $participant_last_name, item: $item, item_id: $item_id, rent_due: $rent_due)';
+    return 'Post(post_id: $post_id, user_id: $user_id, first_name: $first_name, last_name: $last_name, points: $points, time_posted: $time_posted, date: $date, image_location: $image_location, status: $status, title: $title, type: $type, location: $location, destination: $destination, quantity: $quantity, rate: $rate, tags: $tags, delivery_time: $delivery_time, participant_id: $participant_id, participant_first_name: $participant_first_name, participant_last_name: $participant_last_name, rent_due: $rent_due)';
   }
 
   @override
@@ -193,26 +185,24 @@ class Post {
     return other is Post &&
       other.post_id == post_id &&
       other.user_id == user_id &&
-      other.title == title &&
       other.first_name == first_name &&
       other.last_name == last_name &&
-      other.type == type &&
       other.points == points &&
+      other.time_posted == time_posted &&
+      other.date == date &&
+      other.image_location == image_location &&
+      other.status == status &&
+      other.title == title &&
+      other.type == type &&
       other.location == location &&
       other.destination == destination &&
       other.quantity == quantity &&
       other.rate == rate &&
-      other.time_posted == time_posted &&
-      other.delivery_time == delivery_time &&
-      other.date == date &&
       other.tags == tags &&
-      other.image_location == image_location &&
-      other.status == status &&
+      other.delivery_time == delivery_time &&
       other.participant_id == participant_id &&
       other.participant_first_name == participant_first_name &&
       other.participant_last_name == participant_last_name &&
-      other.item == item &&
-      other.item_id == item_id &&
       other.rent_due == rent_due;
   }
 
@@ -220,26 +210,24 @@ class Post {
   int get hashCode {
     return post_id.hashCode ^
       user_id.hashCode ^
-      title.hashCode ^
       first_name.hashCode ^
       last_name.hashCode ^
-      type.hashCode ^
       points.hashCode ^
+      time_posted.hashCode ^
+      date.hashCode ^
+      image_location.hashCode ^
+      status.hashCode ^
+      title.hashCode ^
+      type.hashCode ^
       location.hashCode ^
       destination.hashCode ^
       quantity.hashCode ^
       rate.hashCode ^
-      time_posted.hashCode ^
-      delivery_time.hashCode ^
-      date.hashCode ^
       tags.hashCode ^
-      image_location.hashCode ^
-      status.hashCode ^
+      delivery_time.hashCode ^
       participant_id.hashCode ^
       participant_first_name.hashCode ^
       participant_last_name.hashCode ^
-      item.hashCode ^
-      item_id.hashCode ^
       rent_due.hashCode;
   }
 }

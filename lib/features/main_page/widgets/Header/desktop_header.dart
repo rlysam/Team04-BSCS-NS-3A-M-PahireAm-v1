@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/cubit/switch_button_cubit.dart';
 import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/widgets/pahiream_switch.dart';
+import 'package:pahiream_frontend/features/main_page/widgets/Header/features/notification_list_widget/presentation/widgets/notification_area.dart';
 import 'package:pahiream_frontend/features/main_page/widgets/Header/landing_location_cubit.dart';
 import 'package:pahiream_frontend/features/profile/presentation/pages/user_profile.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
@@ -30,8 +31,9 @@ class _MyDesktopHeaderState extends State<MyDesktopHeader> {
             enabledBorder: (OutlineInputBorder(
                 borderSide: const BorderSide(width: 1, color: Colors.grey),
                 borderRadius: BorderRadius.circular(10))),
-                suffixIcon: const Icon(Icons.search_outlined),
-            border: (OutlineInputBorder( borderSide: const BorderSide(width: 1, color: Colors.grey),
+            suffixIcon: const Icon(Icons.search_outlined),
+            border: (OutlineInputBorder(
+                borderSide: const BorderSide(width: 1, color: Colors.grey),
                 borderRadius: BorderRadius.circular(10))));
 
         return Container(
@@ -87,7 +89,9 @@ class _MyDesktopHeaderState extends State<MyDesktopHeader> {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    TextFormField( cursorColor: kDark, decoration: inputDecoration)
+                                    TextFormField(
+                                        cursorColor: kDark,
+                                        decoration: inputDecoration)
                                   ],
                                 ),
                               )
@@ -97,12 +101,12 @@ class _MyDesktopHeaderState extends State<MyDesktopHeader> {
                       ),
                       Row(
                         children: [
+                          //   ! BELL ICON Notification
+                          const NotificationArea(),
                           const SwitchPahireAm(),
                           const SizedBox(width: 30),
                           GestureDetector(
-                            onTap: () {
-                              data.goToUserProfile();
-                            },
+                            onTap: () => data.goToUserProfile(),
                             child: MouseRegion(
                                 cursor: SystemMouseCursors.click,
                                 child: ProfilePicture(

@@ -7,6 +7,7 @@ import 'package:pahiream_frontend/utils/constants.dart';
 import 'package:pahiream_frontend/utils/styles.dart';
 
 class CreatePostDialog extends StatefulWidget {
+//   TODO ito lagay yung update post
   const CreatePostDialog({Key? key}) : super(key: key);
 
   @override
@@ -71,6 +72,8 @@ class _CreatePostDialogState extends State<CreatePostDialog> {
                                     height: 2, color: Colors.deepPurpleAccent),
                                 onChanged: (newType) {
                                   setState(() => dropdownValue = newType!);
+                                // TODO 
+                                print('\n'+newType!);
                                   // !pano ma capture 'tong Type
                                   // For repository
                                   // typeContext.read<TypeCubit>().changeType(newType!);
@@ -79,6 +82,7 @@ class _CreatePostDialogState extends State<CreatePostDialog> {
                                   isPasabay ? 'Courier' : 'Rentor',
                                   isPasabay ? 'Request' : 'Rentee'
                                 ].map<DropdownMenuItem<String>>((String value) {
+                                  
                                   return DropdownMenuItem<String>(
                                     value: value,
                                     child: Text(value),

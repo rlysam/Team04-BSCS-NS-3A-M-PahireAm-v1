@@ -18,7 +18,7 @@ class MyPost extends StatelessWidget {
 
     // Post data = Provider.of<Post>(context);
     bool isPahiram = data.rent_due.isNotEmpty;
-    String title = isPahiram ? data.item : data.title;
+    String title =  data.title;
 
     // TODO GAWAN ng BUILDER if different UI kapag ISPAHIRAM OR  IS PASABAY
 

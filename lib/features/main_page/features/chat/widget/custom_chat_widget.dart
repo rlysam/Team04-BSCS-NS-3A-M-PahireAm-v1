@@ -2,24 +2,25 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/date_symbol_data_local.dart';
 import 'package:mime/mime.dart';
 import 'package:open_file/open_file.dart';
+import 'package:pahiream_frontend/features/main_page/features/chat/widget/offer_widget.dart';
 import 'package:uuid/uuid.dart';
 
-class MyPopupChat extends StatefulWidget {
-  const MyPopupChat({Key? key}) : super(key: key);
+class CustomChatWidget extends StatefulWidget {
+//   TODO
+
+  const CustomChatWidget({Key? key}) : super(key: key);
 
   @override
-  State<MyPopupChat> createState() => _MyPopupChatState();
+  State<CustomChatWidget> createState() => _CustomChatWidgetState();
 }
 
-class _MyPopupChatState extends State<MyPopupChat> {
+class _CustomChatWidgetState extends State<CustomChatWidget> {
   List<types.Message> _messages = [];
   final _user = const types.User(id: '06c33e8b-e835-4736-80f4-63f44b66666c');
 
@@ -170,13 +171,19 @@ class _MyPopupChatState extends State<MyPopupChat> {
 
   @override
   Widget build(BuildContext context) {
-    return Chat(
-      messages: _messages,
-      onAttachmentPressed: _handleAtachmentPressed,
-      onMessageTap: _handleMessageTap,
-      onPreviewDataFetched: _handlePreviewDataFetched,
-      onSendPressed: _handleSendPressed,
-      user: _user,
+    return Material(
+      child: Container(
+        width: 300,
+        height: 500,
+        child: Chat(
+          messages: _messages,
+          onAttachmentPressed: _handleAtachmentPressed,
+          onMessageTap: _handleMessageTap,
+          onPreviewDataFetched: _handlePreviewDataFetched,
+          onSendPressed: _handleSendPressed,
+          user: _user,
+        ),
+      ),
     );
   }
 }
