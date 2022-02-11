@@ -82,9 +82,9 @@ class _LandingPageUIState extends State<LandingPageUI> {
     return SingleChildScrollView(
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        children: [
+        children: const [
           SizedBox(height: 50),
-          SizedBox(height: 160/1.5, child: CategoryBuilder()),
+        //   SizedBox(height: 160/1.5, child: CategoryBuilder()),
           SizedBox(height: 20),
           Padding( padding: EdgeInsets.symmetric(horizontal: 400),
             child: MainContent(),

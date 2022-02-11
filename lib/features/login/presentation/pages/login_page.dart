@@ -144,7 +144,15 @@ class _LoginPageState extends State<LoginPage> {
                             _ctrlUserPass.text, wrongPass, notFound);
                         
                         if (_futureUser!=null) {
+                            // ! lagay sa Cubit yung future User
+                            _futureUser?.then((value) {
+                            //   value.
+                              
+                            });
+
+                            // TODO gawin lagay sa argument yung user details
                             Navigator.of(context).pushNamed('/landingPage');
+
                         } else {
                         }
                       },

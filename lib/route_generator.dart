@@ -13,7 +13,8 @@ class RouteGenerator {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) {
-          return const CustomSplashPahireAm(child: LandingPage());
+        //   return const CustomSplashPahireAm(child: LandingPage());
+          return const LoginPage();
         });
       case '/loginPage':
         return MaterialPageRoute(builder: (_) => const LoginPage());
@@ -22,9 +23,21 @@ class RouteGenerator {
       // ! sam ganito yung sa Landing page... pass _futureUser as argument
       case '/landingPage':
         // Validation of correct data type
-        if (args is String) {
-          return MaterialPageRoute(builder: (_) => const LandingPage());
-        }
+
+        return MaterialPageRoute(builder: (_) {
+          return const CustomSplashPahireAm(child: LandingPage());
+        //   return const LoginPage();
+        });
+
+        
+
+
+        // if (args is String) {
+        //   return MaterialPageRoute(builder: (_) {
+        //     return const LandingPage();
+        //   });
+        // }
+
         // If args is not of the correct type, return an error page.
         // You can also throw an exception while in development.
         return _errorRoute();

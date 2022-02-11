@@ -79,8 +79,10 @@ class Post {
     String? date,
     String? image_location,
     String? status,
+
     String? title,
     String? type,
+
     String? location,
     String? destination,
     String? quantity,
@@ -118,7 +120,8 @@ class Post {
   }
 
   Map<String, dynamic> toMap() {
-    return {
+    return 
+    {
       'post_id': post_id,
       'user_id': user_id,
       'first_name': first_name,
