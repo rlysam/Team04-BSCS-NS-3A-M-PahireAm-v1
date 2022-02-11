@@ -1,9 +1,12 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
+import 'package:http/http.dart' as http;
 import 'package:division/division.dart';
-import 'package:bloc/bloc.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pahiream_frontend/features/main_page/features/post/data/datasources/create_post.dart';
-import 'package:pahiream_frontend/features/main_page/features/post/data/models/post.dart';
 import 'package:pahiream_frontend/features/main_page/features/switch_button/presentation/cubit/switch_button_cubit.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 import 'package:pahiream_frontend/utils/styles.dart';
@@ -29,6 +32,117 @@ class _CreatePostDialogState extends State<CreatePostDialog> {
     _textFieldControllers[3].dispose();
     _textFieldControllers[4].dispose();
   }
+
+
+
+
+
+
+
+  FilePickerResult? pickedImage;
+  Uint8List? logoBase64;
+
+  void chooseImage() async {
+    pickedImage = await FilePicker.platform.pickFiles();
+
+    if (pickedImage != null) {
+      try {
+        setState(() {
+          logoBase64 = pickedImage!.files.first.bytes;
+          print('\n\n\n\n\n');
+          print('FileName:::: ');
+          print(pickedImage!.names.elementAt(0).toString());
+          print('\n\n\n\n\n');
+        });
+      } catch (err) {
+        print(err);
+      }
+    } else {
+      print('No Image Selected');
+    }
+  }
+
+  Future<void> createPost(
+    String? title,
+    String? type,
+    String? location,
+    String? destination,
+    String? quantity,
+    String? rate,
+    // String? image_location,
+  ) async {
+    //show your own loading or progressing code here
+
+    String datetime = DateTime.now().toString();
+
+    String uploadurl =
+        "http://localhost/Team04-BSCS-NS-3A-M/Pahiram_chat/send_message";
+    //dont use http://localhost , because emulator don't get that address
+    //insted use your local IP address or use live URL
+    //hit "ipconfig" in windows or "ip a" in linux to get you local IP
+
+    try {
+      //   List<int> imageBytes = logoBase64.readAsBytesSync();
+      //   String baseimage = base64Encode(imageBytes);
+      String baseimage = base64Encode(logoBase64!);
+      //convert file image to Base64 encoding
+      var s = "Seller Fname";
+      var response = await http.post(Uri.parse(uploadurl), body: {
+
+      'user_id': "100", // Laging 1
+      
+      'first_name': s,
+      'last_name': "Seller Lname",
+
+      'points': "2",
+      'time_posted': datetime,
+      'date': datetime,
+
+      'status': 'Active',
+
+      'title': title,
+      'type': type, //Pahiram Pasabay
+
+      'location': location,
+      'destination': destination,
+      'quantity': quantity,
+
+      'rate': rate,
+      'image_location': {'product_image/'+datetime+'/'+s}.toString(),
+
+        'image': baseimage,
+        'image_name': pickedImage!.names.elementAt(0).toString(),
+        // 'chat_type': 'image',
+        // 'post_id': "74", // sample lng to
+        // 'user_id': "1", //sample lang din to
+        // 'palagay dito yung filetype kung di kaya filename kung di kaya file path'
+      });
+
+      if (response.statusCode == 200) {
+        var jsondata = json.decode(response.body); //decode json data
+        if (jsondata["error"]) {
+          //check error sent from server
+          print(jsondata["msg"]);
+          //if error return from server, show message from server
+        } else {
+          print("Upload successful");
+        }
+      } else {
+        print("Error during connection to server");
+        //there is error during connecting to server,
+        //status code might be 404 = url not found
+      }
+    } catch (e) {
+      print("Error during converting to Base64");
+      //there is error during converting file image to base64 encoding.
+    }
+  }
+
+
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -160,17 +274,20 @@ class _CreatePostDialogState extends State<CreatePostDialog> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           ElevatedButton(
+                              onPressed: () => chooseImage(),
+                              child: const Txt('Upload Image')),
+                          ElevatedButton(
                               onPressed: () {
                                 List<String> data = [];
 
                                 createPost(
-                                  sam,
-                                  type,
-                                  location,
-                                  destination,
-                                  quantity,
-                                  rate,
-                                  image_location,
+                               _textFieldControllers[0].text  ,
+                                  isPasabay ? 'Pasabay' : 'Pahiram',
+                               _textFieldControllers[1].text  ,
+                               _textFieldControllers[2].text  ,
+                                  '1',
+                               _textFieldControllers[3].text  ,
+                                //   image_location,
                                 );
                                 // Wala lang destination yung Pahiram
                                 // TODO  --- Call repository to send all these data to backend
