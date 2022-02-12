@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pahiream_frontend/features/main_page/features/chat/widget/offer_widget.dart';
 import 'package:pahiream_frontend/features/main_page/features/post/data/models/post.dart';
 import 'package:pahiream_frontend/utils/constants.dart';
 import 'package:pahiream_frontend/widgets/global_widgets.dart';
@@ -67,8 +68,8 @@ class PostWidget extends StatelessWidget {
                               cursor: SystemMouseCursors.click,
                               child: GestureDetector(
                                   onTap: () {
-                                    print('\n\nSino kakausapin mo gagu');
-                                    print(data.image_location);
+                                    // print(data.image_location);
+                                    OfferWidget(data: data);
                                   },
                                   child: Icon(Icons.mode_comment_outlined)),
                             )
