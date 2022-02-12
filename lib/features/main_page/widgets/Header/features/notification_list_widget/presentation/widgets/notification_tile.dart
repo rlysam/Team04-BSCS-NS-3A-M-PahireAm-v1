@@ -3,8 +3,8 @@ import 'package:pahiream_frontend/features/main_page/widgets/Header/features/not
 
 class CustomNotificationWidget extends StatelessWidget {
 // TODO After magawa nung widget
-  final Request data;
-  const CustomNotificationWidget({Key? key, required this.data}) : super(key: key);
+//   final Request data;
+  const CustomNotificationWidget({Key? key, }) : super(key: key);
 
 
   @override
@@ -16,13 +16,12 @@ class CustomNotificationWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
-              children: [
-                Text('Request ID: ${data.request_id}'),
-                Text('First Name: ${data.first_name}'),
-                Text('Last Name: ${data.last_name}'),
+              children: const [
+                Text('Request ID: '),
+                Text('Last Name: '),
               ],
             ),
-            Text('OFFER: PHP ${data.rate}'),
+            Text('OFFER: PHP 120.00'),
           ],
         ),
         subtitle: Row(
