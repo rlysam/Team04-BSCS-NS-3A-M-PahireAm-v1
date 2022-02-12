@@ -19,9 +19,8 @@ class OfferWidget extends StatelessWidget {
         // Uri.parse('http://localhost/Team04-BSCS-NS-3A-M/Register/insert_user'),
         //yung function na hahanapin si x user using email and pass
         Uri.parse(
-            'http://localhost/Team04-BSCS-NS-3A-M/Login/get_user_by_email'),
+            'http://localhost/Team04-BSCS-NS-3A-M/pahiram_post/send_request'),
         body: {
-
           "post_id": data.post_id,
           "poster_id": data.user_id,
 
@@ -34,9 +33,9 @@ class OfferWidget extends StatelessWidget {
           "rate": data.rate,
           "status": data.status,
 
-        //   "location": data.location,
-        //   "destination": data.destination,
-        //   "quantity": data.quantity,
+          //   "location": data.location,
+          //   "destination": data.destination,
+          //   "quantity": data.quantity,
         });
   }
 
@@ -81,10 +80,11 @@ class OfferWidget extends StatelessWidget {
                 ],
               ),
             ),
-            ElevatedButton(onPressed: () {
-sendOffer(data);
-
-            }, child: const Text('Send Offer')),
+            ElevatedButton(
+                onPressed: () {
+                  sendOffer(data);
+                },
+                child: const Text('Send Offer')),
           ],
         ),
       ),

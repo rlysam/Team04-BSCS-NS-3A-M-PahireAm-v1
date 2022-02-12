@@ -70,7 +70,7 @@ class _CreatePostDialogState extends State<CreatePostDialog> {
     String datetime = DateTime.now().toString();
 
     String uploadurl =
-        "http://localhost/Team04-BSCS-NS-3A-M/Pasabay_post/create_post";
+        "http://localhost/Team04-BSCS-NS-3A-M/Pahiram_post/create_post";
     //dont use http://localhost , because emulator don't get that address
     //insted use your local IP address or use live URL
     //hit "ipconfig" in windows or "ip a" in linux to get you local IP

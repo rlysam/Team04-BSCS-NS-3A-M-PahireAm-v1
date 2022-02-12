@@ -83,7 +83,7 @@ class _MgaPahiramState extends State<MgaPahiram> {
                     PagerWidget(),
                   ]),
                   buildCardWithData(state.postsData),
-                  const SizedBox( height: 20),
+                  const SizedBox(height: 20),
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                     PagerWidget(),
                   ]),
@@ -131,7 +131,7 @@ class _MgaPahiramState extends State<MgaPahiram> {
           child: GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
-                childAspectRatio: 5 / 4.3,
+                childAspectRatio: 3 / 4.3,
                 crossAxisSpacing: 18,
                 mainAxisSpacing: 20),
             shrinkWrap: true,
@@ -165,7 +165,7 @@ class _MgaPasabayState extends State<MgaPasabay> {
         // TODO: implement listener
       },
       builder: (context, pageNum) {
-    pasabayData.get10PostsPasabay(pageNum);
+        pasabayData.get10PostsPasabay(pageNum);
 
         return BlocConsumer<PasabayPostsCubit, PasabayPostsState>(
           listener: (context, state) {
@@ -190,7 +190,7 @@ class _MgaPasabayState extends State<MgaPasabay> {
                     PagerWidget(),
                   ]),
                   buildCardWithData(state.postsData),
-                  const SizedBox( height: 20),
+                  const SizedBox(height: 20),
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                     PagerWidget(),
                   ]),
@@ -206,11 +206,13 @@ class _MgaPasabayState extends State<MgaPasabay> {
   }
 
   Widget buildInitialInput() {
-    return const Center( child: Text('Initial Value bobo'),);
+    return const Center(
+      child: Text('Initial Value bobo'),
+    );
   }
 
   Widget buildLoading() {
-    return const Center( child: CircularProgressIndicator());
+    return const Center(child: CircularProgressIndicator());
   }
 
   Widget buildCardWithData(PostsData postsData) {
@@ -234,7 +236,7 @@ class _MgaPasabayState extends State<MgaPasabay> {
           child: GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
-                childAspectRatio: 5 / 4.3,
+                childAspectRatio: 3 / 4.3,
                 crossAxisSpacing: 18,
                 mainAxisSpacing: 20),
             shrinkWrap: true,
