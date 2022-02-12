@@ -259,6 +259,7 @@ class _SignupPageState extends State<SignupPage> {
                                       SizedBox(
                                         width: 240,
                                         child: TextFormField(
+                                            obscureText: true,
                                           controller: _ctrlUserPassword,
                                           decoration:
                                               CommonStyleInput.textFieldStyle(),
@@ -280,6 +281,7 @@ class _SignupPageState extends State<SignupPage> {
                                       SizedBox(
                                         width: 240,
                                         child: TextFormField(
+                                          obscureText: true,
                                           controller: _ctrlUserPassword2,
                                           decoration:
                                               CommonStyleInput.textFieldStyle(),

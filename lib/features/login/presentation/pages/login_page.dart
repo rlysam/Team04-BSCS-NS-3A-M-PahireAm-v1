@@ -95,6 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   TextFormField(
                     cursorColor: kDark,
+                    obscureText: true,
                     controller: _ctrlUserPass,
                     decoration: CommonStyleInput.textFieldStyle(
                         isCorrect: correctPassword, hasIcon: true),
